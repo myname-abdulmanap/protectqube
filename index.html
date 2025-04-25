@@ -377,8 +377,9 @@
 
     <!-- Navbar -->
     <nav
-      class="bg-white dark:bg-gray-800 shadow-md border-b border-gray-200 dark:border-gray-700 theme-transition"
-    >
+    class="sticky top-0 z-50 bg-white dark:bg-gray-800 shadow-md border-b border-gray-200 dark:border-gray-700 theme-transition"
+  >
+  
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
           <div class="flex items-center">
@@ -1129,7 +1130,7 @@
           </div>
 
           <!-- Freeze Alert Panel -->
-          <div class="lg:col-span-1 lg:sticky lg:top-4 h-screen overflow-auto pb-4">
+          <div class="lg:sticky lg:top-4 lg:max-h-[calc(100vh-2rem)] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600 scrollbar-track-transparent">
             <div
               class="bg-white dark:bg-gray-800 shadow-md rounded-lg overflow-hidden theme-transition"
             >
