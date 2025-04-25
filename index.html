@@ -16,444 +16,430 @@
       rel="stylesheet"
     />
 
-    <!-- Tambahkan link untuk font bebas -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
 
-<style>
-  /* Gunakan font Bebas Neue untuk header kategori */
-  .sidebar-category {
-    font-family: 'Bebas Neue', cursive;
-  }
-  
-  /* Tambahkan ini ke CSS Anda untuk menggunakan font Bebas Neue */
-  .font-bebas {
-    font-family: 'Bebas Neue', cursive;
-  }
-</style>
+    <link href="/styles.css" rel="stylesheet" />
 
-<!-- JavaScript untuk sub-menu expand/collapse -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const menuItems = document.querySelectorAll('a[href="#"]');
-  
-  menuItems.forEach(item => {
-    if (item.querySelector('.fa-chevron-down')) {
-      item.addEventListener('click', function(e) {
-        e.preventDefault();
-        const submenu = this.nextElementSibling;
-        if (submenu.style.display === 'none' || submenu.style.display === '') {
-          submenu.style.display = 'block';
-          this.querySelector('.fa-chevron-down').classList.replace('fa-chevron-down', 'fa-chevron-up');
-        } else {
-          submenu.style.display = 'none';
-          this.querySelector('.fa-chevron-up').classList.replace('fa-chevron-up', 'fa-chevron-down');
-        }
-      });
-    }
-  });
-});
-</script>
+    <script src="/script.js"></script>
 
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const menuItems = document.querySelectorAll('.menu-item > a');
-    
-    menuItems.forEach(item => {
-      item.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        const parent = this.parentNode;
-        const submenu = parent.querySelector('.submenu');
-        const arrow = this.querySelector('.fa-chevron-right');
-        
-        // Tambahkan efek ripple
-        const ripple = document.createElement('span');
-        ripple.classList.add('ripple');
-        this.appendChild(ripple);
-        
-        // Posisikan ripple
-        const rect = this.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        
-        ripple.style.left = x + 'px';
-        ripple.style.top = y + 'px';
-        
-        // Hapus ripple setelah animasi selesai
-        setTimeout(() => {
-          ripple.remove();
-        }, 500);
-        
-        // Check if submenu is open
-        const isOpen = submenu.classList.contains('active');
-        
-        // Close all other submenus
-        document.querySelectorAll('.submenu.active').forEach(menu => {
-          if (menu !== submenu) {
-            menu.style.maxHeight = '0px';
-            menu.classList.remove('active');
-            const otherArrow = menu.parentNode.querySelector('.fa-chevron-right');
-            otherArrow.style.transform = 'rotate(0deg)';
-          }
-        });
-        
-        // Toggle current submenu
-        if (isOpen) {
-          submenu.style.maxHeight = '0px';
-          submenu.classList.remove('active');
-          arrow.style.transform = 'rotate(0deg)';
-        } else {
-          submenu.classList.add('active');
-          submenu.style.maxHeight = submenu.scrollHeight + 'px';
-          arrow.style.transform = 'rotate(90deg)';
-        }
-      });
-    });
-  });
-  </script>
   
-  <!-- CSS untuk efek ripple -->
-  <style>
-  .menu-item > a {
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .ripple {
-    position: absolute;
-    background: rgba(255, 255, 255, 0.7);
-    border-radius: 50%;
-    width: 100px;
-    height: 100px;
-    margin-top: -50px;
-    margin-left: -50px;
-    animation: ripple 0.5s linear;
-    transform: scale(0);
-    opacity: 1;
-    pointer-events: none;
-  }
-  
-  @keyframes ripple {
-    to {
-      transform: scale(2.5);
-      opacity: 0;
-    }
-  }
-  
-  /* Animasi hover untuk menu */
-  .group:hover i {
-    transform: translateX(3px);
-    transition: transform 0.2s ease;
-  }
-  
-  /* Animasi khusus untuk submenu */
-  .submenu {
-    transform-origin: top;
-  }
-  
-  .submenu a {
-    position: relative;
-  }
-  
-  .submenu a::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    width: 5px;
-    height: 0;
-    background-color: currentColor;
-    opacity: 0.5;
-    transform: translateY(-50%);
-    transition: height 0.2s ease;
-  }
-  
-  .submenu a:hover::before {
-    height: 70%;
-  }
-  </style>
-    <script>
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            colors: {
-              primary: "#4F46E5",
-              "primary-dark": "#4338CA",
-              secondary: "#06B6D4",
-              "secondary-dark": "#0891B2",
-              warning: "#F59E0B",
-              "warning-dark": "#D97706",
-              danger: "#EF4444",
-              "danger-dark": "#DC2626",
-              success: "#10B981",
-              "success-dark": "#059669",
-            },
-            fontFamily: {
-              quicksand: ["Quicksand", "sans-serif"],
-            },
-            boxShadow: {
-              card: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
-              "card-dark":
-                "0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1)",
-            },
-          },
-        },
-      };
-    </script>
-    <style>
-      /* Custom transitions */
-      .slide-enter {
-        transform: translateX(-100%);
-        opacity: 0;
-      }
-      .slide-enter-active {
-        transform: translateX(0);
-        opacity: 1;
-        transition: transform 300ms, opacity 300ms;
-      }
-      .slide-exit {
-        transform: translateX(0);
-        opacity: 1;
-      }
-      .slide-exit-active {
-        transform: translateX(-100%);
-        opacity: 0;
-        transition: transform 300ms, opacity 300ms;
-      }
-      /* Alert animation */
-      @keyframes pulse {
-        0%,
-        100% {
-          opacity: 1;
-        }
-        50% {
-          opacity: 0.8;
-        }
-      }
-      .pulse-animation {
-        animation: pulse 2s infinite;
-      }
-      /* Transition effect */
-      .theme-transition {
-        transition: background-color 0.3s, color 0.3s, border-color 0.3s,
-          box-shadow 0.3s;
-      }
-    </style>
   </head>
   <body class="bg-gray-50 dark:bg-gray-900 theme-transition">
-  
-<!-- Sidebar -->
-<div
-  id="sidebar"
-  class="fixed inset-y-0 left-0 z-50 w-64 bg-white dark:bg-gray-800 shadow-lg transform -translate-x-full transition-transform duration-300 ease-in-out lg:translate-x-0 theme-transition"
->
-  <!-- Header -->
-  <div
-    class="flex items-center justify-between h-16 px-6 border-b border-dark-100 dark:border-blue-900"
-  >
-    <div class="flex items-center">
-      <div class="text-2xl font-bold text-dark-600 dark:text-white/80 font-quicksand">
-        ProtectQube
-      </div>
-    </div>
-    <button
-      id="closeSidebar"
-      class="text-blue-500 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 lg:hidden"
+    <!-- Sidebar -->
+    <div
+      id="sidebar"
+      class="fixed inset-y-0 left-0 shadow-lg -translate-x-full transition-transform duration-300 ease-in-out bg-white dark:bg-gray-800 w-64 z-50"
     >
-      <i class="fas fa-times"></i>
-    </button>
-  </div>
-  
-  <!-- Sidebar Content -->
-  <div class="px-4 py-2 overflow-y-auto max-h-screen">
-    <!-- DASHBOARD -->
-    <div class="py-2">
-      <div class="text-xs font-bold uppercase tracking-wider text-dark-600 dark:text-blue-400 mb-2">DASHBOARD</div>
-      <ul>
-        <li>
-          <a href="#" class="group flex items-center px-3 py-2 text-dark-800 hover:bg-blue-50 dark:text-blue-300 dark:hover:bg-blue-900/30 rounded-md transition-all duration-200">
-            <i class="fas fa-desktop w-5 text-center mr-2 text-dark-500 group-hover:text-blue-600 dark:text-blue-400 dark:group-hover:text-blue-300 transition-all">
-            </i>
-            <span class="transition-all">Dashboard</span>
-           
-          </a>
-        </li>
-      </ul>
-    </div>
-    
-    <!-- HISTORY & ARCHIVE -->
-    <div class="py-2">
-      <div class="text-xs font-bold uppercase tracking-wider text-dark-600 dark:text-indigo-400 mb-2">HISTORY & ARCHIVE</div>
-      <ul>
-        <li>
-          <a href="#" class="group flex items-center px-3 py-2 text-dark-800 hover:bg-indigo-50 dark:text-indigo-300 dark:hover:bg-indigo-900/30 rounded-md transition-all duration-200">
-            <i class="fas fa-bell w-5 text-center mr-2 text-dark-500 group-hover:text-indigo-600 dark:text-indigo-400 dark:group-hover:text-indigo-300 transition-all"></i>
-            <span>Archive Alert</span>
-          </a>
-        </li>
-        <li>
-          <a href="#" class="group flex items-center px-3 py-2 text-dark-800 hover:bg-indigo-50 dark:text-indigo-300 dark:hover:bg-indigo-900/30 rounded-md transition-all duration-200">
-            <i class="fas fa-heart w-5 text-center mr-2 text-dark-500 group-hover:text-indigo-600 dark:text-indigo-400 dark:group-hover:text-indigo-300 transition-all"></i>
-            <span>Archive Health</span>
-          </a>
-        </li>
-        <li>
-          <a href="#" class="group flex items-center px-3 py-2 text-dark-800 hover:bg-indigo-50 dark:text-indigo-300 dark:hover:bg-indigo-900/30 rounded-md transition-all duration-200">
-            <i class="fas fa-snowflake w-5 text-center mr-2 text-dark-500 group-hover:text-indigo-600 dark:text-indigo-400 dark:group-hover:text-indigo-300 transition-all"></i>
-            <span>Freeze</span>
-          </a>
-        </li>
-      </ul>
-    </div>
-    
-    <!-- MASTER DATA -->
-    <div class="py-2">
-      <div class="text-xs font-bold uppercase tracking-wider text-dark-600 dark:text-emerald-400 mb-2">MASTER DATA</div>
-      <ul>
-        <li class="mb-1">
-          <div class="menu-item">
-            <a href="#" class="group flex items-center justify-between px-3 py-2 text-dark-800 hover:bg-emerald-50 dark:text-emerald-300 dark:hover:bg-emerald-900/30 rounded-md transition-all duration-200">
-              <div class="flex items-center">
-                <i class="fas fa-tablet-alt w-5 text-center mr-2 text-dark-500 group-hover:text-emerald-600 dark:text-emerald-400 dark:group-hover:text-emerald-300 transition-all"></i>
-                <span>Devices</span>
-              </div>
-              <i class="fas fa-chevron-right text-xs text-dark-500 group-hover:text-dark-600 dark:text-emerald-400 dark:group-hover:text-emerald-300 transition-transform duration-300"></i>
-            </a>
-            <div class="submenu overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
-              <a href="#" class="block pl-10 py-2 text-sm text-dark-700 hover:text-emerald-600 dark:text-emerald-400 dark:hover:text-emerald-300 transition-colors">
-                All Devices
-              </a>
-              <a href="#" class="block pl-10 py-2 text-sm text-dark-700 hover:text-emerald-600 dark:text-dark-400 dark:hover:text-emerald-300 transition-colors">
-                Add Device
-              </a>
-            </div>
+      <!-- Header -->
+      <div
+        class="flex items-center justify-between h-16 px-6 border-b border-dark-100 dark:border-gray-700"
+      >
+        <div class="flex items-center">
+          <div
+            class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-full h-8 w-8 flex items-center justify-center shadow-md"
+          >
+            MZ
           </div>
-        </li>
-        <li>
-          <a href="#" class="group flex items-center px-3 py-2 text-dark-800 hover:bg-emerald-50 dark:text-emerald-300 dark:hover:bg-emerald-900/30 rounded-md transition-all duration-200">
-            <i class="fas fa-user w-5 text-center mr-2 text-dark-500 group-hover:text-emerald-600 dark:text-emerald-400 dark:group-hover:text-emerald-300 transition-all"></i>
-            <span>Owner</span>
-          </a>
-        </li>
-        <li>
-          <a href="#" class="group flex items-center px-3 py-2 text-dark-800 hover:bg-emerald-50 dark:text-emerald-300 dark:hover:bg-emerald-900/30 rounded-md transition-all duration-200">
-            <i class="fas fa-briefcase w-5 text-center mr-2 text-dark-500 group-hover:text-emerald-600 dark:text-emerald-400 dark:group-hover:text-emerald-300 transition-all"></i>
-            <span>Holder</span>
-          </a>
-        </li>
-      </ul>
-    </div>
-    
-    <!-- SYSTEM ADMINISTRATOR -->
-    <div class="py-2">
-      <div class="text-xs font-bold uppercase tracking-wider text-dark-600 dark:text-purple-400 mb-2">SYSTEM ADMINISTRATOR</div>
-      <ul>
-        <li>
-          <a href="#" class="group flex items-center px-3 py-2 text-dark-800 hover:bg-purple-50 dark:text-purple-300 dark:hover:bg-purple-900/30 rounded-md transition-all duration-200">
-            <i class="fas fa-terminal w-5 text-center mr-2 text-dark-500 group-hover:text-purple-600 dark:text-purple-400 dark:group-hover:text-purple-300 transition-all"></i>
-            <span>Command Log</span>
-          </a>
-        </li>
-        <li class="mb-1">
-          <div class="menu-item">
-            <a href="#" class="group flex items-center justify-between px-3 py-2 text-dark-800 hover:bg-purple-50 dark:text-purple-300 dark:hover:bg-purple-900/30 rounded-md transition-all duration-200">
-              <div class="flex items-center">
-                <i class="fas fa-users w-5 text-center mr-2 text-dark-500 group-hover:text-purple-600 dark:text-purple-400 dark:group-hover:text-purple-300 transition-all"></i>
-                <span>User Manager</span>
-              </div>
-              <i class="fas fa-chevron-right text-xs text-purple-500 group-hover:text-purple-600 dark:text-purple-400 dark:group-hover:text-purple-300 transition-transform duration-300"></i>
-            </a>
-            <div class="submenu overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
-              <a href="#" class="block pl-10 py-2 text-sm text-dark-700 hover:text-purple-600 dark:text-purple-400 dark:hover:text-purple-300 transition-colors">
-                All Users
-              </a>
-              <a href="#" class="block pl-10 py-2 text-sm text-dark-700 hover:text-purple-600 dark:text-dark-400 dark:hover:text-purple-300 transition-colors">
-                Add User
-              </a>
-            </div>
+          <div class="ml-2 hidden md:flex flex-col">
+            <span class="text-sm font-medium text-gray-700 dark:text-gray-300">
+              M. Zein
+            </span>
+            <span class="text-xs text-gray-500 dark:text-gray-400"
+              >Superadmin</span
+            >
           </div>
-        </li>
-        <li>
-          <a href="#" class="group flex items-center px-3 py-2 text-purple-800 hover:bg-purple-50 dark:text-purple-300 dark:hover:bg-purple-900/30 rounded-md transition-all duration-200">
-            <i class="fas fa-user-tag w-5 text-center mr-2 text-purple-500 group-hover:text-purple-600 dark:text-purple-400 dark:group-hover:text-purple-300 transition-all"></i>
-            <span>Roles</span>
-          </a>
-        </li>
-        <li>
-          <a href="#" class="group flex items-center px-3 py-2 text-dark-800 hover:bg-purple-50 dark:text-purple-300 dark:hover:bg-purple-900/30 rounded-md transition-all duration-200">
-            <i class="fas fa-cube w-5 text-center mr-2 text-dark-500 group-hover:text-purple-600 dark:text-purple-400 dark:group-hover:text-purple-300 transition-all"></i>
-            <span>Module Manager</span>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<!-- Navbar -->
-<nav
-class="bg-white dark:bg-gray-800 shadow-md border-b border-gray-200 dark:border-gray-700 theme-transition"
->
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-  <div class="flex justify-between h-16">
-    <div class="flex items-center">
-      <button
-        id="toggleSidebar"
-        class="text-gray-500 dark:text-gray-400 p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700"
-      >
-        <i class="fas fa-bars"></i>
-      </button>
-      <span
-        class="ml-3 text-xl font-bold bg-gray-800 bg-clip-text text-transparent dark:from-blue-400 dark:to-indigo-300 lg:hidden font-quicksand"
-        >ProtectQube</span
-      >
-    </div>
-    <div class="flex items-center">
-      <!-- Dark mode toggle -->
-      <button
-        id="darkModeToggle"
-        class="p-2 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none mr-3 transition-all duration-200"
-      >
-        <i class="fas fa-moon dark:hidden"></i>
-        <i class="fas fa-sun hidden dark:block"></i>
-      </button>
-
-      <button
-        id="notificationButton"
-        class="p-2 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none relative transition-all duration-200"
-      >
-        <i class="fas fa-bell"></i>
-        <span
-          id="notificationBadge"
-          class="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white bg-gradient-to-r from-red-500 to-pink-500 rounded-full transform translate-x-1/2 -translate-y-1/2 shadow-sm"
-          >2</span
-        >
-      </button>
-
-      <button
-        class="ml-3 p-2 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none transition-all duration-200"
-      >
-        <i class="fas fa-cog"></i>
-      </button>
-
-      <div class="ml-3 flex items-center">
-        <div
-          class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-full h-8 w-8 flex items-center justify-center shadow-md"
-        >
-          MZ
         </div>
-        <span
-          class="ml-2 text-sm font-medium text-gray-700 dark:text-gray-300 hidden md:inline"
+
+        <button
+          id="closeSidebar"
+          class="text-grey-500 dark:text-white/80 hover:text-orange-800 dark:hover:text-orange-800"
         >
-          M. Zein
-        </span>
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <!-- Sidebar Content -->
+      <div class="px-4 py-2 overflow-y-auto max-h-screen">
+        <!-- DASHBOARD -->
+        <div class="py-2">
+          <div
+            class="text-xs font-bold uppercase tracking-wider text-dark-600 dark:text-blue-400 mb-2"
+          >
+            DASHBOARD
+          </div>
+          <ul>
+            <li>
+              <a
+                href="#"
+                class="group flex items-center px-3 py-2 text-xs text-dark-800 hover:bg-blue-50 dark:text-blue-300 dark:hover:bg-blue-900/30 rounded-md transition-all duration-200"
+              >
+                <i
+                  class="fas fa-desktop w-5 text-center mr-2 text-dark-500 group-hover:text-blue-600 dark:text-blue-400 dark:group-hover:text-blue-300 transition-all"
+                >
+                </i>
+                <span
+                  class="transition-all duration-300 group-hover:text-blue-600 dark:group-hover:text-blue-300 transform group-hover:translate-x-1"
+                  >Monitoring</span
+                >
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                class="group flex items-center px-3 py-2 text-xs text-dark-800 hover:bg-blue-50 dark:text-blue-300 dark:hover:bg-blue-900/30 rounded-md transition-all duration-200"
+              >
+                <i
+                  class="fas fa-chart-line w-5 text-center mr-2 text-dark-500 group-hover:text-blue-600 dark:text-blue-400 dark:group-hover:text-blue-300 transition-all"
+                >
+                </i>
+                <span
+                  class="transition-all duration-300 group-hover:text-blue-600 dark:group-hover:text-blue-300 transform group-hover:translate-x-1"
+                  >Report Analytics</span
+                >
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                class="group flex items-center px-3 py-2 text-xs text-dark-800 hover:bg-blue-50 dark:text-blue-300 dark:hover:bg-blue-900/30 rounded-md transition-all duration-200"
+              >
+                <i
+                  class="fas fa-key w-5 text-center mr-2 text-dark-500 group-hover:text-blue-600 dark:text-blue-400 dark:group-hover:text-blue-300 transition-all"
+                >
+                </i>
+                <span
+                  class="transition-all duration-300 group-hover:text-blue-600 dark:group-hover:text-blue-300 transform group-hover:translate-x-1"
+                  >Willowmore</span
+                >
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                class="group flex items-center px-3 py-2 text-xs text-dark-800 hover:bg-blue-50 dark:text-blue-300 dark:hover:bg-blue-900/30 rounded-md transition-all duration-200"
+              >
+                <i
+                  class="fas fa-cube w-5 text-center mr-2 text-dark-500 group-hover:text-blue-600 dark:text-blue-400 dark:group-hover:text-blue-300 transition-all"
+                >
+                </i>
+                <span
+                  class="transition-all duration-300 group-hover:text-blue-600 dark:group-hover:text-blue-300 transform group-hover:translate-x-1"
+                  >Assets Tracking</span
+                >
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                class="group flex items-center px-3 py-2 text-xs text-dark-800 hover:bg-blue-50 dark:text-blue-300 dark:hover:bg-blue-900/30 rounded-md transition-all duration-200"
+              >
+                <i
+                  class="fas fa-battery-half w-5 text-center mr-2 text-dark-500 group-hover:text-blue-600 dark:text-blue-400 dark:group-hover:text-blue-300 transition-all"
+                >
+                </i>
+                <span
+                  class="transition-all duration-300 group-hover:text-blue-600 dark:group-hover:text-blue-300 transform group-hover:translate-x-1"
+                  >Fuel Monitoring</span
+                >
+              </a>
+            </li>
+
+          </ul>
+        </div>
+
+        <!-- HISTORY & ARCHIVE -->
+        <div class="py-2">
+          <div
+            class="text-xs font-bold uppercase tracking-wider text-dark-600 dark:text-indigo-400 mb-2"
+          >
+            HISTORY & ARCHIVE
+          </div>
+          <ul>
+            <li>
+              <a
+                href="#"
+                class="group flex items-center px-3 py-2 text-xs text-dark-800 hover:bg-indigo-50 dark:text-indigo-300 dark:hover:bg-indigo-900/30 rounded-md transition-all duration-200"
+              >
+                <i
+                  class="fas fa-bell w-5 text-center mr-2 text-dark-500 group-hover:text-indigo-600 dark:text-indigo-400 dark:group-hover:text-indigo-300 transition-all"
+                ></i>
+                <span
+                  class="transition-all duration-300 group-hover:text-indigo-600 dark:group-hover:text-indigo-300 transform group-hover:translate-x-1"
+                  >Archive Alert</span
+                >
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                class="group flex items-center px-3 py-2 text-xs text-dark-800 hover:bg-indigo-50 dark:text-indigo-300 dark:hover:bg-indigo-900/30 rounded-md transition-all duration-200"
+              >
+                <i
+                  class="fas fa-heart w-5 text-center mr-2 text-dark-500 group-hover:text-indigo-600 dark:text-indigo-400 dark:group-hover:text-indigo-300 transition-all"
+                ></i>
+                <span
+                  class="transition-all duration-300 group-hover:text-indigo-600 dark:group-hover:text-indigo-300 transform group-hover:translate-x-1"
+                  >Archive Health</span
+                >
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                class="group flex items-center px-3 py-2 text-xs text-dark-800 hover:bg-indigo-50 dark:text-indigo-300 dark:hover:bg-indigo-900/30 rounded-md transition-all duration-200"
+              >
+                <i
+                  class="fas fa-snowflake w-5 text-center mr-2 text-dark-500 group-hover:text-indigo-600 dark:text-indigo-400 dark:group-hover:text-indigo-300 transition-all"
+                ></i>
+                <span
+                  class="transition-all duration-300 group-hover:text-indigo-600 dark:group-hover:text-indigo-300 transform group-hover:translate-x-1"
+                  >Freeze</span
+                >
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- MASTER DATA -->
+        <div class="py-2">
+          <div
+            class="text-xs font-bold uppercase tracking-wider text-dark-600 dark:text-emerald-400 mb-2"
+          >
+            MASTER DATA
+          </div>
+          <ul>
+            <li class="mb-1">
+              <div class="menu-item">
+                <a
+                  href="#"
+                  class="group flex items-center justify-between px-3 py-2 text-xs text-dark-800 hover:bg-emerald-50 dark:text-emerald-300 dark:hover:bg-emerald-900/30 rounded-md transition-all duration-200"
+                >
+                  <div class="flex items-center">
+                    <i
+                      class="fas fa-tablet-alt w-5 text-center mr-2 text-dark-500 group-hover:text-emerald-600 dark:text-emerald-400 dark:group-hover:text-emerald-300 transition-all"
+                    ></i>
+                    <span
+                      class="transition-all duration-300 group-hover:text-emerald-600 dark:group-hover:text-emerald-300 transform group-hover:translate-x-1"
+                      >Devices</span
+                    >
+                  </div>
+                  <i
+                    class="fas fa-chevron-right text-xs text-dark-500 group-hover:text-dark-600 dark:text-emerald-400 dark:group-hover:text-emerald-300 transition-transform duration-300 group-hover:rotate-90"
+                  ></i>
+                </a>
+                <div
+                  class="submenu overflow-hidden max-h-0 transition-all duration-300 ease-in-out"
+                >
+                  <a
+                    href="#"
+                    class="block pl-10 py-2 text-xs text-dark-700 hover:text-emerald-600 dark:text-emerald-400 dark:hover:text-emerald-300 transition-all duration-300 hover:translate-x-1 transform"
+                  >
+                    All Devices
+                  </a>
+                  <a
+                    href="#"
+                    class="block pl-10 py-2 text-xs text-dark-700 hover:text-emerald-600 dark:text-dark-400 dark:hover:text-emerald-300 transition-all duration-300 hover:translate-x-1 transform"
+                  >
+                    Add Device
+                  </a>
+                </div>
+              </div>
+            </li>
+            <li>
+              <a
+                href="#"
+                class="group flex items-center px-3 py-2 text-xs text-dark-800 hover:bg-emerald-50 dark:text-emerald-300 dark:hover:bg-emerald-900/30 rounded-md transition-all duration-200"
+              >
+                <i
+                  class="fas fa-user w-5 text-center mr-2 text-dark-500 group-hover:text-emerald-600 dark:text-emerald-400 dark:group-hover:text-emerald-300 transition-all"
+                ></i>
+                <span
+                  class="transition-all duration-300 group-hover:text-emerald-600 dark:group-hover:text-emerald-300 transform group-hover:translate-x-1"
+                  >Owner</span
+                >
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                class="group flex items-center px-3 py-2 text-xs text-dark-800 hover:bg-emerald-50 dark:text-emerald-300 dark:hover:bg-emerald-900/30 rounded-md transition-all duration-200"
+              >
+                <i
+                  class="fas fa-briefcase w-5 text-center mr-2 text-dark-500 group-hover:text-emerald-600 dark:text-emerald-400 dark:group-hover:text-emerald-300 transition-all"
+                ></i>
+                <span
+                  class="transition-all duration-300 group-hover:text-emerald-600 dark:group-hover:text-emerald-300 transform group-hover:translate-x-1"
+                  >Holder</span
+                >
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- SYSTEM ADMINISTRATOR -->
+        <div class="py-2">
+          <div
+            class="text-xs font-bold uppercase tracking-wider text-dark-600 dark:text-purple-400 mb-2"
+          >
+            SYSTEM ADMINISTRATOR
+          </div>
+          <ul>
+            <li>
+              <a
+                href="#"
+                class="group flex items-center px-3 py-2 text-xs text-dark-800 hover:bg-purple-50 dark:text-purple-300 dark:hover:bg-purple-900/30 rounded-md transition-all duration-200"
+              >
+                <i
+                  class="fas fa-terminal w-5 text-center mr-2 text-dark-500 group-hover:text-purple-600 dark:text-purple-400 dark:group-hover:text-purple-300 transition-all"
+                ></i>
+                <span
+                  class="transition-all duration-300 group-hover:text-purple-600 dark:group-hover:text-purple-300 transform group-hover:translate-x-1"
+                  >Command Log</span
+                >
+              </a>
+            </li>
+            <li class="mb-1">
+              <div class="menu-item">
+                <a
+                  href="#"
+                  class="group flex items-center justify-between px-3 py-2 text-xs text-dark-800 hover:bg-purple-50 dark:text-purple-300 dark:hover:bg-purple-900/30 rounded-md transition-all duration-200"
+                >
+                  <div class="flex items-center">
+                    <i
+                      class="fas fa-users w-5 text-center mr-2 text-dark-500 group-hover:text-purple-600 dark:text-purple-400 dark:group-hover:text-purple-300 transition-all"
+                    ></i>
+                    <span
+                      class="transition-all duration-300 group-hover:text-purple-600 dark:group-hover:text-purple-300 transform group-hover:translate-x-1"
+                      >User Manager</span
+                    >
+                  </div>
+                  <i
+                    class="fas fa-chevron-right text-xs text-grey-500 group-hover:text-purple-600 dark:text-purple-400 dark:group-hover:text-purple-300 transition-transform duration-300 group-hover:rotate-90"
+                  ></i>
+                </a>
+                <div
+                  class="submenu overflow-hidden max-h-0 transition-all duration-300 ease-in-out"
+                >
+                  <a
+                    href="#"
+                    class="block pl-10 py-2 text-xs text-dark-700 hover:text-purple-600 dark:text-purple-400 dark:hover:text-purple-300 transition-all duration-300 hover:translate-x-1 transform"
+                  >
+                    All Users
+                  </a>
+                  <a
+                    href="#"
+                    class="block pl-10 py-2 text-xs text-dark-700 hover:text-purple-600 dark:text-dark-400 dark:hover:text-purple-300 transition-all duration-300 hover:translate-x-1 transform"
+                  >
+                    Add User
+                  </a>
+                </div>
+              </div>
+            </li>
+            <li>
+              <a
+                href="#"
+                class="group flex items-center px-3 py-2 text-xs text-grey-800 hover:bg-purple-50 dark:text-purple-300 dark:hover:bg-purple-900/30 rounded-md transition-all duration-200"
+              >
+                <i
+                  class="fas fa-user-tag w-5 text-center mr-2 text-grey-500 group-hover:text-purple-600 dark:text-purple-400 dark:group-hover:text-purple-300 transition-all"
+                ></i>
+                <span
+                  class="transition-all duration-300 group-hover:text-purple-600 dark:group-hover:text-purple-300 transform group-hover:translate-x-1"
+                  >Roles</span
+                >
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                class="group flex items-center px-3 py-2 text-xs text-dark-800 hover:bg-purple-50 dark:text-purple-300 dark:hover:bg-purple-900/30 rounded-md transition-all duration-200"
+              >
+                <i
+                  class="fas fa-cube w-5 text-center mr-2 text-dark-500 group-hover:text-purple-600 dark:text-purple-400 dark:group-hover:text-purple-300 transition-all"
+                ></i>
+                <span
+                  class="transition-all duration-300 group-hover:text-purple-600 dark:group-hover:text-purple-300 transform group-hover:translate-x-1"
+                  >Module Manager</span
+                >
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-</nav>
+
+    <!-- Navbar -->
+    <nav
+      class="bg-white dark:bg-gray-800 shadow-md border-b border-gray-200 dark:border-gray-700 theme-transition"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+          <div class="flex items-center">
+            <button
+              id="toggleSidebar"
+              class="text-gray-500 dark:text-gray-400 p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700"
+            >
+              <i class="fas fa-bars"></i>
+            </button>
+            <img
+              id="modeImage"
+              src="https://protectqube.com/wp-content/uploads/2025/01/logo.png"
+              alt="Logo"
+              class="h-11 ml-2 w-40"
+            />
+          </div>
+          <div class="flex items-center">
+            <!-- Dark mode toggle -->
+            <button
+              id="themeToggle"
+              class="p-2 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none mr-3 transition-all duration-200"
+            >
+              <i class="fas fa-paint-brush"></i>
+            </button>
+
+            <button
+              id="darkModeToggle"
+              class="p-2 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none mr-3 transition-all duration-200"
+            >
+              <i class="fas fa-moon dark:hidden"></i>
+              <i class="fas fa-sun hidden dark:block"></i>
+            </button>
+
+            <button
+              id="notificationButton"
+              class="p-2 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none relative transition-all duration-200"
+            >
+              <i class="fas fa-bell"></i>
+              <span
+                id="notificationBadge"
+                class="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white bg-gradient-to-r from-red-500 to-pink-500 rounded-full transform translate-x-1/2 -translate-y-1/2 shadow-sm"
+                >2</span
+              >
+            </button>
+
+            <div class="ml-3 flex items-center">
+              <div
+                class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-full h-8 w-8 flex items-center justify-center shadow-md"
+              >
+                MZ
+              </div>
+              <span
+                class="ml-2 text-sm font-medium text-gray-700 dark:text-gray-300 hidden md:inline"
+              >
+                M. Zein
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
     <!-- Notification Panel -->
     <div
       id="notificationPanel"
@@ -504,7 +490,7 @@ class="bg-white dark:bg-gray-800 shadow-md border-b border-gray-200 dark:border-
             </div>
             <div class="ml-3">
               <p class="text-sm font-medium text-gray-900 dark:text-white">
-                Warning: 1000253
+                1000253
               </p>
               <p class="text-xs text-gray-500 dark:text-gray-400">
                 POWER DOWN detected 30 mins ago
@@ -549,327 +535,341 @@ class="bg-white dark:bg-gray-800 shadow-md border-b border-gray-200 dark:border-
     <!-- Overlay for sidebar on mobile -->
     <div
       id="sidebarOverlay"
-      class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden lg:hidden"
+      class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"
     ></div>
 
     <!-- Main Content -->
-    <div class="lg:pl-64 transition-all duration-300 theme-transition">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        <!-- Status Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
-          <!-- Active Device Card -->
-          <div
-            class="bg-white dark:bg-gray-800 overflow-hidden shadow-md rounded-lg border-l-4 border-green-500 transition-all hover:shadow-lg theme-transition"
-          >
-            <div class="px-4 py-5 sm:p-6">
-              <div class="flex items-center">
-                <div
-                  class="flex-shrink-0 bg-green-100 dark:bg-green-900 rounded-md p-3"
-                >
-                  <i
-                    class="fas fa-server text-green-600 dark:text-green-400"
-                  ></i>
-                </div>
-                <div class="ml-5 w-0 flex-1">
-                  <dl>
-                    <dt
-                      class="text-sm font-medium text-gray-500 dark:text-gray-400 truncate"
-                    >
-                      Active Device
-                    </dt>
-                    <dd>
-                      <div class="flex items-baseline">
-                        <div
-                          class="text-2xl font-semibold text-gray-900 dark:text-white"
-                        >
-                          802
-                        </div>
-                        <div
-                          class="ml-2 flex items-baseline text-sm font-semibold text-green-600 dark:text-green-400"
-                        >
-                          <i class="fas fa-arrow-up"></i>
-                          <span class="ml-1">3.2%</span>
-                        </div>
-                      </div>
-                    </dd>
-                  </dl>
-                </div>
-              </div>
-              <div class="mt-4 text-xs text-gray-500 dark:text-gray-400">
-                <span
-                  class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300 mr-2"
-                >
-                  Inactive Device: 96
-                </span>
-                <span
-                  class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300"
-                >
-                  Total: 898
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Alert Card -->
-          <div
-            class="bg-white dark:bg-gray-800 overflow-hidden shadow-md rounded-lg border-l-4 border-red-500 transition-all hover:shadow-lg theme-transition"
-          >
-            <div class="px-4 py-5 sm:p-6">
-              <div class="flex items-center">
-                <div
-                  class="flex-shrink-0 bg-red-100 dark:bg-red-900 rounded-md p-3 pulse-animation"
-                >
-                  <i
-                    class="fas fa-exclamation-triangle text-red-600 dark:text-red-400"
-                  ></i>
-                </div>
-                <div class="ml-5 w-0 flex-1">
-                  <dl>
-                    <dt
-                      class="text-sm font-medium text-gray-500 dark:text-gray-400 truncate"
-                    >
-                      Alert
-                    </dt>
-                    <dd>
-                      <div class="flex items-baseline">
-                        <div
-                          class="text-2xl font-semibold text-gray-900 dark:text-white"
-                        >
-                          15
-                        </div>
-                        <div
-                          class="ml-2 flex items-baseline text-sm font-semibold text-red-600 dark:text-red-400"
-                        >
-                          <i class="fas fa-arrow-up"></i>
-                          <span class="ml-1">2 new</span>
-                        </div>
-                      </div>
-                    </dd>
-                  </dl>
-                </div>
-              </div>
-              <div class="mt-4 text-xs text-gray-500 dark:text-gray-400">
-                <span
-                  class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300 mr-2"
-                >
-                  New Alert: 10
-                </span>
-                <span
-                  class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300"
-                >
-                  Responded: 5
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Health Card -->
-          <div
-            class="bg-white dark:bg-gray-800 overflow-hidden shadow-md rounded-lg border-l-4 border-yellow-500 transition-all hover:shadow-lg theme-transition"
-          >
-            <div class="px-4 py-5 sm:p-6">
-              <div class="flex items-center">
-                <div
-                  class="flex-shrink-0 bg-yellow-100 dark:bg-yellow-900 rounded-md p-3"
-                >
-                  <i
-                    class="fas fa-heartbeat text-yellow-600 dark:text-yellow-400"
-                  ></i>
-                </div>
-                <div class="ml-5 w-0 flex-1">
-                  <dl>
-                    <dt
-                      class="text-sm font-medium text-gray-500 dark:text-gray-400 truncate"
-                    >
-                      Health
-                    </dt>
-                    <dd>
-                      <div class="flex items-baseline">
-                        <div
-                          class="text-2xl font-semibold text-gray-900 dark:text-white"
-                        >
-                          54
-                        </div>
-                        <div
-                          class="ml-2 flex items-baseline text-sm font-semibold text-yellow-600 dark:text-yellow-400"
-                        >
-                          <i class="fas fa-arrow-down"></i>
-                          <span class="ml-1">1.2%</span>
-                        </div>
-                      </div>
-                    </dd>
-                  </dl>
-                </div>
-              </div>
-              <div class="mt-4 text-xs text-gray-500 dark:text-gray-400">
-                <span
-                  class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300 mr-2"
-                >
-                  Device Trouble: 25
-                </span>
-                <span
-                  class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300"
-                >
-                  Offline: 29
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Freeze Alert Card -->
-          <div
-            class="bg-white dark:bg-gray-800 overflow-hidden shadow-md rounded-lg border-l-4 border-blue-500 transition-all hover:shadow-lg theme-transition"
-          >
-            <div class="px-4 py-5 sm:p-6">
-              <div class="flex items-center">
-                <div
-                  class="flex-shrink-0 bg-blue-100 dark:bg-blue-900 rounded-md p-3"
-                >
-                  <i
-                    class="fas fa-snowflake text-blue-600 dark:text-blue-400"
-                  ></i>
-                </div>
-                <div class="ml-5 w-0 flex-1">
-                  <dl>
-                    <dt
-                      class="text-sm font-medium text-gray-500 dark:text-gray-400 truncate"
-                    >
-                      Freeze Alert Device
-                    </dt>
-                    <dd>
-                      <div class="flex items-baseline">
-                        <div
-                          class="text-2xl font-semibold text-gray-900 dark:text-white"
-                        >
-                          5
-                        </div>
-                      </div>
-                    </dd>
-                  </dl>
-                </div>
-              </div>
-              <div class="mt-4 text-xs text-gray-500 dark:text-gray-400">
-                <span
-                  class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300 mr-2"
-                >
-                  Disable Device: 797
-                </span>
-                <span
-                  class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300"
-                >
-                  Active: 802
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Main Dashboard Content -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <!-- Alerts Panel -->
-          <div class="lg:col-span-2">
+    <body class="bg-gray-100 dark:bg-gray-900 theme-transition">
+      <div class="lg:pl-100 transition-all duration-300 theme-transition">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <!-- Status Cards -->
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+            <!-- Active Device Card -->
             <div
-              class="bg-white dark:bg-gray-800 shadow-md rounded-lg overflow-hidden theme-transition"
+              class="bg-white dark:bg-gray-800 overflow-hidden shadow-md rounded-lg border-l-4 border-green-500 transition-all hover:shadow-lg theme-transition card"
             >
-              <div
-                class="px-4 py-5 border-b border-gray-200 dark:border-gray-700 sm:px-6 flex justify-between items-center"
-              >
-                <div>
-                  <h3
-                    class="text-lg leading-6 font-medium text-gray-900 dark:text-white"
-                  >
-                    Alerts
-                  </h3>
-                  <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                    Active alerts requiring attention
-                  </p>
-                </div>
-                <div class="relative flex items-center">
-                  <input
-                    type="text"
-                    id="alertSearch"
-                    placeholder="Search..."
-                    class="rounded-md border border-gray-300 dark:border-gray-600 py-2 pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-primary-dark focus:border-transparent text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-                  />
+              <div class="px-4 py-5 sm:p-6">
+                <div class="flex items-center">
                   <div
-                    class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
+                    class="flex-shrink-0 bg-green-100 dark:bg-green-900 rounded-md p-3"
                   >
                     <i
-                      class="fas fa-search text-gray-400 dark:text-gray-500"
+                      class="fas fa-server text-green-600 dark:text-green-400"
                     ></i>
                   </div>
+                  <div class="ml-5 w-0 flex-1">
+                    <dl>
+                      <dt
+                        class="text-sm font-medium text-gray-500 dark:text-gray-400 truncate"
+                      >
+                        Active Device
+                      </dt>
+                      <dd>
+                        <div class="flex items-baseline">
+                          <div
+                            class="text-2xl font-semibold text-gray-900 dark:text-white counter-value"
+                          >
+                            802
+                          </div>
+                          <div
+                            class="ml-2 flex items-baseline text-sm font-semibold text-green-600 dark:text-green-400"
+                          >
+                            <i class="fas fa-arrow-up"></i>
+                            <span class="ml-1">3.2%</span>
+                          </div>
+                        </div>
+                      </dd>
+                    </dl>
+                  </div>
                 </div>
+                <div class="mt-4 text-xs text-gray-500 dark:text-gray-400">
+                  <span
+                    class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300 mr-2"
+                  >
+                    Inactive Device: 96
+                  </span>
+                  <span
+                    class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300"
+                  >
+                    Total: 898
+                  </span>
+                </div>
+                <div class="mt-3 data-bar" style="animation-delay: 0.2s; width: 89%; background: linear-gradient(to right, #77ff00, #00ff0d);"></div>
               </div>
-
-              <!-- Alert Grid -->
+            </div>
+    
+            <!-- Alert Card -->
+            <div
+              class="bg-white dark:bg-gray-800 overflow-hidden shadow-md rounded-lg border-l-4 border-red-500 transition-all hover:shadow-lg theme-transition card"
+            >
+              <div class="px-4 py-5 sm:p-6">
+                <div class="flex items-center">
+                  <div
+                    class="flex-shrink-0 bg-red-100 dark:bg-red-900 rounded-md p-3 pulse-animation"
+                  >
+                    <i
+                      class="fas fa-exclamation-triangle text-red-600 dark:text-red-400"
+                    ></i>
+                  </div>
+                  <div class="ml-5 w-0 flex-1">
+                    <dl>
+                      <dt
+                        class="text-sm font-medium text-gray-500 dark:text-gray-400 truncate"
+                      >
+                        Alert
+                      </dt>
+                      <dd>
+                        <div class="flex items-baseline">
+                          <div
+                            class="text-2xl font-semibold text-gray-900 dark:text-white counter-value"
+                          >
+                            15
+                          </div>
+                          <div
+                            class="ml-2 flex items-baseline text-sm font-semibold text-red-600 dark:text-red-400 notification-new"
+                          >
+                            <i class="fas fa-arrow-up"></i>
+                            <span class="ml-1">2 new</span>
+                          </div>
+                        </div>
+                      </dd>
+                    </dl>
+                  </div>
+                </div>
+                <div class="mt-4 text-xs text-gray-500 dark:text-gray-400">
+                  <span
+                    class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300 mr-2"
+                  >
+                    New Alert: 10
+                  </span>
+                  <span
+                    class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300"
+                  >
+                    Responded: 5
+                  </span>
+                </div>
+                <div class="mt-3 data-bar" style="animation-delay: 0.3s; width: 62%; background: linear-gradient(to right, #ef4444, #f87171);"></div>
+              </div>
+            </div>
+    
+            <!-- Health Card -->
+            <div
+              class="bg-white dark:bg-gray-800 overflow-hidden shadow-md rounded-lg border-l-4 border-yellow-500 transition-all hover:shadow-lg theme-transition card"
+            >
+              <div class="px-4 py-5 sm:p-6">
+                <div class="flex items-center">
+                  <div
+                    class="flex-shrink-0 bg-yellow-100 dark:bg-yellow-900 rounded-md p-3"
+                  >
+                    <i
+                      class="fas fa-heartbeat text-yellow-600 dark:text-yellow-400"
+                    ></i>
+                  </div>
+                  <div class="ml-5 w-0 flex-1">
+                    <dl>
+                      <dt
+                        class="text-sm font-medium text-gray-500 dark:text-gray-400 truncate"
+                      >
+                        Health
+                      </dt>
+                      <dd>
+                        <div class="flex items-baseline">
+                          <div
+                            class="text-2xl font-semibold text-gray-900 dark:text-white counter-value"
+                          >
+                            54
+                          </div>
+                          <div
+                            class="ml-2 flex items-baseline text-sm font-semibold text-yellow-600 dark:text-yellow-400"
+                          >
+                            <i class="fas fa-arrow-down"></i>
+                            <span class="ml-1">1.2%</span>
+                          </div>
+                        </div>
+                      </dd>
+                    </dl>
+                  </div>
+                </div>
+                <div class="mt-4 text-xs text-gray-500 dark:text-gray-400">
+                  <span
+                    class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300 mr-2"
+                  >
+                    Device Trouble: 25
+                  </span>
+                  <span
+                    class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300"
+                  >
+                    Offline: 29
+                  </span>
+                </div>
+                <div class="mt-3 data-bar" style="animation-delay: 0.4s; width: 54%; background: linear-gradient(to right, #f59e0b, #fbbf24);"></div>
+              </div>
+            </div>
+    
+            <!-- Freeze Alert Card -->
+            <div
+              class="bg-white dark:bg-gray-800 overflow-hidden shadow-md rounded-lg border-l-4 border-blue-500 transition-all hover:shadow-lg theme-transition card"
+            >
+              <div class="px-4 py-5 sm:p-6">
+                <div class="flex items-center">
+                  <div
+                    class="flex-shrink-0 bg-blue-100 dark:bg-blue-900 rounded-md p-3 animate-float"
+                  >
+                    <i
+                      class="fas fa-snowflake text-blue-600 dark:text-blue-400"
+                    ></i>
+                  </div>
+                  <div class="ml-5 w-0 flex-1">
+                    <dl>
+                      <dt
+                        class="text-sm font-medium text-gray-500 dark:text-gray-400 truncate"
+                      >
+                        Freeze Alert Device
+                      </dt>
+                      <dd>
+                        <div class="flex items-baseline">
+                          <div
+                            class="text-2xl font-semibold text-gray-900 dark:text-white counter-value"
+                          >
+                            5
+                          </div>
+                        </div>
+                      </dd>
+                    </dl>
+                  </div>
+                </div>
+                <div class="mt-4 text-xs text-gray-500 dark:text-gray-400">
+                  <span
+                    class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300 mr-2"
+                  >
+                    Disable Device: 797
+                  </span>
+                  <span
+                    class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300"
+                  >
+                    Active: 802
+                  </span>
+                </div>
+                <div class="mt-3 data-bar" style="animation-delay: 0.5s; width: 10%; background: linear-gradient(to right, #3b82f6, #60a5fa);"></div>
+              </div>
+            </div>
+          </div>
+    
+          <!-- Main Dashboard Content -->
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- Alerts Panel -->
+            <div class="lg:col-span-2">
               <div
-                id="alertContainer"
-                class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-4"
+                class="bg-white dark:bg-gray-800 shadow-md rounded-lg overflow-hidden theme-transition animate-fade-in-up"
+                style="animation-delay: 0.3s;"
               >
-                <!-- Alert 1 -->
                 <div
-                  class="bg-gradient-to-r from-red-100 to-red-50 dark:from-red-900 dark:to-red-800 rounded-lg p-4 hover:shadow-lg transition-all cursor-pointer border border-red-200 dark:border-red-700 transform hover:scale-102 transition-transform duration-200 theme-transition"
+                  class="px-4 py-5 border-b border-gray-200 dark:border-gray-700 sm:px-6 flex justify-between items-center"
                 >
-                  <div class="flex justify-between items-start">
-                    <div>
-                      <h4 class="font-bold text-red-700 dark:text-red-400">
-                        HITACHI
-                      </h4>
-                      <div
-                        class="text-xs text-gray-600 dark:text-gray-400 mt-1"
-                      >
-                        HITCHI (JKT)
-                      </div>
-                    </div>
-                    <span
-                      class="bg-red-500 text-white px-2 py-1 rounded text-xs animate-pulse"
-                      >Critical</span
+                  <div>
+                    <h3
+                      class="text-lg leading-6 font-medium text-gray-900 dark:text-white"
                     >
+                      Alerts
+                    </h3>
+                    <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                      Active alerts requiring attention
+                    </p>
                   </div>
-                  <div
-                    class="mt-2 text-sm font-semibold text-red-600 dark:text-red-400"
-                  >
-                    FASCIA OPEN
-                  </div>
-                  <div
-                    class="mt-3 text-xs text-gray-500 dark:text-gray-400 flex items-center"
-                  >
-                    <i class="fas fa-clock mr-1"></i> 10 mins ago
+                  <div class="relative flex items-center">
+                    <input
+                      type="text"
+                      id="alertSearch"
+                      placeholder="Search..."
+                      class="rounded-md border border-gray-300 dark:border-gray-600 py-2 pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-primary-dark focus:border-transparent text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                    />
+                    <div
+                      class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
+                    >
+                      <i
+                        class="fas fa-search text-gray-400 dark:text-gray-500"
+                      ></i>
+                    </div>
                   </div>
                 </div>
-
-                <!-- Alert 2 -->
+    
+                <!-- Alert Grid -->
                 <div
-                  class="bg-gradient-to-r from-red-100 to-red-50 dark:from-red-900 dark:to-red-800 rounded-lg p-4 hover:shadow-lg transition-all cursor-pointer border border-red-200 dark:border-red-700 transform hover:scale-102 transition-transform duration-200 theme-transition"
+                  id="alertContainer"
+                  class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 p-2"
                 >
-                  <div class="flex justify-between items-start">
-                    <div>
-                      <h4 class="font-bold text-red-700 dark:text-red-400">
-                        3240
-                      </h4>
-                      <div
-                        class="text-xs text-gray-600 dark:text-gray-400 mt-1"
-                      >
-                        BRC (CBG)
+                  <!-- Alert 1 -->
+                  <div
+                    class="bg-gradient-to-r from-red-100 to-red-50 dark:from-red-900 dark:to-red-800 rounded-lg p-4 hover:shadow-lg transition-all cursor-pointer border border-red-200 dark:border-red-700 transform hover:scale-102 transition-transform duration-200 theme-transition"
+                  >
+                    <div class="flex justify-between items-start">
+                      <div>
+                        <h4 class="font-bold text-red-700 dark:text-red-400">
+                          HITACHI
+                        </h4>
+                        <div
+                          class="text-xs text-gray-600 dark:text-gray-400 mt-1"
+                        >
+                          HITCHI (JKT)
+                        </div>
                       </div>
+                      <span
+                        class="bg-red-500 text-white px-2 py-1 rounded text-xs animate-pulse"
+                        >Critical</span
+                      >
                     </div>
-                    <span
-                      class="bg-red-500 text-white px-2 py-1 rounded text-xs animate-pulse"
-                      >Critical</span
+                    <div
+                      class="mt-2 text-sm font-semibold text-red-600 dark:text-red-400"
                     >
+                      FASCIA OPEN
+                    </div>
+                    <div
+                      class="mt-3 text-xs text-gray-500 dark:text-gray-400 flex items-center"
+                    >
+                      <i class="fas fa-clock mr-1"></i> 10 mins ago
+                    </div>
+                    <div class="mt-2 flex items-center">
+                      <span class="status-indicator danger mr-2"></span>
+                      <span class="text-xs text-gray-500 dark:text-gray-400">Active Alert</span>
+                    </div>
                   </div>
+    
+                  <!-- Alert 2 -->
                   <div
-                    class="mt-2 text-sm font-semibold text-red-600 dark:text-red-400"
+                    class="bg-gradient-to-r from-red-100 to-red-50 dark:from-red-900 dark:to-red-800 rounded-lg p-4 hover:shadow-lg transition-all cursor-pointer border border-red-200 dark:border-red-700 transform hover:scale-102 transition-transform duration-200 theme-transition"
                   >
-                    FASCIA OPEN
+                    <div class="flex justify-between items-start">
+                      <div>
+                        <h4 class="font-bold text-red-700 dark:text-red-400">
+                          3240
+                        </h4>
+                        <div
+                          class="text-xs text-gray-600 dark:text-gray-400 mt-1"
+                        >
+                          BRC (CBG)
+                        </div>
+                      </div>
+                      <span
+                        class="bg-red-500 text-white px-2 py-1 rounded text-xs animate-pulse"
+                        >Critical</span
+                      >
+                    </div>
+                    <div
+                      class="mt-2 text-sm font-semibold text-red-600 dark:text-red-400"
+                    >
+                      FASCIA OPEN
+                    </div>
+                    <div
+                      class="mt-3 text-xs text-gray-500 dark:text-gray-400 flex items-center"
+                    >
+                      <i class="fas fa-clock mr-1"></i> 15 mins ago
+                    </div>
+                    <div class="mt-2 flex items-center">
+                      <span class="status-indicator danger mr-2"></span>
+                      <span class="text-xs text-gray-500 dark:text-gray-400">Active Alert</span>
+                    </div>
                   </div>
-                  <div
-                    class="mt-3 text-xs text-gray-500 dark:text-gray-400 flex items-center"
-                  >
-                    <i class="fas fa-clock mr-1"></i> 15 mins ago
-                  </div>
-                </div>
-
+      
                 <!-- Alert 3 -->
                 <div
                   class="bg-gradient-to-r from-yellow-100 to-yellow-50 dark:from-yellow-900 dark:to-yellow-800 rounded-lg p-4 hover:shadow-lg transition-all cursor-pointer border border-yellow-200 dark:border-yellow-700 transform hover:scale-102 transition-transform duration-200 theme-transition"
@@ -887,10 +887,10 @@ class="bg-white dark:bg-gray-800 shadow-md border-b border-gray-200 dark:border-
                         ABC (MLG)
                       </div>
                     </div>
-                    <span
+                    <!-- <span
                       class="bg-yellow-500 text-white px-2 py-1 rounded text-xs"
                       >Warning</span
-                    >
+                    > -->
                   </div>
                   <div
                     class="mt-2 text-sm font-semibold text-yellow-600 dark:text-yellow-400"
@@ -921,10 +921,10 @@ class="bg-white dark:bg-gray-800 shadow-md border-b border-gray-200 dark:border-
                         ADV (SBG)
                       </div>
                     </div>
-                    <span
+                    <!-- <span
                       class="bg-yellow-500 text-white px-2 py-1 rounded text-xs"
                       >Warning</span
-                    >
+                    > -->
                   </div>
                   <div
                     class="mt-2 text-sm font-semibold text-yellow-600 dark:text-yellow-400"
@@ -1019,10 +1019,10 @@ class="bg-white dark:bg-gray-800 shadow-md border-b border-gray-200 dark:border-
                         ADV (ADVB)
                       </div>
                     </div>
-                    <span
+                    <!-- <span
                       class="bg-yellow-500 text-white px-2 py-1 rounded text-xs"
                       >Warning</span
-                    >
+                    > -->
                   </div>
                   <div
                     class="mt-2 text-sm font-semibold text-yellow-600 dark:text-yellow-400"
@@ -1085,10 +1085,10 @@ class="bg-white dark:bg-gray-800 shadow-md border-b border-gray-200 dark:border-
                         ADV (SLO)
                       </div>
                     </div>
-                    <span
+                    <!-- <span
                       class="bg-yellow-500 text-white px-2 py-1 rounded text-xs"
                       >Warning</span
-                    >
+                    > -->
                   </div>
                   <div
                     class="mt-2 text-sm font-semibold text-yellow-600 dark:text-yellow-400"
@@ -1103,7 +1103,7 @@ class="bg-white dark:bg-gray-800 shadow-md border-b border-gray-200 dark:border-
                 </div>
               </div>
 
-              <div
+              <!-- <div
                 class="bg-gray-50 dark:bg-gray-700 px-4 py-3 sm:px-6 flex justify-between items-center border-t border-gray-200 dark:border-gray-700 theme-transition"
               >
                 <div
@@ -1124,7 +1124,7 @@ class="bg-white dark:bg-gray-800 shadow-md border-b border-gray-200 dark:border-
                     Next
                   </button>
                 </div>
-              </div>
+              </div> -->
             </div>
           </div>
 
@@ -1496,278 +1496,6 @@ class="bg-white dark:bg-gray-800 shadow-md border-b border-gray-200 dark:border-
       </div>
     </div>
 
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        // DOM Elements
-        const darkModeToggle = document.getElementById("darkModeToggle");
-        const html = document.documentElement;
-        const toggleSidebar = document.getElementById("toggleSidebar");
-        const sidebar = document.getElementById("sidebar");
-        const closeSidebar = document.getElementById("closeSidebar");
-        const sidebarOverlay = document.getElementById("sidebarOverlay");
-        const notificationButton =
-          document.getElementById("notificationButton");
-        const notificationPanel = document.getElementById("notificationPanel");
-        const alertCards = document.querySelectorAll("#alertContainer > div");
-        const alertDetailModal = document.getElementById("alertDetailModal");
-        const closeAlertModal = document.getElementById("closeAlertModal");
-        const alertSearch = document.getElementById("alertSearch");
-        const freezeSearch = document.getElementById("freezeSearch");
-
-        // Check for saved theme preference or use system preference
-        if (
-          localStorage.getItem("darkMode") === "true" ||
-          (localStorage.getItem("darkMode") === null &&
-            window.matchMedia("(prefers-color-scheme: dark)").matches)
-        ) {
-          html.classList.add("dark");
-        }
-
-        // Dark mode toggle
-        darkModeToggle.addEventListener("click", function () {
-          html.classList.toggle("dark");
-          localStorage.setItem("darkMode", html.classList.contains("dark"));
-        });
-
-        // Sidebar toggle for mobile
-        toggleSidebar.addEventListener("click", function () {
-          sidebar.classList.toggle("-translate-x-full");
-          sidebarOverlay.classList.toggle("hidden");
-        });
-
-        closeSidebar.addEventListener("click", function () {
-          sidebar.classList.add("-translate-x-full");
-          sidebarOverlay.classList.add("hidden");
-        });
-
-        sidebarOverlay.addEventListener("click", function () {
-          sidebar.classList.add("-translate-x-full");
-          sidebarOverlay.classList.add("hidden");
-        });
-
-        // Notification panel toggle
-        notificationButton.addEventListener("click", function (e) {
-          e.stopPropagation();
-          notificationPanel.classList.toggle("hidden");
-
-          // Hide notification badge when notifications are viewed
-          document.getElementById("notificationBadge").textContent = "0";
-        });
-
-        // Close notification panel when clicking outside
-        document.addEventListener("click", function (e) {
-          if (
-            !notificationPanel.contains(e.target) &&
-            e.target !== notificationButton
-          ) {
-            notificationPanel.classList.add("hidden");
-          }
-        });
-
-        // Alert cards click handler
-        alertCards.forEach((card) => {
-          card.addEventListener("click", function () {
-            // Get alert details
-            const title = this.querySelector("h4").textContent;
-            const subtitle = this.querySelector(
-              ".text-xs.text-gray-600, .text-xs.text-gray-400"
-            ).textContent;
-            const alertType = this.querySelector(
-              ".text-sm.font-semibold"
-            ).textContent;
-            const severity = this.querySelector("span").textContent;
-            const time =
-              this.querySelector(
-                ".fas.fa-clock"
-              ).nextSibling.textContent.trim();
-
-            // Update modal content
-            document.getElementById("alertDetailTitle").textContent = title;
-            document.getElementById("alertDetailSubtitle").textContent =
-              subtitle;
-            document.getElementById("alertDetailType").textContent = alertType;
-            document.getElementById("alertDetailSeverity").textContent =
-              severity;
-            document.getElementById("alertDetailSeverity").className =
-              severity === "Critical"
-                ? "bg-red-500 text-white px-3 py-1 rounded-md"
-                : "bg-yellow-500 text-white px-3 py-1 rounded-md";
-
-            // Format time for the modal
-            const currentDate = new Date();
-            const timeParts = time.split(" ");
-            const minutes = parseInt(timeParts[0]);
-            const formattedTime = new Date(
-              currentDate.getTime() - minutes * 60000
-            )
-              .toLocaleDateString("en-GB", {
-                day: "2-digit",
-                month: "2-digit",
-                year: "numeric",
-                hour: "2-digit",
-                minute: "2-digit",
-                second: "2-digit",
-                hour12: false,
-              })
-              .replace(",", "");
-
-            document.getElementById("alertDetailTime").textContent =
-              formattedTime;
-
-            // Show modal
-            alertDetailModal.classList.remove("hidden");
-          });
-        });
-
-        // Close alert detail modal
-        closeAlertModal.addEventListener("click", function () {
-          alertDetailModal.classList.add("hidden");
-        });
-
-        // Close modal when clicking outside content
-        alertDetailModal.addEventListener("click", function (e) {
-          if (e.target === alertDetailModal) {
-            alertDetailModal.classList.add("hidden");
-          }
-        });
-
-        // Search functionality for alerts
-        alertSearch.addEventListener("input", function () {
-          const searchTerm = this.value.toLowerCase();
-
-          alertCards.forEach((card) => {
-            const title = card.querySelector("h4").textContent.toLowerCase();
-            const subtitle = card
-              .querySelector(".text-xs.text-gray-600, .text-xs.text-gray-400")
-              .textContent.toLowerCase();
-            const alertType = card
-              .querySelector(".text-sm.font-semibold")
-              .textContent.toLowerCase();
-
-            if (
-              title.includes(searchTerm) ||
-              subtitle.includes(searchTerm) ||
-              alertType.includes(searchTerm)
-            ) {
-              card.style.display = "";
-            } else {
-              card.style.display = "none";
-            }
-          });
-        });
-
-        // Search functionality for freeze alerts
-        freezeSearch.addEventListener("input", function () {
-          const searchTerm = this.value.toLowerCase();
-          const freezeItems = document.querySelectorAll(
-            ".lg\\:col-span-1 .border.border-gray-200, .lg\\:col-span-1 .border.border-gray-700"
-          );
-
-          freezeItems.forEach((item) => {
-            const title = item
-              .querySelector(".font-medium")
-              .textContent.toLowerCase();
-            const content = item.textContent.toLowerCase();
-
-            if (title.includes(searchTerm) || content.includes(searchTerm)) {
-              item.style.display = "";
-            } else {
-              item.style.display = "none";
-            }
-          });
-        });
-
-        // Enable toggle buttons in freeze alerts
-        const toggleButtons = document.querySelectorAll(".fas.fa-toggle-off");
-        toggleButtons.forEach((button) => {
-          button.addEventListener("click", function (e) {
-            e.stopPropagation();
-            // Toggle class for visual feedback
-            this.classList.toggle("fa-toggle-off");
-            this.classList.toggle("fa-toggle-on");
-
-            // Find the parent item
-            const freezeItem = this.closest(
-              ".border.border-gray-200, .border.border-gray-700"
-            );
-
-            // Add visual feedback
-            freezeItem.classList.add(
-              "bg-green-50",
-              "dark:bg-green-900",
-              "border-green-200",
-              "dark:border-green-700"
-            );
-
-            // After a delay, remove the item
-            setTimeout(() => {
-              freezeItem.style.transition = "opacity 0.5s, transform 0.5s";
-              freezeItem.style.opacity = "0";
-              freezeItem.style.transform = "translateX(100%)";
-              setTimeout(() => {
-                freezeItem.remove();
-              }, 500);
-            }, 1000);
-          });
-        });
-
-        // Initialize counts and update functions
-        let alertCount = 15;
-        let activeDeviceCount = 802;
-
-        // Function to simulate new alerts
-        function simulateNewAlert() {
-          // Random chance to add a new alert
-          if (Math.random() < 0.3) {
-            alertCount++;
-
-            // Update alert count in UI
-            document.querySelector(
-              ".text-2xl.font-semibold:nth-child(1)"
-            ).textContent = alertCount;
-
-            // Update notification badge
-            const badge = document.getElementById("notificationBadge");
-            badge.textContent = parseInt(badge.textContent) + 1;
-
-            // Add pulsing animation to alert card
-            const alertCard = document.querySelector(
-              ".flex-shrink-0.bg-red-100.rounded-md.p-3.pulse-animation, .flex-shrink-0.bg-red-100.dark\\:bg-red-900.rounded-md.p-3.pulse-animation"
-            );
-            alertCard.classList.add("pulse-animation");
-          }
-        }
-
-        // Function to simulate device status changes
-        function simulateDeviceStatusChange() {
-          // Random chance to change active device count
-          if (Math.random() < 0.2) {
-            const change = Math.floor(Math.random() * 3) - 1; // -1, 0, or 1
-            activeDeviceCount += change;
-
-            // Update active device count in UI
-            document.querySelector(
-              ".text-2xl.font-semibold:nth-child(1)"
-            ).textContent = activeDeviceCount;
-
-            // Update percentage
-            const percentElement = document.querySelector(
-              ".text-sm.font-semibold.text-green-600, .text-sm.font-semibold.text-green-600.dark\\:text-green-400"
-            );
-            const percentChange = ((change / activeDeviceCount) * 100).toFixed(
-              1
-            );
-            percentElement.innerHTML = `<i class="fas fa-arrow-${
-              change >= 0 ? "up" : "down"
-            }"></i><span class="ml-1">${Math.abs(percentChange)}%</span>`;
-          }
-        }
-
-        // Run simulations periodically
-        setInterval(simulateNewAlert, 30000); // Every 30 seconds
-        setInterval(simulateDeviceStatusChange, 45000); // Every 45 seconds
-      });
-    </script>
 
     <!-- // thanks, abdul m. // -->
   </body>
