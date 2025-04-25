@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fuel Monitoring System & Anomaly Detection</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+  <link rel="stylesheet" href="fuel.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+      tailwind.config = {
+          theme: {
+              extend: {
+                  colors: {
+                      primary: {
+                          50: '#eef2ff',
+                          100: '#e0e7ff',
+                          200: '#c7d2fe',
+                          300: '#a5b4fc',
+                          400: '#818cf8',
+                          500: '#6366f1',
+                          600: '#4f46e5',
+                          700: '#4338ca',
+                          800: '#3730a3',
+                          900: '#312e81',
+                      },
+                  },
+                  fontFamily: {
+                      sans: ['Inter', 'sans-serif'],
+                  },
+              }
+          }
+      }
+  </script>
+</head>
+<body class="bg-gray-50 font-sans">
+  <div class="min-h-screen">
+      <!-- Header -->
+      <header class="bg-white shadow-sm">
+          <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+              <div class="flex h-16 justify-between items-center">
+                  <div class="flex items-center">
+                      
+                  </div>
+                  
+                 
+              </div>
+          </div>
+      </header>
+      
+      <!-- Main Content -->
+      <main class="py-6 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="mb-6 flex justify-between items-center">
+              <h1 class="text-2xl font-semibold text-gray-800">Fuel Monitoring System (GS-ABCD-123)</h1>
+              <div class="flex items-center space-x-4">
+                <div class="text-gray-500" id="datetime">Loading...</div>
+                <div class="flex items-center">
+                    
+                  
+                </div>
+            </div>
+              <div class="flex space-x-2">
+                  <button class="px-4 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700 transition flex items-center">
+                      <i class="fas fa-file-export mr-2"></i> Export Data
+                  </button>
+                  <button class="px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 transition">
+                      <i class="fas fa-cog"></i>
+                  </button>
+              </div>
+          </div>
+          
+          <!-- Dashboard Grid -->
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              <!-- Fuel Monitoring Card -->
+              <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-100">
+                  <div class="flex justify-between items-center mb-4">
+                      <h2 class="text-lg font-medium text-gray-800">
+                          <i class="fas fa-gas-pump mr-2 text-primary-600"></i>
+                          Fuel Monitoring
+                      </h2>
+                      <span class="px-3 py-1 bg-green-100 text-green-800 text-xs font-medium rounded-full" id="engine-status">STANDBY</span>
+                  </div>
+                  
+                  <div class="genset-container">
+                    <div class="genset">
+                        <div class="genset-top"></div>
+                        <div class="genset-panel">
+                            <div class="panel-light" id="status-light"></div>
+                            <div class="panel-display">
+                                <div class="display-value" id="engine-status">STANDBY</div>
+                            </div>
+                            <div class="panel-light"></div>
+                        </div>
+                        <div class="fuel-container">
+                            <div class="fuel-label">SOLAR</div>
+                            <div class="fuel-metrics" id="fuel-metrics">0 L (0%)</div>
+                            <div class="fuel-capacity" id="fuel-capacity">Kapasitas: 800 L</div>
+                            <div class="fuel-markings">
+                                <div class="fuel-marking" data-level="100%"></div>
+                                <div class="fuel-marking" data-level="75%"></div>
+                                <div class="fuel-marking" data-level="50%"></div>
+                                <div class="fuel-marking" data-level="25%"></div>
+                                <div class="fuel-marking" data-level="0%"></div>
+                            </div>
+                            <div class="fuel-level" id="fuel-level">
+                                <div class="fuel-wave-top"></div>
+                            </div>
+                        </div>
+                        <div class="engine-part">
+                            <div class="engine-serial">GENSET ID: GS-ABCD-123</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="controls">
+                    <div class="slider-container">
+                        <label for="fuel-slider">Level Bahan Bakar (%): <span id="fuel-percentage">50</span></label>
+                        <input type="range" min="0" max="100" value="50" class="slider" id="fuel-slider">
+                    </div>
+                    <div class="button-group">
+                        <button class="start-btn" id="start-btn">
+                            <i class="fas fa-play"></i> Start
+                        </button>
+                        <button class="stop-btn" id="stop-btn">
+                            <i class="fas fa-stop"></i> Stop
+                        </button>
+                        <button class="refuel-btn" id="refuel-btn">
+                            <i class="fas fa-gas-pump"></i> Isi Ulang
+                        </button>
+                    </div>
+                    <div class="alert" id="fuel-alert">
+                        <i class="fas fa-exclamation-triangle"></i> Peringatan: Level bahan bakar rendah!
+                    </div>
+                </div>
+                  
+                  <div class="mt-4 p-3 bg-yellow-50 border border-yellow-200 rounded-md hidden" id="fuel-alert">
+                      <div class="flex items-center text-yellow-800">
+                          <i class="fas fa-exclamation-triangle mr-2"></i>
+                          <span class="text-sm">Low fuel level warning!</span>
+                      </div>
+                  </div>
+              </div>
+              
+              <!-- Sensor Readings Card -->
+              <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-100">
+                  <div class="flex justify-between items-center mb-6">
+                      <h2 class="text-lg font-medium text-gray-800">
+                          <i class="fas fa-microchip mr-2 text-primary-600"></i>
+                          Sensor Readings
+                      </h2>
+                      <span class="px-3 py-1 bg-blue-100 text-blue-800 text-xs font-medium rounded-full">Live Data</span>
+                  </div>
+                  
+                  <div class="grid grid-cols-2 gap-4">
+                      <div class="p-4 bg-gray-50 rounded-lg">
+                          <div class="flex items-center mb-2">
+                              <i class="fas fa-temperature-high text-red-500 mr-2"></i>
+                              <span class="text-sm text-gray-600">Temperature</span>
+                          </div>
+                          <div class="flex items-baseline">
+                              <span class="text-2xl font-bold text-gray-800" id="temperature">72</span>
+                              <span class="ml-1 text-gray-500">°C</span>
+                          </div>
+                          <div class="mt-1 h-1 w-full bg-gray-200 rounded">
+                              <div class="h-1 bg-red-500 rounded" style="width: 65%"></div>
+                          </div>
+                      </div>
+                      
+                      <div class="p-4 bg-gray-50 rounded-lg">
+                          <div class="flex items-center mb-2">
+                              <i class="fas fa-bolt text-yellow-500 mr-2"></i>
+                              <span class="text-sm text-gray-600">Power Output</span>
+                          </div>
+                          <div class="flex items-baseline">
+                              <span class="text-2xl font-bold text-gray-800" id="power">45.2</span>
+                              <span class="ml-1 text-gray-500">kW</span>
+                          </div>
+                          <div class="mt-1 h-1 w-full bg-gray-200 rounded">
+                              <div class="h-1 bg-yellow-500 rounded" style="width: 78%"></div>
+                          </div>
+                      </div>
+                      
+                      <div class="p-4 bg-gray-50 rounded-lg">
+                          <div class="flex items-center mb-2">
+                              <i class="fas fa-tachometer-alt text-blue-500 mr-2"></i>
+                              <span class="text-sm text-gray-600">RPM</span>
+                          </div>
+                          <div class="flex items-baseline">
+                              <span class="text-2xl font-bold text-gray-800" id="rpm">1820</span>
+                              <span class="ml-1 text-gray-500">rpm</span>
+                          </div>
+                          <div class="mt-1 h-1 w-full bg-gray-200 rounded">
+                              <div class="h-1 bg-blue-500 rounded" style="width: 60%"></div>
+                          </div>
+                      </div>
+                      
+                      <div class="p-4 bg-gray-50 rounded-lg">
+                          <div class="flex items-center mb-2">
+                              <i class="fas fa-water text-purple-500 mr-2"></i>
+                              <span class="text-sm text-gray-600">Ultrasonic</span>
+                          </div>
+                          <div class="flex items-baseline">
+                              <span class="text-2xl font-bold text-gray-800" id="ultrasonic">42</span>
+                              <span class="ml-1 text-gray-500">cm</span>
+                          </div>
+                          <div class="mt-1 h-1 w-full bg-gray-200 rounded">
+                              <div class="h-1 bg-purple-500 rounded" style="width: 42%"></div>
+                          </div>
+                      </div>
+                      
+                      <div class="p-4 bg-gray-50 rounded-lg">
+                          <div class="flex items-center mb-2">
+                              <i class="fas fa-clock text-green-500 mr-2"></i>
+                              <span class="text-sm text-gray-600">Runtime</span>
+                          </div>
+                          <div class="flex items-baseline">
+                              <span class="text-2xl font-bold text-gray-800" id="runtime">12.5</span>
+                              <span class="ml-1 text-gray-500">hrs</span>
+                          </div>
+                          <div class="mt-1 h-1 w-full bg-gray-200 rounded">
+                              <div class="h-1 bg-green-500 rounded" style="width: 52%"></div>
+                          </div>
+                      </div>
+                      
+                      <div class="p-4 bg-gray-50 rounded-lg">
+                          <div class="flex items-center mb-2">
+                              <i class="fas fa-oil-can text-orange-500 mr-2"></i>
+                              <span class="text-sm text-gray-600">Oil Pressure</span>
+                          </div>
+                          <div class="flex items-baseline">
+                              <span class="text-2xl font-bold text-gray-800" id="oil-pressure">3.8</span>
+                              <span class="ml-1 text-gray-500">bar</span>
+                          </div>
+                          <div class="mt-1 h-1 w-full bg-gray-200 rounded">
+                              <div class="h-1 bg-orange-500 rounded" style="width: 76%"></div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              
+              <!-- Anomaly Detection Card -->
+              <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-100">
+                  <div class="flex justify-between items-center mb-6">
+                      <h2 class="text-lg font-medium text-gray-800">
+                          <i class="fas fa-shield-alt mr-2 text-primary-600"></i>
+                          Anomaly Detection
+                      </h2>
+                      <div class="relative inline-block w-12 align-middle select-none">
+                          <input type="checkbox" id="toggle-security" class="sr-only" checked>
+                          <div class="block h-6 bg-gray-200 rounded-full"></div>
+                          <div class="dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition transform"></div>
+                      </div>
+                  </div>
+                  
+                  <div class="flex items-center p-4 mb-4 bg-green-50 border border-green-200 rounded-lg">
+                      <i class="fas fa-check-circle text-green-500 text-xl mr-3"></i>
+                      <div>
+                          <div class="font-medium text-green-800">System Active</div>
+                          <div class="text-sm text-green-600">No anomalies detected</div>
+                      </div>
+                  </div>
+                  
+                  <div class="grid grid-cols-3 gap-4 mb-4">
+                      <div class="text-center">
+                          <div class="text-2xl font-bold text-gray-800" id="anomaly-count">0</div>
+                          <div class="text-xs text-gray-500">Anomalies</div>
+                      </div>
+                      <div class="text-center">
+                          <div class="text-lg font-bold text-gray-800" id="last-anomaly">-</div>
+                          <div class="text-xs text-gray-500">Last Event</div>
+                      </div>
+                      <div class="text-center">
+                          <div class="text-lg font-bold text-primary-600" id="security-status">ACTIVE</div>
+                          <div class="text-xs text-gray-500">Status</div>
+                      </div>
+                  </div>
+                  
+                  <div class="mb-4">
+                      <label class="block text-sm font-medium text-gray-700 mb-1">Detection Sensitivity</label>
+                      <input type="range" min="1" max="3" value="2" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer" id="threshold-slider">
+                      <div class="flex justify-between text-xs text-gray-500 mt-1">
+                          <span>Low</span>
+                          <span>Medium</span>
+                          <span>High</span>
+                      </div>
+                  </div>
+                  
+                  <div class="border-t border-gray-200 pt-4">
+                      <div class="flex justify-between items-center mb-2">
+                          <h3 class="text-sm font-medium text-gray-700">Recent Events</h3>
+                          <button class="text-xs text-gray-500 hover:text-gray-700">
+                              <i class="fas fa-trash mr-1"></i> Clear
+                          </button>
+                      </div>
+                      <ul class="space-y-2" id="anomaly-list">
+                          <li class="text-sm text-gray-500 italic">No events recorded</li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+          
+          <!-- Charts Section -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
+              <!-- Fuel Consumption Chart -->
+              <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-100">
+                  <div class="flex justify-between items-center mb-6">
+                      <h2 class="text-lg font-medium text-gray-800">
+                          <i class="fas fa-chart-line mr-2 text-primary-600"></i>
+                          Fuel Consumption
+                      </h2>
+                      <select class="text-sm border-gray-300 rounded-md shadow-sm focus:border-primary-500 focus:ring-primary-500">
+                          <option>Today</option>
+                          <option selected>This Week</option>
+                          <option>This Month</option>
+                      </select>
+                  </div>
+                  
+                  <div class="h-64">
+                      <canvas id="fuel-chart"></canvas>
+                  </div>
+                  
+                  <div class="grid grid-cols-3 gap-4 mt-4 pt-4 border-t border-gray-100">
+                      <div class="text-center">
+                          <div class="text-sm text-gray-500">Total Usage</div>
+                          <div class="text-lg font-semibold text-gray-800">324 L</div>
+                      </div>
+                      <div class="text-center">
+                          <div class="text-sm text-gray-500">Daily Average</div>
+                          <div class="text-lg font-semibold text-gray-800">46.3 L</div>
+                      </div>
+                      <div class="text-center">
+                          <div class="text-sm text-gray-500">Est. Empty</div>
+                          <div class="text-lg font-semibold text-gray-800">8.6 days</div>
+                      </div>
+                  </div>
+              </div>
+              
+              <!-- Anomaly Pattern Chart -->
+              <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-100">
+                  <div class="flex justify-between items-center mb-6">
+                      <h2 class="text-lg font-medium text-gray-800">
+                          <i class="fas fa-search-location mr-2 text-primary-600"></i>
+                          Anomaly Detection Patterns
+                      </h2>
+                      <div class="flex items-center space-x-4">
+                          <div class="flex items-center">
+                              <span class="inline-block w-3 h-3 bg-blue-400 rounded-full mr-1"></span>
+                              <span class="text-xs text-gray-600">Normal</span>
+                          </div>
+                          <div class="flex items-center">
+                              <span class="inline-block w-3 h-3 bg-red-400 rounded-full mr-1"></span>
+                              <span class="text-xs text-gray-600">Anomaly</span>
+                          </div>
+                      </div>
+                  </div>
+                  
+                  <div class="h-64">
+                      <canvas id="anomaly-chart"></canvas>
+                  </div>
+                  
+                  <div class="grid grid-cols-3 gap-4 mt-4 pt-4 border-t border-gray-100">
+                      <div class="text-center">
+                          <div class="text-sm text-gray-500">Detection Rate</div>
+                          <div class="text-lg font-semibold text-gray-800">98.2%</div>
+                      </div>
+                      <div class="text-center">
+                          <div class="text-sm text-gray-500">False Positives</div>
+                          <div class="text-lg font-semibold text-gray-800">1.3%</div>
+                      </div>
+                      <div class="text-center">
+                          <div class="text-sm text-gray-500">Response Time</div>
+                          <div class="text-lg font-semibold text-gray-800">2.4 sec</div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          
+          <!-- Recent Activity Log -->
+          <div class="mt-6 bg-white rounded-lg shadow-sm p-6 border border-gray-100">
+              <div class="flex justify-between items-center mb-6">
+                  <h2 class="text-lg font-medium text-gray-800">
+                      <i class="fas fa-history mr-2 text-primary-600"></i>
+                      Recent Activity Log
+                  </h2>
+                  <div class="flex space-x-2">
+                      <div class="relative">
+                          <input type="text" placeholder="Search logs..." class="pl-8 pr-4 py-2 border border-gray-300 rounded-md text-sm focus:ring-primary-500 focus:border-primary-500">
+                          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                              <i class="fas fa-search text-gray-400"></i>
+                          </div>
+                      </div>
+                      <button class="px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 transition text-sm">
+                          <i class="fas fa-filter mr-1"></i> Filter
+                      </button>
+                  </div>
+              </div>
+              
+              <div class="overflow-x-auto">
+                  <table class="min-w-full divide-y divide-gray-200">
+                      <thead>
+                          <tr>
+                              <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Time</th>
+                              <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Activity</th>
+                              <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Fuel Level</th>
+                              <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Change</th>
+                              <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                          </tr>
+                      </thead>
+                      <tbody class="bg-white divide-y divide-gray-200" id="log-tbody">
+                          <tr>
+                              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">21-04-2025 08:30:15</td>
+                              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">Generator started</td>
+                              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">780 L (97.5%)</td>
+                              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">0 L</td>
+                              <td class="px-6 py-4 whitespace-nowrap">
+                                  <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Normal</span>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">21-04-2025 10:15:22</td>
+                              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">Fuel consumption detected</td>
+                              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">765 L (95.6%)</td>
+                              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">-15 L</td>
+                              <td class="px-6 py-4 whitespace-nowrap">
+                                  <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Normal</span>
+                              </td>
+                          </tr>
+                          <tr class="bg-red-50">
+                              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">21-04-2025 11:42:08</td>
+                              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">Rapid fuel level drop</td>
+                              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">715 L (89.4%)</td>
+                              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-red-700">-50 L</td>
+                              <td class="px-6 py-4 whitespace-nowrap">
+                                  <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">Anomaly Detected</span>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">21-04-2025 12:30:45</td>
+                              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">Generator stopped</td>
+                              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">700 L (87.5%)</td>
+                              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">-15 L</td>
+                              <td class="px-6 py-4 whitespace-nowrap">
+                                  <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Normal</span>
+                              </td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+      </main>
+  </div>
+
+  <script>
+
+    // Continuing from where we left off
+document.getElementById('stop-btn').addEventListener('click', function() {
+    document.getElementById('engine-status').textContent = 'STANDBY';
+    document.getElementById('engine-status').classList.remove('bg-blue-100', 'text-blue-800');
+    document.getElementById('engine-status').classList.add('bg-green-100', 'text-green-800');
+});
+
+document.getElementById('refuel-btn').addEventListener('click', function() {
+    fuelSlider.value = 100;
+    updateFuelDisplay();
+    
+    // Add to anomaly list
+    const now = new Date();
+    const timeString = now.toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit'});
+    const anomalyList = document.getElementById('anomaly-list');
+    
+    if (anomalyList.querySelector('.italic')) {
+        anomalyList.innerHTML = '';
+    }
+    
+    const li = document.createElement('li');
+    li.className = 'py-2 text-sm flex items-center justify-between';
+    li.innerHTML = `
+        <div>
+            <span class="font-medium">${timeString}</span>
+            <span class="text-gray-500"> - Refuel operation</span>
+        </div>
+        <span class="px-2 py-1 text-xs bg-blue-100 text-blue-800 rounded-full">System Event</span>
+    `;
+    anomalyList.prepend(li);
+    
+    // Add to log
+    const logTbody = document.getElementById('log-tbody');
+    const newRow = document.createElement('tr');
+    const now2 = new Date();
+    const dateStr = now2.toLocaleDateString('en-US', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric'
+    });
+    const timeStr = now2.toLocaleTimeString('en-US', {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false
+    });
+    
+    newRow.innerHTML = `
+        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${dateStr} ${timeStr}</td>
+        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">Manual refueling</td>
+        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">800 L (100%)</td>
+        <td class="px-6 py-4 whitespace-nowrap text-sm text-green-600">+${800 - parseInt(fuelAmount.textContent)} L</td>
+        <td class="px-6 py-4 whitespace-nowrap">
+            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Normal</span>
+        </td>
+    `;
+    
+    logTbody.prepend(newRow);
+});
+
+// Simulate random changes in sensor readings
+function updateSensorReadings() {
+    // Temperature varies between 70-75
+    document.getElementById('temperature').textContent = Math.floor(70 + Math.random() * 5);
+    
+    // Power output varies between 44-46 kW
+    document.getElementById('power').textContent = (44 + Math.random() * 2).toFixed(1);
+    
+    // RPM varies between 1800-1850
+    document.getElementById('rpm').textContent = Math.floor(1800 + Math.random() * 50);
+    
+    // Ultrasonic reading (inverted - lower means more fuel)
+    const fuelPercent = parseInt(fuelSlider.value);
+    const ultrasonicValue = Math.floor(100 - fuelPercent + (Math.random() * 5 - 2.5));
+    document.getElementById('ultrasonic').textContent = ultrasonicValue;
+    
+    // Runtime increases slowly
+    const currentRuntime = parseFloat(document.getElementById('runtime').textContent);
+    document.getElementById('runtime').textContent = (currentRuntime + 0.1).toFixed(1);
+    
+    // Oil pressure varies between 3.6-4.0
+    document.getElementById('oil-pressure').textContent = (3.6 + Math.random() * 0.4).toFixed(1);
+    
+    // Simulate anomaly detection (low probability)
+    if (Math.random() < 0.05 && document.getElementById('engine-status').textContent === 'RUNNING') {
+        detectAnomaly();
+    }
+}
+
+// Start sensor updates
+let sensorInterval = setInterval(updateSensorReadings, 5000);
+
+// Initialize charts
+function initializeCharts() {
+    // Fuel consumption chart
+    const fuelCtx = document.getElementById('fuel-chart').getContext('2d');
+    const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+    const consumption = [42, 38, 55, 50, 45, 40, 48];
+    
+    new Chart(fuelCtx, {
+        type: 'line',
+        data: {
+            labels: days,
+            datasets: [{
+                label: 'Fuel Consumption (L)',
+                data: consumption,
+                backgroundColor: 'rgba(99, 102, 241, 0.2)',
+                borderColor: 'rgba(99, 102, 241, 1)',
+                borderWidth: 2,
+                tension: 0.3,
+                fill: true
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+                    padding: 10,
+                    cornerRadius: 4
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    grid: {
+                        drawBorder: false,
+                        color: 'rgba(0, 0, 0, 0.05)'
+                    },
+                    ticks: {
+                        font: {
+                            size: 10
+                        }
+                    }
+                },
+                x: {
+                    grid: {
+                        display: false
+                    },
+                    ticks: {
+                        font: {
+                            size: 10
+                        }
+                    }
+                }
+            }
+        }
+    });
+    
+    // Anomaly detection chart
+    const anomalyCtx = document.getElementById('anomaly-chart').getContext('2d');
+    const hours = ['9AM', '10AM', '11AM', '12PM', '1PM', '2PM', '3PM', '4PM', '5PM'];
+    const normalData = [80, 82, 81, 83, 50, 85, 83, 84, 82];
+    const anomalyData = [null, null, null, null, 33, null, null, null, null];
+    
+    new Chart(anomalyCtx, {
+        type: 'line',
+        data: {
+            labels: hours,
+            datasets: [
+                {
+                    label: 'Normal Pattern',
+                    data: normalData,
+                    backgroundColor: 'rgba(66, 153, 225, 0.5)',
+                    borderColor: 'rgba(66, 153, 225, 1)',
+                    borderWidth: 2,
+                    pointRadius: 3,
+                    tension: 0.3
+                },
+                {
+                    label: 'Anomaly',
+                    data: anomalyData,
+                    backgroundColor: 'rgba(245, 101, 101, 0.5)',
+                    borderColor: 'rgba(245, 101, 101, 1)',
+                    borderWidth: 2,
+                    pointRadius: 5,
+                    pointStyle: 'triangle',
+                    tension: 0
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    grid: {
+                        drawBorder: false,
+                        color: 'rgba(0, 0, 0, 0.05)'
+                    },
+                    ticks: {
+                        font: {
+                            size: 10
+                        }
+                    }
+                },
+                x: {
+                    grid: {
+                        display: false
+                    },
+                    ticks: {
+                        font: {
+                            size: 10
+                        }
+                    }
+                }
+            }
+        }
+    });
+}
+
+// Initialize charts when the page loads
+document.addEventListener('DOMContentLoaded', initializeCharts);
+
+// Function to simulate anomaly detection
+function detectAnomaly() {
+    // Only if security is toggled on
+    if (!document.getElementById('toggle-security').checked) return;
+    
+    const now = new Date();
+    const timeString = now.toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit'});
+    const dateStr = now.toLocaleDateString('en-US', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric'
+    });
+    const timeStr = now.toLocaleTimeString('en-US', {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false
+    });
+    
+    // Update anomaly count
+    const anomalyCount = document.getElementById('anomaly-count');
+    anomalyCount.textContent = (parseInt(anomalyCount.textContent) + 1).toString();
+    
+    // Update last anomaly time
+    document.getElementById('last-anomaly').textContent = timeString;
+    
+    // Add to anomaly list
+    const anomalyList = document.getElementById('anomaly-list');
+    
+    if (anomalyList.querySelector('.italic')) {
+        anomalyList.innerHTML = '';
+    }
+    
+    const li = document.createElement('li');
+    li.className = 'py-2 text-sm flex items-center justify-between';
+    li.innerHTML = `
+        <div>
+            <span class="font-medium">${timeString}</span>
+            <span class="text-gray-500"> - Unusual fuel drop</span>
+        </div>
+        <span class="px-2 py-1 text-xs bg-red-100 text-red-800 rounded-full">Anomaly</span>
+    `;
+    anomalyList.prepend(li);
+    
+    // Add to log
+    const logTbody = document.getElementById('log-tbody');
+    const newRow = document.createElement('tr');
+    newRow.className = 'bg-red-50';
+    
+    newRow.innerHTML = `
+        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${dateStr} ${timeStr}</td>
+        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">Rapid fuel level drop</td>
+        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${fuelAmount.textContent} (${fuelSlider.value}%)</td>
+        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-red-700">-${Math.floor(5 + Math.random() * 10)} L</td>
+        <td class="px-6 py-4 whitespace-nowrap">
+            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">Anomaly Detected</span>
+        </td>
+    `;
+    
+    logTbody.prepend(newRow);
+    
+    // Decrease fuel level to simulate leak
+    const newLevel = Math.max(0, parseInt(fuelSlider.value) - Math.floor(3 + Math.random() * 5));
+    fuelSlider.value = newLevel;
+    updateFuelDisplay();
+    
+    // Flash warning alert
+    const alert = document.createElement('div');
+    alert.className = 'fixed top-4 right-4 bg-red-600 text-white p-4 rounded-lg shadow-lg flex items-center z-50 animate-pulse';
+    alert.innerHTML = `
+        <i class="fas fa-exclamation-triangle mr-2"></i>
+        <div>
+            <div class="font-bold">Anomaly Detected!</div>
+            <div class="text-sm">Unusual fuel level decrease detected</div>
+        </div>
+    `;
+    document.body.appendChild(alert);
+    
+    setTimeout(() => {
+        alert.classList.add('opacity-0', 'transition-opacity', 'duration-500');
+        setTimeout(() => alert.remove(), 500);
+    }, 5000);
+}
+
+// Apply custom styling for toggle switch
+document.querySelector('#toggle-security').addEventListener('change', function() {
+    if (this.checked) {
+        document.querySelector('.block').classList.remove('bg-gray-200');
+        document.querySelector('.block').classList.add('bg-primary-600');
+    } else {
+        document.querySelector('.block').classList.add('bg-gray-200');
+        document.querySelector('.block').classList.remove('bg-primary-600');
+    }
+});
+
+// Initialize toggle state
+if (document.querySelector('#toggle-security').checked) {
+    document.querySelector('.block').classList.add('bg-primary-600');
+    document.querySelector('.block').classList.remove('bg-gray-200');
+}
+    </script>
+    
+    <script src="fuel.js"></script>
+</body>
+</html>
