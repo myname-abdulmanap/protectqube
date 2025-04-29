@@ -38,27 +38,31 @@ id="sidebar"
 class="fixed inset-y-0 left-0 shadow-lg -translate-x-full transition-transform duration-300 ease-in-out bg-white dark:bg-gray-800 w-64 z-50 flex flex-col"
 >
 <!-- Header -->
-<div class="flex items-center justify-between h-16 border-b border-dark-100 dark:border-gray-700 flex-shrink-0 w-full">
-  <!-- Logo section on the left -->
-  <div class="flex items-center px-6">
-    <img src="/path-to-logo/protectQube-logo.png" alt="ProtectQube Logo" class="h-8" />
-  </div>
-  
-  <!-- User profile section on the right -->
-  <div class="flex items-center px-6">
-    <button class="mr-4 text-gray-500 hover:text-gray-700">
-      <i class="far fa-clone"></i>
-    </button>
-    <button class="mr-4 text-gray-500 hover:text-gray-700">
-      <i class="far fa-moon"></i>
-    </button>
-    <div class="flex items-center">
-      <div class="bg-blue-600 text-white rounded-full h-8 w-8 flex items-center justify-center">
-        MZ
-      </div>
-      <span class="ml-2 text-sm font-medium">M. Zein</span>
+<div
+  class="flex items-center justify-between h-16 px-6 border-b border-dark-100 dark:border-gray-700 flex-shrink-0"
+>
+  <div class="flex items-center">
+    <div
+      class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-full h-8 w-8 flex items-center justify-center shadow-md"
+    >
+      MZ
+    </div>
+    <div class="ml-2 hidden md:flex flex-col">
+      <span class="text-sm font-medium text-gray-700 dark:text-gray-300">
+        M. Zein
+      </span>
+      <span class="text-xs text-gray-500 dark:text-gray-400">
+        Superadmin
+      </span>
     </div>
   </div>
+
+  <button
+    id="closeSidebar"
+    class="text-grey-500 dark:text-white/80 hover:text-orange-800 dark:hover:text-orange-800"
+  >
+    <i class="fas fa-times"></i>
+  </button>
 </div>
 
 <!-- Sidebar Content (scrollable) -->
@@ -309,68 +313,59 @@ class="fixed inset-y-0 left-0 shadow-lg -translate-x-full transition-transform d
     <nav
     class="sticky top-0 z-50 bg-white dark:bg-gray-800 shadow-md border-b border-gray-200 dark:border-gray-700 theme-transition"
   >
-  
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
-          <div class="flex items-center">
-            <button
-              id="toggleSidebar"
-              class="text-gray-500 dark:text-gray-400 p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700"
-            >
-              <i class="fas fa-bars"></i>
-            </button>
-            <img
-              id="modeImage"
-              src="https://protectqube.com/wp-content/uploads/2025/01/logo.png"
-              alt="Logo"
-              class="h-10 ml-2 w-25"
-            />
-          </div>
-          <div class="flex items-center">
-            <!-- Dark mode toggle -->
-            <button
-              id="themeToggle"
-              class="p-2 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none mr-3 transition-all duration-200"
-            >
+    <!-- Removed max-width container to allow full-width layout -->
+    <div class="w-full px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <!-- Left section - pushed to the left edge -->
+        <div class="flex items-center">
+          <button
+            id="toggleSidebar"
+            class="text-gray-500 dark:text-gray-400 p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700"
+          >
+            <i class="fas fa-bars"></i>
+          </button>
+          <img
+            id="modeImage"
+            src="https://protectqube.com/wp-content/uploads/2025/01/logo.png"
+            alt="Logo"
+            class="h-10 ml-2 w-25"
+          />
+        </div>
+        
+        <!-- Right section - pushed to the right edge -->
+        <div class="flex items-center">
+          <!-- Dark mode toggle -->
+          <button
+            id="themeToggle"
+            class="p-2 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none mr-3 transition-all duration-200"
+          >
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M1 1h16v16H1zm19 6h3v16H7v-3"/></svg>
-            </button>
-
-            <button
-              id="darkModeToggle"
-              class="p-2 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none mr-3 transition-all duration-200"
+          </button>
+  
+          <button
+            id="darkModeToggle"
+            class="p-2 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none mr-3 transition-all duration-200"
+          >
+            <i class="fas fa-moon dark:hidden"></i>
+            <i class="fas fa-sun hidden dark:block"></i>
+          </button>
+  
+          <div class="ml-3 flex items-center">
+            <div
+              class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-full h-8 w-8 flex items-center justify-center shadow-md"
             >
-              <i class="fas fa-moon dark:hidden"></i>
-              <i class="fas fa-sun hidden dark:block"></i>
-            </button>
-
-            <!-- <button
-              id="notificationButton"
-              class="p-2 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none relative transition-all duration-200"
-            >
-              <i class="fas fa-bell"></i>
-              <span
-                id="notificationBadge"
-                class="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white bg-gradient-to-r from-red-500 to-pink-500 rounded-full transform translate-x-1/2 -translate-y-1/2 shadow-sm"
-                >2</span
-              >
-            </button> -->
-
-            <div class="ml-3 flex items-center">
-              <div
-                class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-full h-8 w-8 flex items-center justify-center shadow-md"
-              >
-                MZ
-              </div>
-              <span
-                class="ml-2 text-sm font-medium text-gray-700 dark:text-gray-300 hidden md:inline"
-              >
-                M. Zein
-              </span>
+              MZ
             </div>
+            <span
+              class="ml-2 text-sm font-medium text-gray-700 dark:text-gray-300 hidden md:inline"
+            >
+              M. Zein
+            </span>
           </div>
         </div>
       </div>
-    </nav>
+    </div>
+  </nav>
     <!-- Notification Panel -->
     <div
       id="notificationPanel"
