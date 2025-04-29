@@ -38,31 +38,27 @@ id="sidebar"
 class="fixed inset-y-0 left-0 shadow-lg -translate-x-full transition-transform duration-300 ease-in-out bg-white dark:bg-gray-800 w-64 z-50 flex flex-col"
 >
 <!-- Header -->
-<div
-  class="flex items-center justify-between h-16 px-6 border-b border-dark-100 dark:border-gray-700 flex-shrink-0"
->
-  <div class="flex items-center">
-    <div
-      class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-full h-8 w-8 flex items-center justify-center shadow-md"
-    >
-      MZ
-    </div>
-    <div class="ml-2 hidden md:flex flex-col">
-      <span class="text-sm font-medium text-gray-700 dark:text-gray-300">
-        M. Zein
-      </span>
-      <span class="text-xs text-gray-500 dark:text-gray-400">
-        Superadmin
-      </span>
+<div class="flex items-center justify-between h-16 border-b border-dark-100 dark:border-gray-700 flex-shrink-0 w-full">
+  <!-- Logo section on the left -->
+  <div class="flex items-center px-6">
+    <img src="/path-to-logo/protectQube-logo.png" alt="ProtectQube Logo" class="h-8" />
+  </div>
+  
+  <!-- User profile section on the right -->
+  <div class="flex items-center px-6">
+    <button class="mr-4 text-gray-500 hover:text-gray-700">
+      <i class="far fa-clone"></i>
+    </button>
+    <button class="mr-4 text-gray-500 hover:text-gray-700">
+      <i class="far fa-moon"></i>
+    </button>
+    <div class="flex items-center">
+      <div class="bg-blue-600 text-white rounded-full h-8 w-8 flex items-center justify-center">
+        MZ
+      </div>
+      <span class="ml-2 text-sm font-medium">M. Zein</span>
     </div>
   </div>
-
-  <button
-    id="closeSidebar"
-    class="text-grey-500 dark:text-white/80 hover:text-orange-800 dark:hover:text-orange-800"
-  >
-    <i class="fas fa-times"></i>
-  </button>
 </div>
 
 <!-- Sidebar Content (scrollable) -->
@@ -699,15 +695,15 @@ class="fixed inset-y-0 left-0 shadow-lg -translate-x-full transition-transform d
                 style="animation-delay: 0.3s;"
               >
                 <div
-                  class="px-4 py-5 border-b border-gray-200 dark:border-gray-700 sm:px-6 flex justify-between items-center"
+                  class="px-3 py-3 border-b border-gray-200 dark:border-gray-700 sm:px-4 flex justify-between items-center"
                 >
                   <div>
                     <h3
-                      class="text-lg leading-6 font-medium text-gray-900 dark:text-white"
+                      class="text-base leading-6 font-medium text-gray-900 dark:text-white"
                     >
                       Alerts
                     </h3>
-                    <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                    <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">
                       Active alerts requiring attention
                     </p>
                   </div>
@@ -716,30 +712,30 @@ class="fixed inset-y-0 left-0 shadow-lg -translate-x-full transition-transform d
                       type="text"
                       id="alertSearch"
                       placeholder="Search..."
-                      class="rounded-md border border-gray-300 dark:border-gray-600 py-2 pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-primary-dark focus:border-transparent text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                      class="rounded-md border border-gray-300 dark:border-gray-600 py-1 pl-8 pr-2 focus:outline-none focus:ring-1 focus:ring-primary dark:focus:ring-primary-dark focus:border-transparent text-xs bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                     />
                     <div
-                      class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
+                      class="absolute inset-y-0 left-0 pl-2 flex items-center pointer-events-none"
                     >
                       <i
-                        class="fas fa-search text-gray-400 dark:text-gray-500"
+                        class="fas fa-search text-gray-400 dark:text-gray-500 text-xs"
                       ></i>
                     </div>
                   </div>
                 </div>
-    
+            
                 <!-- Alert Grid -->
                 <div
                   id="alertContainer"
-                  class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 p-2"
+                  class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 p-2"
                 >
-                  <!-- Alert 1 -->
+                  <!-- Red Alerts -->
                   <div
-                    class="bg-gradient-to-r from-red-100 to-red-50 dark:from-red-900 dark:to-red-800 rounded-lg p-4 hover:shadow-lg transition-all cursor-pointer border border-red-200 dark:border-red-700 transform hover:scale-102 transition-transform duration-200 theme-transition"
+                    class="bg-gradient-to-r from-red-100 to-red-50 dark:from-red-900 dark:to-red-800 rounded-lg p-3 hover:shadow-lg transition-all cursor-pointer border border-red-200 dark:border-red-700 transform hover:scale-102 transition-transform duration-200 theme-transition"
                   >
                     <div class="flex justify-between items-start">
                       <div>
-                        <h4 class="font-bold text-red-700 dark:text-red-400">
+                        <h4 class="font-bold text-red-700 dark:text-red-400 text-xs">
                           HITACHI
                         </h4>
                         <div
@@ -749,33 +745,28 @@ class="fixed inset-y-0 left-0 shadow-lg -translate-x-full transition-transform d
                         </div>
                       </div>
                       <span
-                        class="bg-red-500 text-white px-2 py-1 rounded text-xs animate-pulse"
+                        class="bg-red-500 text-white px-1.5 py-0.5 rounded text-xs animate-pulse"
                         >Critical</span
                       >
                     </div>
                     <div
-                      class="mt-2 text-sm font-semibold text-red-600 dark:text-red-400"
+                      class="mt-2 text-xs font-semibold text-red-600 dark:text-red-400"
                     >
                       FASCIA OPEN
                     </div>
                     <div
-                      class="mt-3 text-xs text-gray-500 dark:text-gray-400 flex items-center"
+                      class="mt-2 text-xs text-gray-500 dark:text-gray-400 flex items-center"
                     >
-                      <i class="fas fa-clock mr-1"></i> 10 mins ago
-                    </div>
-                    <div class="mt-2 flex items-center">
-                      <span class="status-indicator danger mr-2"></span>
-                      <span class="text-xs text-gray-500 dark:text-gray-400">Active Alert</span>
+                      <i class="fas fa-clock mr-1 text-xs"></i> 10 mins ago
                     </div>
                   </div>
-    
-                  <!-- Alert 2 -->
+            
                   <div
-                    class="bg-gradient-to-r from-red-100 to-red-50 dark:from-red-900 dark:to-red-800 rounded-lg p-4 hover:shadow-lg transition-all cursor-pointer border border-red-200 dark:border-red-700 transform hover:scale-102 transition-transform duration-200 theme-transition"
+                    class="bg-gradient-to-r from-red-100 to-red-50 dark:from-red-900 dark:to-red-800 rounded-lg p-3 hover:shadow-lg transition-all cursor-pointer border border-red-200 dark:border-red-700 transform hover:scale-102 transition-transform duration-200 theme-transition"
                   >
                     <div class="flex justify-between items-start">
                       <div>
-                        <h4 class="font-bold text-red-700 dark:text-red-400">
+                        <h4 class="font-bold text-red-700 dark:text-red-400 text-xs">
                           3240
                         </h4>
                         <div
@@ -785,575 +776,587 @@ class="fixed inset-y-0 left-0 shadow-lg -translate-x-full transition-transform d
                         </div>
                       </div>
                       <span
-                        class="bg-red-500 text-white px-2 py-1 rounded text-xs animate-pulse"
+                        class="bg-red-500 text-white px-1.5 py-0.5 rounded text-xs animate-pulse"
                         >Critical</span
                       >
                     </div>
                     <div
-                      class="mt-2 text-sm font-semibold text-red-600 dark:text-red-400"
+                      class="mt-2 text-xs font-semibold text-red-600 dark:text-red-400"
                     >
                       FASCIA OPEN
                     </div>
                     <div
-                      class="mt-3 text-xs text-gray-500 dark:text-gray-400 flex items-center"
+                      class="mt-2 text-xs text-gray-500 dark:text-gray-400 flex items-center"
                     >
-                      <i class="fas fa-clock mr-1"></i> 15 mins ago
-                    </div>
-                    <div class="mt-2 flex items-center">
-                      <span class="status-indicator danger mr-2"></span>
-                      <span class="text-xs text-gray-500 dark:text-gray-400">Active Alert</span>
+                      <i class="fas fa-clock mr-1 text-xs"></i> 15 mins ago
                     </div>
                   </div>
-      
-                <!-- Alert 3 -->
-                <div
-                  class="bg-gradient-to-r from-yellow-100 to-yellow-50 dark:from-yellow-900 dark:to-yellow-800 rounded-lg p-4 hover:shadow-lg transition-all cursor-pointer border border-yellow-200 dark:border-yellow-700 transform hover:scale-102 transition-transform duration-200 theme-transition"
-                >
-                  <div class="flex justify-between items-start">
-                    <div>
-                      <h4
-                        class="font-bold text-yellow-700 dark:text-yellow-400"
-                      >
-                        1005525
-                      </h4>
-                      <div
-                        class="text-xs text-gray-600 dark:text-gray-400 mt-1"
-                      >
-                        ABC (MLG)
+            
+                  <div
+                    class="bg-gradient-to-r from-red-100 to-red-50 dark:from-red-900 dark:to-red-800 rounded-lg p-3 hover:shadow-lg transition-all cursor-pointer border border-red-200 dark:border-red-700 transform hover:scale-102 transition-transform duration-200 theme-transition"
+                  >
+                    <div class="flex justify-between items-start">
+                      <div>
+                        <h4 class="font-bold text-red-700 dark:text-red-400 text-xs">
+                          STASIUN BOGOR
+                        </h4>
+                        <div
+                          class="text-xs text-gray-600 dark:text-gray-400 mt-1"
+                        >
+                          TSHOLD (JAK)
+                        </div>
                       </div>
-                    </div>
-                    <!-- <span
-                      class="bg-yellow-500 text-white px-2 py-1 rounded text-xs"
-                      >Warning</span
-                    > -->
-                  </div>
-                  <div
-                    class="mt-2 text-sm font-semibold text-yellow-600 dark:text-yellow-400"
-                  >
-                    SHOCK DETECTED
-                  </div>
-                  <div
-                    class="mt-3 text-xs text-gray-500 dark:text-gray-400 flex items-center"
-                  >
-                    <i class="fas fa-clock mr-1"></i> 22 mins ago
-                  </div>
-                </div>
-
-                <!-- Alert 4 -->
-                <div
-                  class="bg-gradient-to-r from-yellow-100 to-yellow-50 dark:from-yellow-900 dark:to-yellow-800 rounded-lg p-4 hover:shadow-lg transition-all cursor-pointer border border-yellow-200 dark:border-yellow-700 transform hover:scale-102 transition-transform duration-200 theme-transition"
-                >
-                  <div class="flex justify-between items-start">
-                    <div>
-                      <h4
-                        class="font-bold text-yellow-700 dark:text-yellow-400"
+                      <span
+                        class="bg-red-500 text-white px-1.5 py-0.5 rounded text-xs animate-pulse"
+                        >Critical</span
                       >
-                        1000253
-                      </h4>
-                      <div
-                        class="text-xs text-gray-600 dark:text-gray-400 mt-1"
-                      >
-                        ADV (SBG)
-                      </div>
                     </div>
-                    <!-- <span
-                      class="bg-yellow-500 text-white px-2 py-1 rounded text-xs"
-                      >Warning</span
-                    > -->
-                  </div>
-                  <div
-                    class="mt-2 text-sm font-semibold text-yellow-600 dark:text-yellow-400"
-                  >
-                    POWER DOWN
-                  </div>
-                  <div
-                    class="mt-3 text-xs text-gray-500 dark:text-gray-400 flex items-center"
-                  >
-                    <i class="fas fa-clock mr-1"></i> 30 mins ago
-                  </div>
-                </div>
-
-                <!-- Alert 5 -->
-                <div
-                  class="bg-gradient-to-r from-red-100 to-red-50 dark:from-red-900 dark:to-red-800 rounded-lg p-4 hover:shadow-lg transition-all cursor-pointer border border-red-200 dark:border-red-700 transform hover:scale-102 transition-transform duration-200 theme-transition"
-                >
-                  <div class="flex justify-between items-start">
-                    <div>
-                      <h4 class="font-bold text-red-700 dark:text-red-400">
-                        STASIUN BOGOR
-                      </h4>
-                      <div
-                        class="text-xs text-gray-600 dark:text-gray-400 mt-1"
-                      >
-                        TSHOLD (JAK)
-                      </div>
-                    </div>
-                    <span
-                      class="bg-red-500 text-white px-2 py-1 rounded text-xs animate-pulse"
-                      >Critical</span
+                    <div
+                      class="mt-2 text-xs font-semibold text-red-600 dark:text-red-400"
                     >
-                  </div>
-                  <div
-                    class="mt-2 text-sm font-semibold text-red-600 dark:text-red-400"
-                  >
-                    BOX HEAT DETECTED
-                  </div>
-                  <div
-                    class="mt-3 text-xs text-gray-500 dark:text-gray-400 flex items-center"
-                  >
-                    <i class="fas fa-clock mr-1"></i> 35 mins ago
-                  </div>
-                </div>
-
-                <!-- Alert 6 -->
-                <div
-                  class="bg-gradient-to-r from-red-100 to-red-50 dark:from-red-900 dark:to-red-800 rounded-lg p-4 hover:shadow-lg transition-all cursor-pointer border border-red-200 dark:border-red-700 transform hover:scale-102 transition-transform duration-200 theme-transition"
-                >
-                  <div class="flex justify-between items-start">
-                    <div>
-                      <h4 class="font-bold text-red-700 dark:text-red-400">
-                        1815
-                      </h4>
-                      <div
-                        class="text-xs text-gray-600 dark:text-gray-400 mt-1"
-                      >
-                        SSI (DNS)
-                      </div>
+                      BOX HEAT DETECTED
                     </div>
-                    <span
-                      class="bg-red-500 text-white px-2 py-1 rounded text-xs animate-pulse"
-                      >Critical</span
+                    <div
+                      class="mt-2 text-xs text-gray-500 dark:text-gray-400 flex items-center"
                     >
-                  </div>
-                  <div
-                    class="mt-2 text-sm font-semibold text-red-600 dark:text-red-400"
-                  >
-                    ROOM HEAT DETECTED
-                  </div>
-                  <div
-                    class="mt-3 text-xs text-gray-500 dark:text-gray-400 flex items-center"
-                  >
-                    <i class="fas fa-clock mr-1"></i> 40 mins ago
-                  </div>
-                </div>
-
-                <!-- Alert 7 -->
-                <div
-                  class="bg-gradient-to-r from-yellow-100 to-yellow-50 dark:from-yellow-900 dark:to-yellow-800 rounded-lg p-4 hover:shadow-lg transition-all cursor-pointer border border-yellow-200 dark:border-yellow-700 transform hover:scale-102 transition-transform duration-200 theme-transition"
-                >
-                  <div class="flex justify-between items-start">
-                    <div>
-                      <h4
-                        class="font-bold text-yellow-700 dark:text-yellow-400"
-                      >
-                        1002583
-                      </h4>
-                      <div
-                        class="text-xs text-gray-600 dark:text-gray-400 mt-1"
-                      >
-                        ADV (ADVB)
-                      </div>
+                      <i class="fas fa-clock mr-1 text-xs"></i> 35 mins ago
                     </div>
-                    <!-- <span
-                      class="bg-yellow-500 text-white px-2 py-1 rounded text-xs"
-                      >Warning</span
-                    > -->
                   </div>
+            
                   <div
-                    class="mt-2 text-sm font-semibold text-yellow-600 dark:text-yellow-400"
+                    class="bg-gradient-to-r from-red-100 to-red-50 dark:from-red-900 dark:to-red-800 rounded-lg p-3 hover:shadow-lg transition-all cursor-pointer border border-red-200 dark:border-red-700 transform hover:scale-102 transition-transform duration-200 theme-transition"
                   >
-                    POWER DOWN
-                  </div>
-                  <div
-                    class="mt-3 text-xs text-gray-500 dark:text-gray-400 flex items-center"
-                  >
-                    <i class="fas fa-clock mr-1"></i> 45 mins ago
-                  </div>
-                </div>
-
-                <!-- Alert 8 -->
-                <div
-                  class="bg-gradient-to-r from-red-100 to-red-50 dark:from-red-900 dark:to-red-800 rounded-lg p-4 hover:shadow-lg transition-all cursor-pointer border border-red-200 dark:border-red-700 transform hover:scale-102 transition-transform duration-200 theme-transition"
-                >
-                  <div class="flex justify-between items-start">
-                    <div>
-                      <h4 class="font-bold text-red-700 dark:text-red-400">
-                        190158
-                      </h4>
-                      <div
-                        class="text-xs text-gray-600 dark:text-gray-400 mt-1"
-                      >
-                        TSHOLD (JAK)
+                    <div class="flex justify-between items-start">
+                      <div>
+                        <h4 class="font-bold text-red-700 dark:text-red-400 text-xs">
+                          1815
+                        </h4>
+                        <div
+                          class="text-xs text-gray-600 dark:text-gray-400 mt-1"
+                        >
+                          SSI (DNS)
+                        </div>
                       </div>
+                      <span
+                        class="bg-red-500 text-white px-1.5 py-0.5 rounded text-xs animate-pulse"
+                        >Critical</span
+                      >
                     </div>
-                    <span
-                      class="bg-red-500 text-white px-2 py-1 rounded text-xs animate-pulse"
-                      >Critical</span
+                    <div
+                      class="mt-2 text-xs font-semibold text-red-600 dark:text-red-400"
                     >
+                      ROOM HEAT DETECTED
+                    </div>
+                    <div
+                      class="mt-2 text-xs text-gray-500 dark:text-gray-400 flex items-center"
+                    >
+                      <i class="fas fa-clock mr-1 text-xs"></i> 40 mins ago
+                    </div>
                   </div>
+            
                   <div
-                    class="mt-2 text-sm font-semibold text-red-600 dark:text-red-400"
+                    class="bg-gradient-to-r from-red-100 to-red-50 dark:from-red-900 dark:to-red-800 rounded-lg p-3 hover:shadow-lg transition-all cursor-pointer border border-red-200 dark:border-red-700 transform hover:scale-102 transition-transform duration-200 theme-transition"
                   >
-                    SAFE DOOR OPEN
-                  </div>
-                  <div
-                    class="mt-3 text-xs text-gray-500 dark:text-gray-400 flex items-center"
-                  >
-                    <i class="fas fa-clock mr-1"></i> 50 mins ago
+                    <div class="flex justify-between items-start">
+                      <div>
+                        <h4 class="font-bold text-red-700 dark:text-red-400 text-xs">
+                          190158
+                        </h4>
+                        <div
+                          class="text-xs text-gray-600 dark:text-gray-400 mt-1"
+                        >
+                          TSHOLD (JAK)
+                        </div>
+                      </div>
+                      <span
+                        class="bg-red-500 text-white px-1.5 py-0.5 rounded text-xs animate-pulse"
+                        >Critical</span
+                      >
+                    </div>
+                    <div
+                      class="mt-2 text-xs font-semibold text-red-600 dark:text-red-400"
+                    >
+                      SAFE DOOR OPEN
+                    </div>
+                    <div
+                      class="mt-2 text-xs text-gray-500 dark:text-gray-400 flex items-center"
+                    >
+                      <i class="fas fa-clock mr-1 text-xs"></i> 50 mins ago
+                    </div>
                   </div>
                 </div>
-
-                <!-- Alert 9 -->
+            
+                <hr/>
                 <div
-                  class="bg-gradient-to-r from-yellow-100 to-yellow-50 dark:from-yellow-900 dark:to-yellow-800 rounded-lg p-4 hover:shadow-lg transition-all cursor-pointer border border-yellow-200 dark:border-yellow-700 transform hover:scale-102 transition-transform duration-200 theme-transition"
+                  class="px-3 py-3 border-b border-gray-200 dark:border-gray-700 sm:px-4 flex justify-between items-center"
                 >
-                  <div class="flex justify-between items-start">
-                    <div>
-                      <h4
-                        class="font-bold text-yellow-700 dark:text-yellow-400"
-                      >
-                        1007871
-                      </h4>
-                      <div
-                        class="text-xs text-gray-600 dark:text-gray-400 mt-1"
-                      >
-                        ADV (SLO)
+                  <div>
+                    <h3
+                      class="text-base leading-6 font-medium text-gray-900 dark:text-white"
+                    >
+                      Responded
+                    </h3>
+                    <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">
+                      Responded this alerts
+                    </p>
+                  </div>
+                  <div class="relative flex items-center">
+                    <input
+                      type="text"
+                      id="respondedSearch"
+                      placeholder="Search..."
+                      class="rounded-md border border-gray-300 dark:border-gray-600 py-1 pl-8 pr-2 focus:outline-none focus:ring-1 focus:ring-primary dark:focus:ring-primary-dark focus:border-transparent text-xs bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                    />
+                    <div
+                      class="absolute inset-y-0 left-0 pl-2 flex items-center pointer-events-none"
+                    >
+                      <i
+                        class="fas fa-search text-gray-400 dark:text-gray-500 text-xs"
+                      ></i>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Responded Alert Grid -->
+                <div
+                  id="respondedContainer"
+                  class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 p-2"
+                >
+                  <!-- Yellow Alerts -->
+                  <div
+                    class="bg-gradient-to-r from-yellow-100 to-yellow-50 dark:from-yellow-900 dark:to-yellow-800 rounded-lg p-3 hover:shadow-lg transition-all cursor-pointer border border-yellow-200 dark:border-yellow-700 transform hover:scale-102 transition-transform duration-200 theme-transition"
+                  >
+                    <div class="flex justify-between items-start">
+                      <div>
+                        <h4 class="font-bold text-yellow-700 dark:text-yellow-400 text-xs">
+                          1005525
+                        </h4>
+                        <div
+                          class="text-xs text-gray-600 dark:text-gray-400 mt-1"
+                        >
+                          ABC (MLG)
+                        </div>
                       </div>
                     </div>
-                    <!-- <span
-                      class="bg-yellow-500 text-white px-2 py-1 rounded text-xs"
-                      >Warning</span
-                    > -->
+                    <div
+                      class="mt-2 text-xs font-semibold text-yellow-600 dark:text-yellow-400"
+                    >
+                      SHOCK DETECTED
+                    </div>
+                    <div
+                      class="mt-2 text-xs text-gray-500 dark:text-gray-400 flex items-center"
+                    >
+                      <i class="fas fa-clock mr-1 text-xs"></i> 22 mins ago
+                    </div>
                   </div>
+            
                   <div
-                    class="mt-2 text-sm font-semibold text-yellow-600 dark:text-yellow-400"
+                    class="bg-gradient-to-r from-yellow-100 to-yellow-50 dark:from-yellow-900 dark:to-yellow-800 rounded-lg p-3 hover:shadow-lg transition-all cursor-pointer border border-yellow-200 dark:border-yellow-700 transform hover:scale-102 transition-transform duration-200 theme-transition"
                   >
-                    MOTION DETECTED
+                    <div class="flex justify-between items-start">
+                      <div>
+                        <h4 class="font-bold text-yellow-700 dark:text-yellow-400 text-xs">
+                          1000253
+                        </h4>
+                        <div
+                          class="text-xs text-gray-600 dark:text-gray-400 mt-1"
+                        >
+                          ADV (SBG)
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="mt-2 text-xs font-semibold text-yellow-600 dark:text-yellow-400"
+                    >
+                      POWER DOWN
+                    </div>
+                    <div
+                      class="mt-2 text-xs text-gray-500 dark:text-gray-400 flex items-center"
+                    >
+                      <i class="fas fa-clock mr-1 text-xs"></i> 30 mins ago
+                    </div>
                   </div>
+            
                   <div
-                    class="mt-3 text-xs text-gray-500 dark:text-gray-400 flex items-center"
+                    class="bg-gradient-to-r from-yellow-100 to-yellow-50 dark:from-yellow-900 dark:to-yellow-800 rounded-lg p-3 hover:shadow-lg transition-all cursor-pointer border border-yellow-200 dark:border-yellow-700 transform hover:scale-102 transition-transform duration-200 theme-transition"
                   >
-                    <i class="fas fa-clock mr-1"></i> 55 mins ago
+                    <div class="flex justify-between items-start">
+                      <div>
+                        <h4 class="font-bold text-yellow-700 dark:text-yellow-400 text-xs">
+                          1002583
+                        </h4>
+                        <div
+                          class="text-xs text-gray-600 dark:text-gray-400 mt-1"
+                        >
+                          ADV (ADVB)
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="mt-2 text-xs font-semibold text-yellow-600 dark:text-yellow-400"
+                    >
+                      POWER DOWN
+                    </div>
+                    <div
+                      class="mt-2 text-xs text-gray-500 dark:text-gray-400 flex items-center"
+                    >
+                      <i class="fas fa-clock mr-1 text-xs"></i> 45 mins ago
+                    </div>
+                  </div>
+            
+                  <div
+                    class="bg-gradient-to-r from-yellow-100 to-yellow-50 dark:from-yellow-900 dark:to-yellow-800 rounded-lg p-3 hover:shadow-lg transition-all cursor-pointer border border-yellow-200 dark:border-yellow-700 transform hover:scale-102 transition-transform duration-200 theme-transition"
+                  >
+                    <div class="flex justify-between items-start">
+                      <div>
+                        <h4 class="font-bold text-yellow-700 dark:text-yellow-400 text-xs">
+                          1007871
+                        </h4>
+                        <div
+                          class="text-xs text-gray-600 dark:text-gray-400 mt-1"
+                        >
+                          ADV (SLO)
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="mt-2 text-xs font-semibold text-yellow-600 dark:text-yellow-400"
+                    >
+                      MOTION DETECTED
+                    </div>
+                    <div
+                      class="mt-2 text-xs text-gray-500 dark:text-gray-400 flex items-center"
+                    >
+                      <i class="fas fa-clock mr-1 text-xs"></i> 55 mins ago
+                    </div>
+                  </div>
+            
+                  <div
+                    class="bg-gradient-to-r from-yellow-100 to-yellow-50 dark:from-yellow-900 dark:to-yellow-800 rounded-lg p-3 hover:shadow-lg transition-all cursor-pointer border border-yellow-200 dark:border-yellow-700 transform hover:scale-102 transition-transform duration-200 theme-transition"
+                  >
+                    <div class="flex justify-between items-start">
+                      <div>
+                        <h4 class="font-bold text-yellow-700 dark:text-yellow-400 text-xs">
+                          1008472
+                        </h4>
+                        <div
+                          class="text-xs text-gray-600 dark:text-gray-400 mt-1"
+                        >
+                          KLT (BDG)
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="mt-2 text-xs font-semibold text-yellow-600 dark:text-yellow-400"
+                    >
+                      CONNECTION LOST
+                    </div>
+                    <div
+                      class="mt-2 text-xs text-gray-500 dark:text-gray-400 flex items-center"
+                    >
+                      <i class="fas fa-clock mr-1 text-xs"></i> 60 mins ago
+                    </div>
                   </div>
                 </div>
               </div>
-
-              <!-- <div
-                class="bg-gray-50 dark:bg-gray-700 px-4 py-3 sm:px-6 flex justify-between items-center border-t border-gray-200 dark:border-gray-700 theme-transition"
-              >
-                <div
-                  class="flex items-center text-sm text-gray-500 dark:text-gray-400"
-                >
-                  Showing <span class="font-medium mx-1">9</span> of
-                  <span class="font-medium mx-1">15</span> alerts
-                </div>
-                <div class="flex space-x-2">
-                  <button
-                    class="px-3 py-1 border border-gray-300 dark:border-gray-600 rounded-md text-sm bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 theme-transition"
-                  >
-                    Previous
-                  </button>
-                  <button
-                    class="px-3 py-1 border border-primary rounded-md text-sm bg-primary text-white hover:bg-primary-dark theme-transition"
-                  >
-                    Next
-                  </button>
-                </div>
-              </div> -->
             </div>
+
+          <!-- Freeze Alert Panel with Narrow Columns -->
+<div class="bg-white dark:bg-gray-800 shadow-md rounded-lg overflow-hidden theme-transition">
+  <!-- Header Sticky -->
+  <div class="sticky top-0 z-10 bg-white dark:bg-gray-800">
+    <div class="px-4 py-3 border-b border-gray-200 dark:border-gray-700 sm:px-4">
+      <h3 class="text-base leading-6 font-medium text-gray-900 dark:text-white">
+        Freeze Alert
+      </h3>
+      <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Disabled devices</p>
+    </div>
+    <div class="relative px-4 py-3 border-b border-gray-200 dark:border-gray-700">
+      <input
+        type="text"
+        id="freezeSearch"
+        placeholder="Search..."
+        class="w-full rounded-md border border-gray-300 dark:border-gray-600 py-2 pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-primary-dark focus:border-transparent text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-white theme-transition"
+      />
+      <div class="absolute inset-y-0 left-0 pl-6 flex items-center pointer-events-none">
+        <i class="fas fa-search text-gray-400 dark:text-gray-500"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scrollable Freeze Alert Content with Narrower Columns -->
+  <div class="max-h-[calc(100vh-9rem)] overflow-y-auto p-4 scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600 scrollbar-track-transparent">
+    
+    <!-- Freeze Alert Item with Narrower Layout -->
+    <div class="border border-gray-200 dark:border-gray-700 rounded-lg mb-4 hover:shadow-md transition-all theme-transition">
+      <div class="bg-gray-50 dark:bg-gray-700 p-3 flex justify-between items-center">
+        <div class="font-medium text-gray-700 dark:text-gray-300">HITACHI 2</div>
+        <div class="flex space-x-2">
+          <button class="text-blue-500 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300" title="Enable Device">
+            <i class="fas fa-toggle-off"></i>
+          </button>
+          <button class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300">
+            <i class="fas fa-ellipsis-v"></i>
+          </button>
+        </div>
+      </div>
+      <div class="p-3 border-t border-gray-200 dark:border-gray-700 text-xs">
+        <div class="text-gray-500 dark:text-gray-400 mb-1">
+          <span class="text-gray-700 dark:text-gray-300">HITACHI 2 / HITACHI 2</span>
+        </div>
+        <div class="grid grid-cols-4 gap-2">
+          <div class="text-gray-500 dark:text-gray-400">LOC</div>
+          <div class="col-span-3 text-gray-700 dark:text-gray-300">JAKARTA MORI TOWER</div>
+        </div>
+        <div class="grid grid-cols-4 gap-2 mt-1">
+          <div class="text-gray-500 dark:text-gray-400">HOLD</div>
+          <div class="col-span-3 text-gray-700 dark:text-gray-300">HITACHI (JAKARTA)</div>
+        </div>
+        <div class="grid grid-cols-4 gap-2 mt-1">
+          <div class="text-gray-500 dark:text-gray-400">BY</div>
+          <div class="col-span-3 text-gray-700 dark:text-gray-300">-</div>
+        </div>
+        <div class="grid grid-cols-4 gap-2 mt-1">
+          <div class="text-gray-500 dark:text-gray-400">NOTE</div>
+          <div class="col-span-3 text-gray-700 dark:text-gray-300">#FREEZE_BY_DEVICE</div>
+        </div>
+        <div class="grid grid-cols-4 gap-2 mt-1">
+          <div class="text-gray-500 dark:text-gray-400">AT</div>
+          <div class="col-span-3 text-gray-700 dark:text-gray-300">
+            <span class="inline-flex items-center px-2 py-0.5 rounded bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-300">
+              2025-03-10 16:32:38
+            </span>
           </div>
+        </div>
+      </div>
+    </div>
 
-          <!-- Freeze Alert Panel -->
-          <div class="bg-white dark:bg-gray-800 shadow-md rounded-lg overflow-hidden theme-transition">
-            <!-- Header Sticky -->
-            <div class="sticky top-0 z-10 bg-white dark:bg-gray-800">
-              <div class="px-4 py-3 border-b border-gray-200 dark:border-gray-700 sm:px-4">
-                <h3 class="text-base leading-6 font-medium text-gray-900 dark:text-white">
-                  Freeze Alert
-                </h3>
-                <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Disabled devices</p>
-              </div>
-              <div class="relative px-4 py-3 border-b border-gray-200 dark:border-gray-700">
-                <input
-                  type="text"
-                  id="freezeSearch"
-                  placeholder="Search..."
-                  class="w-full rounded-md border border-gray-300 dark:border-gray-600 py-2 pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-primary-dark focus:border-transparent text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-white theme-transition"
-                />
-                <div class="absolute inset-y-0 left-0 pl-6 flex items-center pointer-events-none">
-                  <i class="fas fa-search text-gray-400 dark:text-gray-500"></i>
-                </div>
-              </div>
-            </div>
-          
-            <!-- Scrollable Freeze Alert Content -->
-            <div class="max-h-[calc(100vh-9rem)] overflow-y-auto p-4 scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600 scrollbar-track-transparent">
-              
-              <!-- Contoh Item Freeze Alert -->
-              <div class="border border-gray-200 dark:border-gray-700 rounded-lg mb-4 hover:shadow-md transition-all theme-transition">
-                <div class="bg-gray-50 dark:bg-gray-700 p-3 flex justify-between items-center">
-                  <div class="font-medium text-gray-700 dark:text-gray-300">HITACHI 2</div>
-                  <div class="flex space-x-2">
-                    <button class="text-blue-500 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300" title="Enable Device">
-                      <i class="fas fa-toggle-off"></i>
-                    </button>
-                    <button class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300">
-                      <i class="fas fa-ellipsis-v"></i>
-                    </button>
-                  </div>
-                </div>
-                <div class="p-3 border-t border-gray-200 dark:border-gray-700 text-xs">
-                  <div class="text-gray-500 dark:text-gray-400 mb-1">
-                    <span class="text-gray-700 dark:text-gray-300">HITACHI 2 / HITACHI 2</span>
-                  </div>
-                  <div class="grid grid-cols-3 gap-2">
-                    <div class="text-gray-500 dark:text-gray-400">LOCATION</div>
-                    <div class="col-span-2 text-gray-700 dark:text-gray-300">JAKARTA MORI TOWER</div>
-                  </div>
-                  <div class="grid grid-cols-3 gap-2 mt-1">
-                    <div class="text-gray-500 dark:text-gray-400">HOLDER</div>
-                    <div class="col-span-2 text-gray-700 dark:text-gray-300">HITACHI (JAKARTA)</div>
-                  </div>
-                  <div class="grid grid-cols-3 gap-2 mt-1">
-                    <div class="text-gray-500 dark:text-gray-400">DISABLED BY</div>
-                    <div class="col-span-2 text-gray-700 dark:text-gray-300">-</div>
-                  </div>
-                  <div class="grid grid-cols-3 gap-2 mt-1">
-                    <div class="text-gray-500 dark:text-gray-400">NOTES</div>
-                    <div class="col-span-2 text-gray-700 dark:text-gray-300">#FREEZE_BY_DEVICE</div>
-                  </div>
-                  <div class="grid grid-cols-3 gap-2 mt-1">
-                    <div class="text-gray-500 dark:text-gray-400">DISABLED AT</div>
-                    <div class="col-span-2 text-gray-700 dark:text-gray-300">
-                      <span class="inline-flex items-center px-2 py-0.5 rounded bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-300">
-                        2025-03-10 16:32:38
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="border border-gray-200 dark:border-gray-700 rounded-lg mb-4 hover:shadow-md transition-all theme-transition">
-                <div class="bg-gray-50 dark:bg-gray-700 p-3 flex justify-between items-center">
-                  <div class="font-medium text-gray-700 dark:text-gray-300">HITACHI 2</div>
-                  <div class="flex space-x-2">
-                    <button class="text-blue-500 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300" title="Enable Device">
-                      <i class="fas fa-toggle-off"></i>
-                    </button>
-                    <button class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300">
-                      <i class="fas fa-ellipsis-v"></i>
-                    </button>
-                  </div>
-                </div>
-                <div class="p-3 border-t border-gray-200 dark:border-gray-700 text-xs">
-                  <div class="text-gray-500 dark:text-gray-400 mb-1">
-                    <span class="text-gray-700 dark:text-gray-300">HITACHI 2 / HITACHI 2</span>
-                  </div>
-                  <div class="grid grid-cols-3 gap-2">
-                    <div class="text-gray-500 dark:text-gray-400">LOCATION</div>
-                    <div class="col-span-2 text-gray-700 dark:text-gray-300">JAKARTA MORI TOWER</div>
-                  </div>
-                  <div class="grid grid-cols-3 gap-2 mt-1">
-                    <div class="text-gray-500 dark:text-gray-400">HOLDER</div>
-                    <div class="col-span-2 text-gray-700 dark:text-gray-300">HITACHI (JAKARTA)</div>
-                  </div>
-                  <div class="grid grid-cols-3 gap-2 mt-1">
-                    <div class="text-gray-500 dark:text-gray-400">DISABLED BY</div>
-                    <div class="col-span-2 text-gray-700 dark:text-gray-300">-</div>
-                  </div>
-                  <div class="grid grid-cols-3 gap-2 mt-1">
-                    <div class="text-gray-500 dark:text-gray-400">NOTES</div>
-                    <div class="col-span-2 text-gray-700 dark:text-gray-300">#FREEZE_BY_DEVICE</div>
-                  </div>
-                  <div class="grid grid-cols-3 gap-2 mt-1">
-                    <div class="text-gray-500 dark:text-gray-400">DISABLED AT</div>
-                    <div class="col-span-2 text-gray-700 dark:text-gray-300">
-                      <span class="inline-flex items-center px-2 py-0.5 rounded bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-300">
-                        2025-03-10 16:32:38
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="border border-gray-200 dark:border-gray-700 rounded-lg mb-4 hover:shadow-md transition-all theme-transition">
-                <div class="bg-gray-50 dark:bg-gray-700 p-3 flex justify-between items-center">
-                  <div class="font-medium text-gray-700 dark:text-gray-300">HITACHI 2</div>
-                  <div class="flex space-x-2">
-                    <button class="text-blue-500 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300" title="Enable Device">
-                      <i class="fas fa-toggle-off"></i>
-                    </button>
-                    <button class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300">
-                      <i class="fas fa-ellipsis-v"></i>
-                    </button>
-                  </div>
-                </div>
-                <div class="p-3 border-t border-gray-200 dark:border-gray-700 text-xs">
-                  <div class="text-gray-500 dark:text-gray-400 mb-1">
-                    <span class="text-gray-700 dark:text-gray-300">HITACHI 2 / HITACHI 2</span>
-                  </div>
-                  <div class="grid grid-cols-3 gap-2">
-                    <div class="text-gray-500 dark:text-gray-400">LOCATION</div>
-                    <div class="col-span-2 text-gray-700 dark:text-gray-300">JAKARTA MORI TOWER</div>
-                  </div>
-                  <div class="grid grid-cols-3 gap-2 mt-1">
-                    <div class="text-gray-500 dark:text-gray-400">HOLDER</div>
-                    <div class="col-span-2 text-gray-700 dark:text-gray-300">HITACHI (JAKARTA)</div>
-                  </div>
-                  <div class="grid grid-cols-3 gap-2 mt-1">
-                    <div class="text-gray-500 dark:text-gray-400">DISABLED BY</div>
-                    <div class="col-span-2 text-gray-700 dark:text-gray-300">-</div>
-                  </div>
-                  <div class="grid grid-cols-3 gap-2 mt-1">
-                    <div class="text-gray-500 dark:text-gray-400">NOTES</div>
-                    <div class="col-span-2 text-gray-700 dark:text-gray-300">#FREEZE_BY_DEVICE</div>
-                  </div>
-                  <div class="grid grid-cols-3 gap-2 mt-1">
-                    <div class="text-gray-500 dark:text-gray-400">DISABLED AT</div>
-                    <div class="col-span-2 text-gray-700 dark:text-gray-300">
-                      <span class="inline-flex items-center px-2 py-0.5 rounded bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-300">
-                        2025-03-10 16:32:38
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="border border-gray-200 dark:border-gray-700 rounded-lg mb-4 hover:shadow-md transition-all theme-transition">
-                <div class="bg-gray-50 dark:bg-gray-700 p-3 flex justify-between items-center">
-                  <div class="font-medium text-gray-700 dark:text-gray-300">HITACHI 2</div>
-                  <div class="flex space-x-2">
-                    <button class="text-blue-500 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300" title="Enable Device">
-                      <i class="fas fa-toggle-off"></i>
-                    </button>
-                    <button class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300">
-                      <i class="fas fa-ellipsis-v"></i>
-                    </button>
-                  </div>
-                </div>
-                <div class="p-3 border-t border-gray-200 dark:border-gray-700 text-xs">
-                  <div class="text-gray-500 dark:text-gray-400 mb-1">
-                    <span class="text-gray-700 dark:text-gray-300">HITACHI 2 / HITACHI 2</span>
-                  </div>
-                  <div class="grid grid-cols-3 gap-2">
-                    <div class="text-gray-500 dark:text-gray-400">LOCATION</div>
-                    <div class="col-span-2 text-gray-700 dark:text-gray-300">JAKARTA MORI TOWER</div>
-                  </div>
-                  <div class="grid grid-cols-3 gap-2 mt-1">
-                    <div class="text-gray-500 dark:text-gray-400">HOLDER</div>
-                    <div class="col-span-2 text-gray-700 dark:text-gray-300">HITACHI (JAKARTA)</div>
-                  </div>
-                  <div class="grid grid-cols-3 gap-2 mt-1">
-                    <div class="text-gray-500 dark:text-gray-400">DISABLED BY</div>
-                    <div class="col-span-2 text-gray-700 dark:text-gray-300">-</div>
-                  </div>
-                  <div class="grid grid-cols-3 gap-2 mt-1">
-                    <div class="text-gray-500 dark:text-gray-400">NOTES</div>
-                    <div class="col-span-2 text-gray-700 dark:text-gray-300">#FREEZE_BY_DEVICE</div>
-                  </div>
-                  <div class="grid grid-cols-3 gap-2 mt-1">
-                    <div class="text-gray-500 dark:text-gray-400">DISABLED AT</div>
-                    <div class="col-span-2 text-gray-700 dark:text-gray-300">
-                      <span class="inline-flex items-center px-2 py-0.5 rounded bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-300">
-                        2025-03-10 16:32:38
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="border border-gray-200 dark:border-gray-700 rounded-lg mb-4 hover:shadow-md transition-all theme-transition">
-                <div class="bg-gray-50 dark:bg-gray-700 p-3 flex justify-between items-center">
-                  <div class="font-medium text-gray-700 dark:text-gray-300">HITACHI 2</div>
-                  <div class="flex space-x-2">
-                    <button class="text-blue-500 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300" title="Enable Device">
-                      <i class="fas fa-toggle-off"></i>
-                    </button>
-                    <button class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300">
-                      <i class="fas fa-ellipsis-v"></i>
-                    </button>
-                  </div>
-                </div>
-                <div class="p-3 border-t border-gray-200 dark:border-gray-700 text-xs">
-                  <div class="text-gray-500 dark:text-gray-400 mb-1">
-                    <span class="text-gray-700 dark:text-gray-300">HITACHI 2 / HITACHI 2</span>
-                  </div>
-                  <div class="grid grid-cols-3 gap-2">
-                    <div class="text-gray-500 dark:text-gray-400">LOCATION</div>
-                    <div class="col-span-2 text-gray-700 dark:text-gray-300">JAKARTA MORI TOWER</div>
-                  </div>
-                  <div class="grid grid-cols-3 gap-2 mt-1">
-                    <div class="text-gray-500 dark:text-gray-400">HOLDER</div>
-                    <div class="col-span-2 text-gray-700 dark:text-gray-300">HITACHI (JAKARTA)</div>
-                  </div>
-                  <div class="grid grid-cols-3 gap-2 mt-1">
-                    <div class="text-gray-500 dark:text-gray-400">DISABLED BY</div>
-                    <div class="col-span-2 text-gray-700 dark:text-gray-300">-</div>
-                  </div>
-                  <div class="grid grid-cols-3 gap-2 mt-1">
-                    <div class="text-gray-500 dark:text-gray-400">NOTES</div>
-                    <div class="col-span-2 text-gray-700 dark:text-gray-300">#FREEZE_BY_DEVICE</div>
-                  </div>
-                  <div class="grid grid-cols-3 gap-2 mt-1">
-                    <div class="text-gray-500 dark:text-gray-400">DISABLED AT</div>
-                    <div class="col-span-2 text-gray-700 dark:text-gray-300">
-                      <span class="inline-flex items-center px-2 py-0.5 rounded bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-300">
-                        2025-03-10 16:32:38
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="border border-gray-200 dark:border-gray-700 rounded-lg mb-4 hover:shadow-md transition-all theme-transition">
-                <div class="bg-gray-50 dark:bg-gray-700 p-3 flex justify-between items-center">
-                  <div class="font-medium text-gray-700 dark:text-gray-300">HITACHI 2</div>
-                  <div class="flex space-x-2">
-                    <button class="text-blue-500 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300" title="Enable Device">
-                      <i class="fas fa-toggle-off"></i>
-                    </button>
-                    <button class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300">
-                      <i class="fas fa-ellipsis-v"></i>
-                    </button>
-                  </div>
-                </div>
-                <div class="p-3 border-t border-gray-200 dark:border-gray-700 text-xs">
-                  <div class="text-gray-500 dark:text-gray-400 mb-1">
-                    <span class="text-gray-700 dark:text-gray-300">HITACHI 2 / HITACHI 2</span>
-                  </div>
-                  <div class="grid grid-cols-3 gap-2">
-                    <div class="text-gray-500 dark:text-gray-400">LOCATION</div>
-                    <div class="col-span-2 text-gray-700 dark:text-gray-300">JAKARTA MORI TOWER</div>
-                  </div>
-                  <div class="grid grid-cols-3 gap-2 mt-1">
-                    <div class="text-gray-500 dark:text-gray-400">HOLDER</div>
-                    <div class="col-span-2 text-gray-700 dark:text-gray-300">HITACHI (JAKARTA)</div>
-                  </div>
-                  <div class="grid grid-cols-3 gap-2 mt-1">
-                    <div class="text-gray-500 dark:text-gray-400">DISABLED BY</div>
-                    <div class="col-span-2 text-gray-700 dark:text-gray-300">-</div>
-                  </div>
-                  <div class="grid grid-cols-3 gap-2 mt-1">
-                    <div class="text-gray-500 dark:text-gray-400">NOTES</div>
-                    <div class="col-span-2 text-gray-700 dark:text-gray-300">#FREEZE_BY_DEVICE</div>
-                  </div>
-                  <div class="grid grid-cols-3 gap-2 mt-1">
-                    <div class="text-gray-500 dark:text-gray-400">DISABLED AT</div>
-                    <div class="col-span-2 text-gray-700 dark:text-gray-300">
-                      <span class="inline-flex items-center px-2 py-0.5 rounded bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-300">
-                        2025-03-10 16:32:38
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-          
-              <!-- Tambah lebih banyak item di sini sesuai kebutuhan -->
-          
-              <div class="mt-4 flex justify-center">
-                <button
-                  class="px-4 py-2 rounded-md bg-blue-50 dark:bg-blue-900 text-blue-600 dark:text-blue-300 text-sm font-medium hover:bg-blue-100 dark:hover:bg-blue-800 transition-colors"
-                >
-                  View All Freeze Alerts
-                </button>
-              </div>
-            </div>
+    <!-- More Items with Narrower Layout -->
+    <div class="border border-gray-200 dark:border-gray-700 rounded-lg mb-4 hover:shadow-md transition-all theme-transition">
+      <div class="bg-gray-50 dark:bg-gray-700 p-3 flex justify-between items-center">
+        <div class="font-medium text-gray-700 dark:text-gray-300">MITSUBISHI 1</div>
+        <div class="flex space-x-2">
+          <button class="text-blue-500 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300" title="Enable Device">
+            <i class="fas fa-toggle-off"></i>
+          </button>
+          <button class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300">
+            <i class="fas fa-ellipsis-v"></i>
+          </button>
+        </div>
+      </div>
+      <div class="p-3 border-t border-gray-200 dark:border-gray-700 text-xs">
+        <div class="text-gray-500 dark:text-gray-400 mb-1">
+          <span class="text-gray-700 dark:text-gray-300">MITSUBISHI 1 / UNIT A</span>
+        </div>
+        <div class="grid grid-cols-4 gap-2">
+          <div class="text-gray-500 dark:text-gray-400">LOC</div>
+          <div class="col-span-3 text-gray-700 dark:text-gray-300">BALI TOWER EAST</div>
+        </div>
+        <div class="grid grid-cols-4 gap-2 mt-1">
+          <div class="text-gray-500 dark:text-gray-400">HOLD</div>
+          <div class="col-span-3 text-gray-700 dark:text-gray-300">MITSUBISHI (BALI)</div>
+        </div>
+        <div class="grid grid-cols-4 gap-2 mt-1">
+          <div class="text-gray-500 dark:text-gray-400">BY</div>
+          <div class="col-span-3 text-gray-700 dark:text-gray-300">ADMIN</div>
+        </div>
+        <div class="grid grid-cols-4 gap-2 mt-1">
+          <div class="text-gray-500 dark:text-gray-400">NOTE</div>
+          <div class="col-span-3 text-gray-700 dark:text-gray-300">#MAINTENANCE</div>
+        </div>
+        <div class="grid grid-cols-4 gap-2 mt-1">
+          <div class="text-gray-500 dark:text-gray-400">AT</div>
+          <div class="col-span-3 text-gray-700 dark:text-gray-300">
+            <span class="inline-flex items-center px-2 py-0.5 rounded bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-300">
+              2025-04-15 09:22:15
+            </span>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="border border-gray-200 dark:border-gray-700 rounded-lg mb-4 hover:shadow-md transition-all theme-transition">
+      <div class="bg-gray-50 dark:bg-gray-700 p-3 flex justify-between items-center">
+        <div class="font-medium text-gray-700 dark:text-gray-300">KONE 5</div>
+        <div class="flex space-x-2">
+          <button class="text-blue-500 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300" title="Enable Device">
+            <i class="fas fa-toggle-off"></i>
+          </button>
+          <button class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300">
+            <i class="fas fa-ellipsis-v"></i>
+          </button>
+        </div>
+      </div>
+      <div class="p-3 border-t border-gray-200 dark:border-gray-700 text-xs">
+        <div class="text-gray-500 dark:text-gray-400 mb-1">
+          <span class="text-gray-700 dark:text-gray-300">KONE 5 / LIFT C</span>
+        </div>
+        <div class="grid grid-cols-4 gap-2">
+          <div class="text-gray-500 dark:text-gray-400">LOC</div>
+          <div class="col-span-3 text-gray-700 dark:text-gray-300">SURABAYA MALL CENTRAL</div>
+        </div>
+        <div class="grid grid-cols-4 gap-2 mt-1">
+          <div class="text-gray-500 dark:text-gray-400">HOLD</div>
+          <div class="col-span-3 text-gray-700 dark:text-gray-300">KONE (SURABAYA)</div>
+        </div>
+        <div class="grid grid-cols-4 gap-2 mt-1">
+          <div class="text-gray-500 dark:text-gray-400">BY</div>
+          <div class="col-span-3 text-gray-700 dark:text-gray-300">SYSTEM</div>
+        </div>
+        <div class="grid grid-cols-4 gap-2 mt-1">
+          <div class="text-gray-500 dark:text-gray-400">NOTE</div>
+          <div class="col-span-3 text-gray-700 dark:text-gray-300">#AUTO_FREEZE</div>
+        </div>
+        <div class="grid grid-cols-4 gap-2 mt-1">
+          <div class="text-gray-500 dark:text-gray-400">AT</div>
+          <div class="col-span-3 text-gray-700 dark:text-gray-300">
+            <span class="inline-flex items-center px-2 py-0.5 rounded bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-300">
+              2025-03-22 11:45:02
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="border border-gray-200 dark:border-gray-700 rounded-lg mb-4 hover:shadow-md transition-all theme-transition">
+      <div class="bg-gray-50 dark:bg-gray-700 p-3 flex justify-between items-center">
+        <div class="font-medium text-gray-700 dark:text-gray-300">OTIS 3</div>
+        <div class="flex space-x-2">
+          <button class="text-blue-500 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300" title="Enable Device">
+            <i class="fas fa-toggle-off"></i>
+          </button>
+          <button class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300">
+            <i class="fas fa-ellipsis-v"></i>
+          </button>
+        </div>
+      </div>
+      <div class="p-3 border-t border-gray-200 dark:border-gray-700 text-xs">
+        <div class="text-gray-500 dark:text-gray-400 mb-1">
+          <span class="text-gray-700 dark:text-gray-300">OTIS 3 / ELEVATOR</span>
+        </div>
+        <div class="grid grid-cols-4 gap-2">
+          <div class="text-gray-500 dark:text-gray-400">LOC</div>
+          <div class="col-span-3 text-gray-700 dark:text-gray-300">BANDUNG PLAZA WEST</div>
+        </div>
+        <div class="grid grid-cols-4 gap-2 mt-1">
+          <div class="text-gray-500 dark:text-gray-400">HOLD</div>
+          <div class="col-span-3 text-gray-700 dark:text-gray-300">OTIS (BANDUNG)</div>
+        </div>
+        <div class="grid grid-cols-4 gap-2 mt-1">
+          <div class="text-gray-500 dark:text-gray-400">BY</div>
+          <div class="col-span-3 text-gray-700 dark:text-gray-300">MANAGER</div>
+        </div>
+        <div class="grid grid-cols-4 gap-2 mt-1">
+          <div class="text-gray-500 dark:text-gray-400">NOTE</div>
+          <div class="col-span-3 text-gray-700 dark:text-gray-300">#REPAIR_NEEDED</div>
+        </div>
+        <div class="grid grid-cols-4 gap-2 mt-1">
+          <div class="text-gray-500 dark:text-gray-400">AT</div>
+          <div class="col-span-3 text-gray-700 dark:text-gray-300">
+            <span class="inline-flex items-center px-2 py-0.5 rounded bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-300">
+              2025-04-02 08:15:37
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="border border-gray-200 dark:border-gray-700 rounded-lg mb-4 hover:shadow-md transition-all theme-transition">
+      <div class="bg-gray-50 dark:bg-gray-700 p-3 flex justify-between items-center">
+        <div class="font-medium text-gray-700 dark:text-gray-300">SCHINDLER 7</div>
+        <div class="flex space-x-2">
+          <button class="text-blue-500 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300" title="Enable Device">
+            <i class="fas fa-toggle-off"></i>
+          </button>
+          <button class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300">
+            <i class="fas fa-ellipsis-v"></i>
+          </button>
+        </div>
+      </div>
+      <div class="p-3 border-t border-gray-200 dark:border-gray-700 text-xs">
+        <div class="text-gray-500 dark:text-gray-400 mb-1">
+          <span class="text-gray-700 dark:text-gray-300">SCHINDLER 7 / EAST</span>
+        </div>
+        <div class="grid grid-cols-4 gap-2">
+          <div class="text-gray-500 dark:text-gray-400">LOC</div>
+          <div class="col-span-3 text-gray-700 dark:text-gray-300">MEDAN CENTER BUILDING</div>
+        </div>
+        <div class="grid grid-cols-4 gap-2 mt-1">
+          <div class="text-gray-500 dark:text-gray-400">HOLD</div>
+          <div class="col-span-3 text-gray-700 dark:text-gray-300">SCHINDLER (MEDAN)</div>
+        </div>
+        <div class="grid grid-cols-4 gap-2 mt-1">
+          <div class="text-gray-500 dark:text-gray-400">BY</div>
+          <div class="col-span-3 text-gray-700 dark:text-gray-300">TECHNICIAN</div>
+        </div>
+        <div class="grid grid-cols-4 gap-2 mt-1">
+          <div class="text-gray-500 dark:text-gray-400">NOTE</div>
+          <div class="col-span-3 text-gray-700 dark:text-gray-300">#INSPECTION</div>
+        </div>
+        <div class="grid grid-cols-4 gap-2 mt-1">
+          <div class="text-gray-500 dark:text-gray-400">AT</div>
+          <div class="col-span-3 text-gray-700 dark:text-gray-300">
+            <span class="inline-flex items-center px-2 py-0.5 rounded bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-300">
+              2025-04-12 14:30:22
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="border border-gray-200 dark:border-gray-700 rounded-lg mb-4 hover:shadow-md transition-all theme-transition">
+      <div class="bg-gray-50 dark:bg-gray-700 p-3 flex justify-between items-center">
+        <div class="font-medium text-gray-700 dark:text-gray-300">THYSSENKRUP 4</div>
+        <div class="flex space-x-2">
+          <button class="text-blue-500 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300" title="Enable Device">
+            <i class="fas fa-toggle-off"></i>
+          </button>
+          <button class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300">
+            <i class="fas fa-ellipsis-v"></i>
+          </button>
+        </div>
+      </div>
+      <div class="p-3 border-t border-gray-200 dark:border-gray-700 text-xs">
+        <div class="text-gray-500 dark:text-gray-400 mb-1">
+          <span class="text-gray-700 dark:text-gray-300">THYSSENKRUP 4 / MAIN</span>
+        </div>
+        <div class="grid grid-cols-4 gap-2">
+          <div class="text-gray-500 dark:text-gray-400">LOC</div>
+          <div class="col-span-3 text-gray-700 dark:text-gray-300">MAKASSAR OFFICE TOWER</div>
+        </div>
+        <div class="grid grid-cols-4 gap-2 mt-1">
+          <div class="text-gray-500 dark:text-gray-400">HOLD</div>
+          <div class="col-span-3 text-gray-700 dark:text-gray-300">THYSSENKRUP (MKS)</div>
+        </div>
+        <div class="grid grid-cols-4 gap-2 mt-1">
+          <div class="text-gray-500 dark:text-gray-400">BY</div>
+          <div class="col-span-3 text-gray-700 dark:text-gray-300">SUPERVISOR</div>
+        </div>
+        <div class="grid grid-cols-4 gap-2 mt-1">
+          <div class="text-gray-500 dark:text-gray-400">NOTE</div>
+          <div class="col-span-3 text-gray-700 dark:text-gray-300">#SAFETY_CHECK</div>
+        </div>
+        <div class="grid grid-cols-4 gap-2 mt-1">
+          <div class="text-gray-500 dark:text-gray-400">AT</div>
+          <div class="col-span-3 text-gray-700 dark:text-gray-300">
+            <span class="inline-flex items-center px-2 py-0.5 rounded bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-300">
+              2025-03-27 13:17:45
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- "View All" Button -->
+    <div class="mt-4 flex justify-center">
+      <button
+        class="px-4 py-2 rounded-md bg-blue-50 dark:bg-blue-900 text-blue-600 dark:text-blue-300 text-sm font-medium hover:bg-blue-100 dark:hover:bg-blue-800 transition-colors"
+      >
+        View All Freeze Alerts
+      </button>
+    </div>
+  </div>
+</div>
           
         </div>
 

@@ -1,9 +1,22 @@
-/* Reset default backgrounds first */
+/* Override flex container that's causing positioning issues */
+.theme-2 .card .flex.items-center {
+  display: block !important; /* Override flex display */
+  position: static !important; /* Ensure proper positioning context */
+}
+
+/* Fix parent containers that might affect positioning */
+.theme-2 .card .px-4,
+.theme-2 .card .py-5,
+.theme-2 .card .sm\:p-6 {
+  padding: 0 !important; /* Remove padding that might affect positioning */
+  position: static !important;
+}/* Make sure the card container is properly set up for absolute positioning */
 .theme-2 .card {
-  padding: 20px;
+  padding: 0 !important; /* Remove padding that might offset positioning */
   height: 150px;
-  position: relative;
+  position: relative !important;
   background-color: transparent !important;
+  overflow: visible !important; /* Prevent content from being cut off */
 }
 
 /* Target the specific card elements with their respective colors */
@@ -27,25 +40,52 @@
   border-left: none !important;
 }
 
-/* Make numbers much larger */
+/* Target the specific text number elements but with more specific selectors */
+.theme-2 .card .text-2xl.font-semibold.text-gray-900.dark\:text-white.counter-value,
+.theme-2 .card .counter-value,
 .theme-2 .card .text-2xl {
-  font-size: 4rem; /* Very large font size */
-  font-weight: 700; /* Extra bold */
+  font-size: 5rem !important; /* Large font size */
+  font-weight: 700 !important; /* Extra bold */
   color: white !important; /* White text for better contrast */
+  line-height: 1 !important; /* Tighter line height */
+  position: absolute !important; /* Position absolutely for better control */
+  top: 50% !important; /* Center vertically */
+  left: 50% !important; /* Center horizontally */
+  transform: translate(-50%, -50%) !important; /* Center perfectly */
+  z-index: 10 !important; /* Ensure it's above other elements */
+  text-align: center !important; /* Center the text itself */
+  width: auto !important; /* Allow natural width */
+  min-width: 50% !important; /* Ensure enough width */
+  margin: 0 !important; /* Remove any margin */
+  display: block !important; /* Make sure it's visible */
+  visibility: visible !important; /* Extra insurance it's visible */
 }
 
-/* Hide all descriptive text */
+/* Hide only specific elements but keep the numbers visible */
 .theme-2 .card dt,
 .theme-2 .card .text-xs,
-.theme-2 .card .inline-flex.items-center {
-  display: none !important;
-}
-
-/* Hide percentage indicators and data bars */
-.theme-2 .card .ml-2.flex.items-baseline,
+.theme-2 .card .inline-flex.items-center,
 .theme-2 .card .mt-4,
 .theme-2 .card .data-bar {
   display: none !important;
+}
+
+/* Keep the counter value container visible */
+.theme-2 .card .ml-5,
+.theme-2 .card .flex-1,
+.theme-2 .card dd,
+.theme-2 .card .flex.items-baseline {
+  display: block !important;
+  position: static !important;
+  width: 100% !important;
+}
+
+/* Make sure the counter value is visible */
+.theme-2 .card .counter-value,
+.theme-2 .card .text-2xl {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
 /* Make the icon color white */
@@ -60,19 +100,49 @@
   color: white !important;
 }
 
-/* Icon background */
-.theme-2 .card .flex-shrink-0 {
+/* Target the actual icon container structure from the HTML */
+.theme-2 .card .flex-shrink-0,
+.theme-2 .card .bg-red-100,
+.theme-2 .card .bg-green-100,
+.theme-2 .card .bg-yellow-100,
+.theme-2 .card .bg-blue-100,
+.theme-2 .card .dark\:bg-red-900,
+.theme-2 .card .dark\:bg-green-900,
+.theme-2 .card .dark\:bg-yellow-900,
+.theme-2 .card .dark\:bg-blue-900 {
   background-color: rgba(255, 255, 255, 0.2) !important;
   border-radius: 50%;
   padding: 10px;
+  position: absolute !important;
+  top: 10px !important;
+  right: 10px !important;
+  left: auto !important; /* Override any left positioning */
+  z-index: 20; /* Ensure icons are above everything */
 }
 
-/* Gunakan font Bebas Neue untuk header kategori */
+/* For very large numbers, ensure they fit */
+.theme-2 .card .text-2xl[data-value="802"],
+.theme-2 .card .text-2xl[data-value="1000"] {
+  font-size: 4.5rem; /* Slightly smaller for 3+ digit numbers */
+}
+
+/* Ensure card content is properly laid out */
+.theme-2 .card .flex.items-center {
+  position: static; /* Reset position so absolute positioning works */
+}
+
+/* Clear any floats */
+.theme-2 .card::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 .sidebar-category {
   font-family: 'Bebas Neue', cursive;
 }
 
-/* Tambahkan ini ke CSS Anda untuk menggunakan font Bebas Neue */
+
 .font-bebas {
   font-family: 'Bebas Neue', cursive;
 }
