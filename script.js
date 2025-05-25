@@ -456,3 +456,25 @@ document.addEventListener("DOMContentLoaded", function () {
       });
 
 
+
+
+      
+document.addEventListener("DOMContentLoaded", function () {
+  const toggleSidebar = document.getElementById("toggleSidebar");
+  const sidebar = document.getElementById("sidebar");
+  const mainContent = document.getElementById("mainContent");
+
+  let sidebarOpen = false;
+
+  toggleSidebar.addEventListener("click", function () {
+    sidebarOpen = !sidebarOpen;
+
+    if (sidebarOpen) {
+      sidebar.classList.remove("-translate-x-full");
+      mainContent.classList.add("ml-64");
+    } else {
+      sidebar.classList.add("-translate-x-full");
+      mainContent.classList.remove("ml-64");
+    }
+  });
+});
