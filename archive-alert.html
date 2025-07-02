@@ -138,27 +138,25 @@ class="fixed inset-y-0 left-0 shadow-lg -translate-x-full transition-transform d
       </li>
     </ul>
   </div>
-
-    <!-- MAPS Tracking -->
-    <div class="py-2">
-      <div class="text-xs font-bold uppercase tracking-wider text-dark-600 dark:text-blue-400 mb-2">MAPS TRACKING</div>
-      <ul>
-        <li>
-          <a href="/maps.html" class="group flex items-center px-3 py-2 text-xs text-dark-800 hover:bg-blue-50 dark:text-blue-300 dark:hover:bg-blue-900/30 rounded-md transition-all duration-200">
-            <i class="fas fa-map-marked w-5 text-center mr-2 text-dark-500 group-hover:text-blue-600 dark:text-blue-400 dark:group-hover:text-blue-300 transition-all"></i>
-            <span class="transition-all duration-300 group-hover:text-blue-600 dark:group-hover:text-blue-300 transform group-hover:translate-x-1">Live Tracking</span>
-          </a>
-        </li>
-        </ul>
-    </div>
-
+  <!-- MAPS Tracking -->
+  <div class="py-2">
+    <div class="text-xs font-bold uppercase tracking-wider text-dark-600 dark:text-blue-400 mb-2">MAPS TRACKING</div>
+    <ul>
+      <li>
+        <a href="/maps.html" class="group flex items-center px-3 py-2 text-xs text-dark-800 hover:bg-blue-50 dark:text-blue-300 dark:hover:bg-blue-900/30 rounded-md transition-all duration-200">
+          <i class="fas fa-map-marked w-5 text-center mr-2 text-dark-500 group-hover:text-blue-600 dark:text-blue-400 dark:group-hover:text-blue-300 transition-all"></i>
+          <span class="transition-all duration-300 group-hover:text-blue-600 dark:group-hover:text-blue-300 transform group-hover:translate-x-1">Live Tracking</span>
+        </a>
+      </li>
+      </ul>
+  </div>
 
   <!-- HISTORY & ARCHIVE Section -->
   <div class="py-2">
     <div class="text-xs font-bold uppercase tracking-wider text-dark-600 dark:text-indigo-400 mb-2">HISTORY & ARCHIVE</div>
     <ul>
       <li>
-        <a href="/archive-alert.html" class="group flex items-center px-3 py-2 text-xs text-dark-800 hover:bg-indigo-50 dark:text-indigo-300 dark:hover:bg-indigo-900/30 rounded-md transition-all duration-200">
+        <a href="#" class="group flex items-center px-3 py-2 text-xs text-dark-800 hover:bg-indigo-50 dark:text-indigo-300 dark:hover:bg-indigo-900/30 rounded-md transition-all duration-200">
           <i class="fas fa-bell w-5 text-center mr-2 text-dark-500 group-hover:text-indigo-600 dark:text-indigo-400 dark:group-hover:text-indigo-300 transition-all"></i>
           <span class="transition-all duration-300 group-hover:text-indigo-600 dark:group-hover:text-indigo-300 transform group-hover:translate-x-1">Archive Alert</span>
         </a>
@@ -474,589 +472,579 @@ class="fixed inset-y-0 left-0 shadow-lg -translate-x-full transition-transform d
       </div>
     </div>
 
-    <!-- Overlay for sidebar on mobile -->
-    <!-- <div
-      id="sidebarOverlay"
-      class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"
-    ></div> -->
 
 
-
-
-
-    <!-- Main Content -->
-    <main id="mainContent" class="bg-gray-100 dark:bg-gray-900 theme-transition">
-      <div class="w-full h-screen">
-        <!-- Map Container - Full Screen -->
-        <div class="w-full h-full relative">
-          <div id="map" class="w-full h-full"></div>
-
-          <!-- Floating Alert Panel - Draggable -->
-          <div id="alertPanel" class="absolute top-4 right-4 w-96 bg-white dark:bg-gray-800 shadow-2xl rounded-lg overflow-hidden z-1000 border border-gray-200 dark:border-gray-700">
-            <!-- Panel Header - Drag Handle -->
-            <div id="panelHeader" class="p-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white cursor-move select-none">
-              <div class="flex items-center justify-between">
-                <div class="flex items-center gap-2">
-                  <div class="w-3 h-3 bg-red-400 rounded-full animate-pulse"></div>
-                  <h2 class="text-lg font-semibold -webkit-text-fill-color text-white">Tracking Location</h2>
-                </div>
-                <div class="flex gap-2">
-                  <button id="minimizeBtn" class="w-6 h-6 bg-yellow-500 rounded-full hover:bg-yellow-400 transition-colors flex items-center justify-center">
-                    <span class="text-xs font-bold text-white">-</span>
-                  </button>
-                  <button id="closeBtn" class="w-6 h-6 bg-red-500 rounded-full hover:bg-red-400 transition-colors flex items-center justify-center">
-                    <span class="text-xs font-bold text-white">×</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <!-- Panel Content -->
-            <div id="panelContent" class="max-h-96 overflow-y-auto">
-              <!-- Export Buttons -->
-              <div class="p-4 border-b border-gray-200 dark:border-gray-700">
-                <div class="flex gap-2 mb-4">
-                  <button class="px-4 py-2 bg-blue-600 text-white rounded-md text-sm font-medium hover:bg-blue-700 transition-colors">
-                    EXPORT
-                  </button>
-                  <button class="px-4 py-2 bg-gray-600 text-white rounded-md text-sm font-medium hover:bg-gray-700 transition-colors">
-                    EXPORT RAW DATA
-                  </button>
-                </div>
-
-                <!-- Alert Summary Stats -->
-                <div class="grid grid-cols-3 gap-2 mb-4">
-                  <div class="bg-red-50 dark:bg-red-900/20 p-2 rounded text-center">
-                    <div class="text-xl font-bold text-red-600 dark:text-red-400">10</div>
-                    <div class="text-xs text-red-600 dark:text-red-400">CRITICAL</div>
-                  </div>
-                  <div class="bg-orange-50 dark:bg-orange-900/20 p-2 rounded text-center">
-                    <div class="text-xl font-bold text-orange-600 dark:text-orange-400">2</div>
-                    <div class="text-xs text-orange-600 dark:text-orange-400">WARNING</div>
-                  </div>
-                  <div class="bg-blue-50 dark:bg-blue-900/20 p-2 rounded text-center">
-                    <div class="text-xl font-bold text-blue-600 dark:text-blue-400">12</div>
-                    <div class="text-xs text-blue-600 dark:text-blue-400">TOTAL</div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Data Table -->
-              <div class="p-4">
-                <div class="overflow-x-auto">
-                  <table class="w-full text-xs">
-                    <thead>
-                      <tr class="bg-gray-50 dark:bg-gray-700">
-                        <th class="px-2 py-2 text-left font-medium text-gray-900 dark:text-white">CABANG</th>
-                        <th class="px-2 py-2 text-left font-medium text-gray-900 dark:text-white">KOTA</th>
-                        <th class="px-2 py-2 text-left font-medium text-gray-900 dark:text-white">STATUS</th>
-                      </tr>
-                    </thead>
-                    <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
-                      <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer" onclick="focusATM('semarang')">
-                        <td class="px-2 py-2 text-gray-900 dark:text-white">80000470 SSI (SMRG)</td>
-                        <td class="px-2 py-2 text-gray-900 dark:text-white">Semarang</td>
-                        <td class="px-2hydra py-2 text-red-600 dark:text-red-400 font-medium">🚨 FASCIA OPEN</td>
-                      </tr>
-                      <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer" onclick="focusATM('cibinong1')">
-                        <td class="px-2 py-2 text-gray-900 dark:text-white">B323 BRC (CBG)</td>
-                        <td class="px-2 py-2 text-gray-900 dark:text-white">Cibinong</td>
-                        <td class="px-2 py-2 text-red-600 dark:text-red-400 font-medium">🚨 SAFE DOOR OPEN</td>
-                      </tr>
-                      <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer" onclick="focusATM('sukamulya')">
-                        <td class="px-2 py-2 text-gray-900 dark:text-white">B454 SSI_BJB (SKM)</td>
-                        <td class="px-2 py-2 text-gray-900 dark:text-white">Sukamulya</td>
-                        <td class="px-2 py-2 text-red-600 dark:text-red-400 font-medium">🚨 SAFE DOOR OPEN</td>
-                      </tr>
-                      <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer" onclick="focusATM('jakarta1')">
-                        <td class="px-2 py-2 text-gray-900 dark:text-white">HITACHI 2 HTCHI (JKT)</td>
-                        <td class="px-2 py-2 text-gray-900 dark:text-white">Jakarta</td>
-                        <td class="px-2 py-2 text-red-600 dark:text-red-400 font-medium">🚨 FASCIA OPEN</td>
-                      </tr>
-                      <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer" onclick="focusATM('bogor')">
-                        <td class="px-2 py-2 text-gray-900 dark:text-white">Stasiun Bogor TSHOLD (JAK)</td>
-                        <td class="px-2 py-2 text-gray-900 dark:text-white">Bogor</td>
-                        <td class="px-2 py-2 text-red-600 dark:text-red-400 font-medium">🚨 SAFE DOOR OPEN</td>
-                      </tr>
-                      <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer" onclick="focusATM('cibinong2')">
-                        <td class="px-2 py-2 text-gray-900 dark:text-white">B639 BRC (CBG)</td>
-                        <td class="px-2 py-2 text-gray-900 dark:text-white">Cibinong</td>
-                        <td class="px-2 py-2 text-red-600 dark:text-red-400 font-medium">🚨 FASCIA OPEN</td>
-                      </tr>
-                      <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer" onclick="focusATM('garut')">
-                        <td class="px-2 py-2 text-gray-900 dark:text-white">B607 BG (GRT)</td>
-                        <td class="px-2 py-2 text-gray-900 dark:text-white">Garut</td>
-                        <td class="px-2 py-2 text-red-600 dark:text-red-400 font-medium">🚨 FASCIA OPEN</td>
-                      </tr>
-                      <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer" onclick="focusATM('jakarta2')">
-                        <td class="px-2 py-2 text-gray-900 dark:text-white">HITACHI HTCHI (JKT)</td>
-                        <td class="px-2 py-2 text-gray-900 dark:text-white">Jakarta</td>
-                        <td class="px-2 py-2 text-red-600 dark:text-red-400 font-medium">🚨 FASCIA OPEN</td>
-                      </tr>
-                      <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer" onclick="focusATM('bandung')">
-                        <td class="px-2 py-2 text-gray-900 dark:text-white">A374 BG (BDG)</td>
-                        <td class="px-2 py-2 text-gray-900 dark:text-white">Bandung</td>
-                        <td class="px-2 py-2 text-red-600 dark:text-red-400 font-medium">🚨 FASCIA OPEN</td>
-                      </tr>
-                      <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer" onclick="focusATM('jakarta3')">
-                        <td class="px-2 py-2 text-gray-900 dark:text-white">SPBU COCO TENDEAN TSHOLD (JAK)</td>
-                        <td class="px-2 py-2 text-gray-900 dark:text-white">Jakarta</td>
-                        <td class="px-2 py-2 text-orange-600 dark:text-orange-400 font-medium">⚠️ SHARP OBJECT DETECTED</td>
-                      </tr>
-                      <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer" onclick="focusATM('medan')">
-                        <td class="px-2 py-2 text-gray-900 dark:text-white">1745 ADV (MDN)</td>
-                        <td class="px-2 py-2 text-gray-900 dark:text-white">Medan</td>
-                        <td class="px-2 py-2 text-orange-600 dark:text-orange-400 font-medium">⚠️ BOX HEAT DETECTED</td>
-                      </tr>
-                      <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer" onclick="focusATM('cibinong3')">
-                        <td class="px-2 py-2 text-gray-900 dark:text-white">B322 BRC (CBG)</td>
-                        <td class="px-2 py-2 text-gray-900 dark:text-white">Cibinong</td>
-                        <td class="px-2 py-2 text-red-600 dark:text-red-400 font-medium">🚨 FASCIA OPEN</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Toggle Button when panel is closed -->
-          <button id="toggleBtn" class="absolute top-4 right-4 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition-colors z-999 hidden">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-            </svg>
-          </button>
-
-          <!-- Map Attribution -->
-          <div class="absolute bottom-2 left-2 bg-white dark:bg-gray-800 px-2 py-1 rounded text-xs text-gray-600 dark:text-gray-400">
-            BSI ATM ProtectQube Monitoring v1.0
-          </div>
-
-          <div class="absolute bottom-2 right-2 bg-white dark:bg-gray-800 px-2 py-1 rounded text-xs text-gray-600 dark:text-gray-400">
-            Copyright © 2025 BSI
-          </div>
-        </div>
-      </div>
-    </main>
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
-<script>
-  // Initialize the map centered on Indonesia
-  const map = L.map('map').setView([-6.2, 106.816666], 6);
-
-  // Add tile layer
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '© OpenStreetMap contributors'
-  }).addTo(map);
-
-  // ATM BSI ProtectQube data points with IDs for focusing
-  const atmBsiData = [
-      {
-          id: 'semarang',
-          lat: -6.9667,
-          lng: 110.4167,
-          name: '80000470 SSI (SMRG)',
-          city: 'Semarang',
-          type: 'ATM',
-          status: 'FASCIA OPEN',
-          alertLevel: 'critical',
-          lastUpdate: '2 min ago',
-          color: '#ef4444'
-      },
-      {
-          id: 'cibinong1',
-          lat: -6.4817,
-          lng: 106.8536,
-          name: 'B323 BRC (CBG)',
-          city: 'Cibinong',
-          type: 'ATM',
-          status: 'SAFE DOOR OPEN',
-          alertLevel: 'critical',
-          lastUpdate: '3 min ago',
-          color: '#ef4444'
-      },
-      {
-          id: 'sukamulya',
-          lat: -6.4817,
-          lng: 106.8636,
-          name: 'B454 SSI_BJB (SKM)',
-          city: 'Sukamulya',
-          type: 'ATM',
-          status: 'SAFE DOOR OPEN',
-          alertLevel: 'critical',
-          lastUpdate: '1 min ago',
-          color: '#ef4444'
-      },
-      {
-          id: 'jakarta1',
-          lat: -6.2088,
-          lng: 106.8456,
-          name: 'HITACHI 2 HTCHI (JKT)',
-          city: 'Jakarta',
-          type: 'ATM',
-          status: 'FASCIA OPEN',
-          alertLevel: 'critical',
-          lastUpdate: '5 min ago',
-          color: '#ef4444'
-      },
-      {
-          id: 'bogor',
-          lat: -6.5944,
-          lng: 106.7964,
-          name: 'Stasiun Bogor TSHOLD (JAK)',
-          city: 'Bogor',
-          type: 'ATM',
-          status: 'SAFE DOOR OPEN',
-          alertLevel: 'critical',
-          lastUpdate: '4 min ago',
-          color: '#ef4444'
-      },
-      {
-          id: 'cibinong2',
-          lat: -6.4917,
-          lng: 106.8636,
-          name: 'B639 BRC (CBG)',
-          city: 'Cibinong',
-          type: 'ATM',
-          status: 'FASCIA OPEN',
-          alertLevel: 'critical',
-          lastUpdate: '6 min ago',
-          color: '#ef4444'
-      },
-      {
-          id: 'garut',
-          lat: -7.2127,
-          lng: 107.9061,
-          name: 'B607 BG (GRT)',
-          city: 'Garut',
-          type: 'ATM',
-          status: 'FASCIA OPEN',
-          alertLevel: 'critical',
-          lastUpdate: '3 min ago',
-          color: '#ef4444'
-      },
-      {
-          id: 'jakarta2',
-          lat: -6.2197,
-          lng: 106.8256,
-          name: 'HITACHI HTCHI (JKT)',
-          city: 'Jakarta',
-          type: 'ATM',
-          status: 'FASCIA OPEN',
-          alertLevel: 'critical',
-          lastUpdate: '2 min ago',
-          color: '#ef4444'
-      },
-      {
-          id: 'bandung',
-          lat: -6.9039,
-          lng: 107.6186,
-          name: 'A374 BG (BDG)',
-          city: 'Bandung',
-          type: 'ATM',
-          status: 'FASCIA OPEN',
-          alertLevel: 'critical',
-          lastUpdate: '7 min ago',
-          color: '#ef4444'
-      },
-      {
-          id: 'jakarta3',
-          lat: -6.2397,
-          lng: 106.8214,
-          name: 'SPBU COCO TENDEAN TSHOLD (JAK)',
-          city: 'Jakarta',
-          type: 'ATM',
-          status: 'SHARP OBJECT DETECTED',
-          alertLevel: 'warning',
-          lastUpdate: '1 min ago',
-          color: '#f59e0b'
-      },
-      {
-          id: 'medan',
-          lat: 3.5952,
-          lng: 98.6722,
-          name: '1745 ADV (MDN)',
-          city: 'Medan',
-          type: 'ATM',
-          status: 'BOX HEAT DETECTED',
-          alertLevel: 'warning',
-          lastUpdate: '8 min ago',
-          color: '#f59e0b'
-      },
-      {
-          id: 'cibinong3',
-          lat: -6.4717,
-          lng: 106.8436,
-          name: 'B322 BRC (CBG)',
-          city: 'Cibinong',
-          type: 'ATM',
-          status: 'FASCIA OPEN',
-          alertLevel: 'critical',
-          lastUpdate: '4 min ago',
-          color: '#ef4444'
+    <style>
+      .theme-transition {
+          transition: background-color 0.3s ease, color 0.3s ease;
       }
-  ];
 
-  // Store markers for focusing
-  const markers = {};
+      .glass-effect {
+          backdrop-filter: blur(10px);
+          background: rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+      }
 
-  // Create custom markers for ATM locations
-  atmBsiData.forEach(atm => {
-      const marker = L.circleMarker([atm.lat, atm.lng], {
-          radius: 15,
-          fillColor: atm.color,
-          color: atm.color,
-          weight: 3,
-          opacity: 0.8,
-          fillOpacity: 0.6,
-          className: atm.alertLevel === 'critical' ? 'pulse-critical' : 'pulse-warning'
-      }).addTo(map);
+      .table-row-hover:hover {
+          transform: translateY(-1px);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
 
-      // Store marker reference
-      markers[atm.id] = marker;
+      .status-badge {
+          animation: pulse 2s infinite;
+      }
 
-      const locationIcon = L.divIcon({
-          html: `<div style="
-              color: white;
-              font-weight: bold;
-              font-size: 8px;
-              text-align: center;
-              line-height: 1.1;
-              text-shadow: 1px 1px 2px rgba(0,0,0,0.9);
-              padding: 2px;
-              max-width: 120px;
-              word-wrap: break-word;
-              background: rgba(0,0,0,0.7);
-              border-radius: 4px;
-          ">${atm.name}</div>`,
-          className: 'custom-location-icon',
-          iconSize: [120, 25],
-          iconAnchor: [60, 12]
-      });
+      @keyframes fadeInModal {
+          from { opacity: 0; transform: scale(0.9); }
+          to { opacity: 1; transform: scale(1); }
+      }
 
-      const textMarker = L.marker([atm.lat, atm.lng], { icon: locationIcon }).addTo(map);
+      .modal-content {
+          animation: fadeInModal 0.3s ease-out;
+      }
+  </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 theme-transition">
+  <!-- Main Content -->
+  <main id="mainContent" class="bg-gray-100 dark:bg-gray-900 theme-transition">
+    <div class="lg:pl-100 transition-all duration-300 theme-transition">
+        <!-- Header Section -->
+        <div class="p-6 bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Alert Archive</h1>
+                    <p class="text-gray-600 dark:text-gray-400 mt-1">Monitor and manage security alerts</p>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <button class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                        <i class="fas fa-download mr-2"></i>Export
+                    </button>
+                    <button class="px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">
+                        <i class="fas fa-filter mr-2"></i>Filter
+                    </button>
+                </div>
+            </div>
+        </div>
 
-      const alertIcon = atm.alertLevel === 'critical' ? '🚨' : '⚠️';
-      const alertClass = atm.alertLevel === 'critical' ? 'bg-red-100 text-red-800' : 'bg-orange-100 text-orange-800';
 
-      const popupContent = `
-          <div class="p-4 min-w-72">
-              <div class="font-bold text-lg mb-3 text-blue-700">${atm.name}</div>
-              <div class="space-y-3 text-sm">
-                  <div class="flex justify-between">
-                      <span class="font-medium">Kota:</span>
-                      <span>${atm.city}</span>
-                  </div>
-                  <div class="flex justify-between items-center">
-                      <span class="font-medium">Status Alert:</span>
-                      <span class="px-3 py-1 rounded-full text-xs font-medium ${alertClass}">
-                          ${alertIcon} ${atm.status}
-                      </span>
-                  </div>
-                  <div class="flex justify-between">
-                      <span class="font-medium">Level:</span>
-                      <span class="px-2 py-1 rounded text-xs font-medium uppercase" style="background-color: ${atm.color}20; color: ${atm.color}">
-                          ${atm.alertLevel}
-                      </span>
-                  </div>
-                  <div class="flex justify-between">
-                      <span class="font-medium">Last Update:</span>
-                      <span class="text-gray-600">${atm.lastUpdate}</span>
-                  </div>
-                  <div class="border-t pt-3 mt-3">
-                      <div class="font-medium text-gray-700 mb-2">Koordinat Lokasi:</div>
-                      <div class="grid grid-cols-2 gap-2 text-xs bg-gray-50 p-2 rounded">
-                          <div>
-                              <span class="font-medium">Latitude:</span><br>
-                              <span class="font-mono">${atm.lat}</span>
+
+        <!-- Filter Bar -->
+        <div class="px-6 pb-4">
+            <div class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm border border-gray-200 dark:border-gray-700">
+                <div class="flex flex-wrap items-center gap-4">
+                    <div class="flex items-center space-x-2">
+                        <label class="text-sm font-medium text-gray-700 dark:text-gray-300">Status:</label>
+                        <select class="px-3 py-1 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg text-sm">
+                            <option>All Status</option>
+                            <option>Active</option>
+                            <option>Closed</option>
+                        </select>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <label class="text-sm font-medium text-gray-700 dark:text-gray-300">Type:</label>
+                        <select class="px-3 py-1 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg text-sm">
+                            <option>All Types</option>
+                            <option>True Alarm</option>
+                            <option>False Alarm</option>
+                        </select>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <label class="text-sm font-medium text-gray-700 dark:text-gray-300">Owner:</label>
+                        <select class="px-3 py-1 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg text-sm">
+                            <option>All Owners</option>
+                            <option>PQA</option>
+                        </select>
+                    </div>
+                    <div class="flex-1"></div>
+                    <div class="flex items-center space-x-2">
+                        <input type="text" placeholder="Search alerts..." class="px-3 py-1 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg text-sm w-64">
+                        <button class="px-3 py-1 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Table Container -->
+        <div class="px-6 pb-6">
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead class="bg-gray-50 dark:bg-gray-700">
+                            <!-- Main Headers -->
+                            <tr>
+                                <th rowspan="2" class="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider border-r border-gray-200 dark:border-gray-600">
+                                    <input type="checkbox" class="rounded border-gray-300 dark:border-gray-600">
+                                </th>
+                                <th rowspan="2" class="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider border-r border-gray-200 dark:border-gray-600">Owner</th>
+                                <th rowspan="2" class="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider border-r border-gray-200 dark:border-gray-600">MID</th>
+                                <th rowspan="2" class="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider border-r border-gray-200 dark:border-gray-600">Device</th>
+                                <th rowspan="2" class="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider border-r border-gray-200 dark:border-gray-600">Holder</th>
+                                <th rowspan="2" class="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider border-r border-gray-200 dark:border-gray-600">Location</th>
+                                <th rowspan="2" class="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider border-r border-gray-200 dark:border-gray-600">Time</th>
+                                <th rowspan="2" class="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider border-r border-gray-200 dark:border-gray-600">Message</th>
+
+                                <th colspan="3" class="px-6 py-2 text-center text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider border-r border-gray-200 dark:border-gray-600">Closed Alert</th>
+                                <th rowspan="2" class="px-4 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider border-r border-gray-200 dark:border-gray-600">Duration</th>
+
+                            </tr>
+                            <!-- Sub Headers -->
+                            <tr>
+                                <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider border-r border-gray-200 dark:border-gray-600">Closing</th>
+                                <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider border-r border-gray-200 dark:border-gray-600">Time</th>
+                                <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider border-r border-gray-200 dark:border-gray-600">Closed By</th>
+
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                            <!-- Alert Row 1 -->
+                            <tr class="table-row-hover cursor-pointer transition-all duration-200 hover:bg-gray-50 dark:hover:bg-gray-700" onclick="openModal('modal1')">
+                                <td class="px-6 py-4">
+                                    <input type="checkbox" class="rounded border-gray-300 dark:border-gray-600" onclick="event.stopPropagation()">
+                                </td>
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center">
+                                        <div class="w-8 h-8 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center">
+                                            <span class="text-blue-600 dark:text-blue-400 text-sm font-medium">PQ</span>
+                                        </div>
+                                        <span class="ml-3 text-sm font-medium text-gray-900 dark:text-white">PQA</span>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 text-sm text-gray-900 dark:text-white font-mono">1001449</td>
+                                <td class="px-6 py-4 text-sm text-gray-900 dark:text-white font-mono">PQA0077</td>
+                                <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">ABACUS - (MALANG)</td>
+                                <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">Indomaret Klaseman</td>
+                                <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">09/01/2025 00:15:06</td>
+                                <td class="px-6 py-4">
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-400">
+                                        <i class="fas fa-power-off mr-1"></i>
+                                        POWER DOWN
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-400">
+                                        <i class="fas fa-exclamation-triangle mr-1"></i>
+                                        FAKE ALARM
+                                    </span>
+                                </td>
+                                <td class="px-4 py-4 text-sm text-gray-600 dark:text-gray-400">09/01/2025 02:32:42</td>
+                                <td class="px-4 py-4 text-sm text-gray-600 dark:text-gray-400">Muhammad Krisna...</td>
+                                <td class="px-4 py-4 text-sm text-gray-600 dark:text-gray-400">2h 17m</td>
+
+                            </tr>
+
+                            <!-- Alert Row 2 -->
+                            <tr class="table-row-hover cursor-pointer transition-all duration-200 hover:bg-gray-50 dark:hover:bg-gray-700" onclick="openModal('modal2')">
+                                <td class="px-6 py-4">
+                                    <input type="checkbox" class="rounded border-gray-300 dark:border-gray-600" onclick="event.stopPropagation()">
+                                </td>
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center">
+                                        <div class="w-8 h-8 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center">
+                                            <span class="text-blue-600 dark:text-blue-400 text-sm font-medium">PQ</span>
+                                        </div>
+                                        <span class="ml-3 text-sm font-medium text-gray-900 dark:text-white">PQA</span>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 text-sm text-gray-900 dark:text-white font-mono">1001449</td>
+                                <td class="px-6 py-4 text-sm text-gray-900 dark:text-white font-mono">PQA0077</td>
+                                <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">ABACUS - (MALANG)</td>
+                                <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">Indomaret Klaseman</td>
+                                <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">19/12/2024 19:31:10</td>
+                                <td class="px-6 py-4">
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-100 dark:bg-orange-900/30 text-orange-800 dark:text-orange-400">
+                                        <i class="fas fa-fire mr-1"></i>
+                                        HEAT DETECTED
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400 status-badge">
+                                        <i class="fas fa-check-circle mr-1"></i>
+                                        TRUE ALARM
+                                    </span>
+                                </td>
+                                <td class="px-4 py-4 text-sm text-gray-600 dark:text-gray-400">19/12/2024 19:32:00</td>
+                                <td class="px-4 py-4 text-sm text-gray-600 dark:text-gray-400">Wiko Gedring Esa Di...</td>
+                                <td class="px-4 py-4 text-sm text-gray-600 dark:text-gray-400">0m</td>
+
+                            </tr>
+
+                            <!-- Alert Row 3 -->
+                            <tr class="table-row-hover cursor-pointer transition-all duration-200 hover:bg-gray-50 dark:hover:bg-gray-700" onclick="openModal('modal3')">
+                                <td class="px-6 py-4">
+                                    <input type="checkbox" class="rounded border-gray-300 dark:border-gray-600" onclick="event.stopPropagation()">
+                                </td>
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center">
+                                        <div class="w-8 h-8 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center">
+                                            <span class="text-blue-600 dark:text-blue-400 text-sm font-medium">PQ</span>
+                                        </div>
+                                        <span class="ml-3 text-sm font-medium text-gray-900 dark:text-white">PQA</span>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 text-sm text-gray-900 dark:text-white font-mono">1001449</td>
+                                <td class="px-6 py-4 text-sm text-gray-900 dark:text-white font-mono">PQA0077</td>
+                                <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">ABACUS - (MALANG)</td>
+                                <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">Indomaret Klaseman</td>
+                                <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">19/12/2024 19:35:57</td>
+                                <td class="px-6 py-4">
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-400">
+                                        <i class="fas fa-bolt mr-1"></i>
+                                        SHOCK DETECTED
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400 status-badge">
+                                        <i class="fas fa-check-circle mr-1"></i>
+                                        TRUE ALARM
+                                    </span>
+                                </td>
+                                <td class="px-4 py-4 text-sm text-gray-600 dark:text-gray-400">19/12/2024 19:32:00</td>
+                                <td class="px-4 py-4 text-sm text-gray-600 dark:text-gray-400">Wiko Gedring Esa Di...</td>
+                                <td class="px-4 py-4 text-sm text-gray-600 dark:text-gray-400">0m</td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Pagination -->
+                <div class="bg-white dark:bg-gray-800 px-6 py-4 border-t border-gray-200 dark:border-gray-700">
+                    <div class="flex items-center justify-between">
+                        <div class="text-sm text-gray-600 dark:text-gray-400">
+                            Showing <span class="font-medium">1</span> to <span class="font-medium">50</span> of <span class="font-medium">283,536</span> results
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button class="px-3 py-1 text-sm bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">
+                                Previous
+                            </button>
+                            <button class="px-3 py-1 text-sm bg-blue-600 text-white rounded-lg">1</button>
+                            <button class="px-3 py-1 text-sm bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">2</button>
+                            <button class="px-3 py-1 text-sm bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">3</button>
+                            <span class="px-2 text-gray-500">...</span>
+                            <button class="px-3 py-1 text-sm bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">5671</button>
+                            <button class="px-3 py-1 text-sm bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">
+                                Next
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+  <!-- Modal 1 - Power Down Alert -->
+<div id="modal1" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50">
+  <div class="modal-content bg-white dark:bg-gray-900 rounded-2xl shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto">
+      <!-- Header -->
+      <div class="relative p-6 border-b border-gray-200 dark:border-gray-700">
+          <div class="absolute inset-0 bg-gradient-to-r from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-800/20 rounded-t-2xl"></div>
+          <div class="relative flex items-center justify-between">
+              <div>
+                  <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Indomaret Klaseman / PQA0077</h1>
+                  <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-bold bg-red-100 dark:bg-red-900/40 text-red-800 dark:text-red-400 mt-2">
+                      <i class="fas fa-power-off mr-2"></i>
+                      POWER DOWN ALERT
+                  </span>
+              </div>
+              <button onclick="closeModal('modal1')" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                  <i class="fas fa-times text-xl"></i>
+              </button>
+          </div>
+      </div>
+
+      <div class="p-6">
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              <!-- Left Column -->
+              <div class="lg:col-span-2 space-y-6">
+                  <!-- Info Ticket Section -->
+                  <div class="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 rounded-xl p-4 border border-gray-200 dark:border-gray-600">
+                      <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center">
+                          <i class="fas fa-ticket-alt mr-2 text-red-500"></i>
+                          Info Ticket
+                      </h3>
+                      <div class="grid grid-cols-3 gap-4 text-sm">
+                          <div class="bg-white dark:bg-gray-900 rounded-lg p-3 border border-gray-200 dark:border-gray-600">
+                              <span class="text-xs font-medium text-gray-600 dark:text-gray-400 uppercase tracking-wide">Ticket ID</span>
+                              <p class="font-mono text-lg font-bold text-gray-900 dark:text-white">#1001449</p>
                           </div>
-                          <div>
-                              <span class="font-medium">Longitude:</span><br>
-                              <span class="font-mono">${atm.lng}</span>
+                          <div class="bg-white dark:bg-gray-900 rounded-lg p-3 border border-gray-200 dark:border-gray-600">
+                              <span class="text-xs font-medium text-gray-600 dark:text-gray-400 uppercase tracking-wide">Opened</span>
+                              <p class="text-gray-900 dark:text-white font-semibold">2024-12-19</p>
+                              <p class="text-gray-600 dark:text-gray-400 text-xs">19:31:10</p>
+                          </div>
+                          <div class="bg-white dark:bg-gray-900 rounded-lg p-3 border border-gray-200 dark:border-gray-600">
+                              <span class="text-xs font-medium text-gray-600 dark:text-gray-400 uppercase tracking-wide">Status</span>
+                              <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-bold bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-400 mt-1">
+                                  <i class="fas fa-exclamation-triangle mr-1"></i>
+                                  FAKE ALARM
+                              </span>
                           </div>
                       </div>
                   </div>
-                  <div class="mt-3 p-2 bg-yellow-50 border-l-4 border-yellow-400 text-xs text-yellow-700">
-                      <strong>⚡ Security Alert Active</strong><br>
-                      Immediate attention required for this location.
+
+                  <!-- Message Alert Section -->
+                  <div class="bg-gradient-to-br from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-800/20 rounded-xl p-4 border border-red-200 dark:border-red-700">
+                      <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center">
+                          <i class="fas fa-bell mr-2 text-red-500"></i>
+                          Alert Messages
+                      </h3>
+                      <div class="space-y-3">
+                          <div class="flex items-center space-x-3 bg-white dark:bg-gray-900 rounded-lg p-3 border border-red-200 dark:border-red-700">
+                              <div class="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
+                              <div class="flex-1">
+                                  <span class="font-semibold text-red-600 dark:text-red-400">HEAT DETECTED (85°C)</span>
+                                  <p class="text-xs text-gray-500 mt-1">Critical temperature threshold exceeded</p>
+                              </div>
+                              <span class="text-xs text-gray-500 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">19:31:10</span>
+                          </div>
+                      </div>
+                  </div>
+
+                  <!-- Device Information Section -->
+                  <div class="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 rounded-xl p-4 border border-blue-200 dark:border-blue-700">
+                      <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center">
+                          <i class="fas fa-microchip mr-2 text-blue-500"></i>
+                          Device Information
+                      </h3>
+                      <div class="grid grid-cols-2 gap-4">
+                          <div class="bg-white dark:bg-gray-900 rounded-lg p-3 border border-blue-200 dark:border-blue-700">
+                              <span class="text-xs font-medium text-gray-600 dark:text-gray-400 uppercase tracking-wide">Device ID</span>
+                              <p class="font-mono text-gray-900 dark:text-white font-bold">PQA0077</p>
+                              <span class="text-xs font-medium text-gray-600 dark:text-gray-400 uppercase tracking-wide mt-2 block">Owner</span>
+                              <p class="text-gray-900 dark:text-white">PQA</p>
+                          </div>
+                          <div class="bg-white dark:bg-gray-900 rounded-lg p-3 border border-blue-200 dark:border-blue-700">
+                              <span class="text-xs font-medium text-gray-600 dark:text-gray-400 uppercase tracking-wide">Holder</span>
+                              <p class="text-gray-900 dark:text-white font-semibold">ABACUS - (MALANG)</p>
+                              <span class="text-xs font-medium text-gray-600 dark:text-gray-400 uppercase tracking-wide mt-2 block">Location</span>
+                              <p class="text-gray-900 dark:text-white">Indomaret Klaseman, MALANG</p>
+                          </div>
+                      </div>
+                  </div>
+
+                  <!-- Media Section -->
+                  <div class="bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 rounded-xl p-4 border border-purple-200 dark:border-purple-700">
+                      <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center">
+                          <i class="fas fa-photo-video mr-2 text-purple-500"></i>
+                          Photos & Videos
+                      </h3>
+                      <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                          <!-- Photo thumbnails -->
+                          <div class="relative group cursor-pointer">
+                              <div class="bg-gray-300 dark:bg-gray-600 rounded-lg aspect-square flex items-center justify-center hover:bg-gray-400 dark:hover:bg-gray-500 transition-colors">
+                                  <i class="fas fa-image text-2xl text-gray-500 dark:text-gray-400"></i>
+                              </div>
+                              <div class="absolute inset-0 bg-black bg-opacity-50 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                  <i class="fas fa-expand text-white text-lg"></i>
+                              </div>
+
+                          </div>
+                          <div class="relative group cursor-pointer">
+                              <div class="bg-gray-300 dark:bg-gray-600 rounded-lg aspect-square flex items-center justify-center hover:bg-gray-400 dark:hover:bg-gray-500 transition-colors">
+                                  <i class="fas fa-image text-2xl text-gray-500 dark:text-gray-400"></i>
+                              </div>
+                              <div class="absolute inset-0 bg-black bg-opacity-50 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                  <i class="fas fa-expand text-white text-lg"></i>
+                              </div>
+
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+
+              <!-- Right Column - Timeline -->
+              <div class="lg:col-span-1">
+                  <div class="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 rounded-xl p-4 border border-gray-200 dark:border-gray-600 sticky top-4">
+                      <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center">
+                          <i class="fas fa-clock mr-2 text-green-500"></i>
+                          Status Timeline
+                      </h3>
+                      <div class="space-y-4">
+                          <!-- Timeline Item 1 -->
+                          <div class="relative flex items-start space-x-3">
+                              <div class="absolute left-3 top-8 w-0.5 h-16 bg-gray-300 dark:bg-gray-600"></div>
+                              <div class="flex-shrink-0 relative z-10">
+                                  <span class="inline-flex items-center justify-center w-6 h-6 bg-green-500 text-white rounded-full">
+                                      <i class="fas fa-play text-xs"></i>
+                                  </span>
+                              </div>
+                              <div class="min-w-0 flex-1">
+                                  <div class="bg-white dark:bg-gray-900 rounded-lg p-3 border border-gray-200 dark:border-gray-600">
+                                      <p class="text-sm font-semibold text-gray-900 dark:text-white">START</p>
+                                      <p class="text-xs text-gray-600 dark:text-gray-400 mt-1">System monitoring active</p>
+                                  </div>
+                              </div>
+                          </div>
+
+                          <!-- Timeline Item 2 -->
+                          <div class="relative flex items-start space-x-3">
+                              <div class="absolute left-3 top-8 w-0.5 h-16 bg-gray-300 dark:bg-gray-600"></div>
+                              <div class="flex-shrink-0 relative z-10">
+                                  <span class="inline-flex items-center justify-center w-6 h-6 bg-purple-500 text-white rounded-full">
+                                      <i class="fas fa-bolt text-xs"></i>
+                                  </span>
+                              </div>
+                              <div class="min-w-0 flex-1">
+                                  <div class="bg-white dark:bg-gray-900 rounded-lg p-3 border border-purple-200 dark:border-purple-600">
+                                      <p class="text-sm font-semibold text-purple-600 dark:text-purple-400">SHOCK DETECTED</p>
+                                      <p class="text-xs text-gray-600 dark:text-gray-400 mt-1">Physical impact detected (4.2G)</p>
+                                      <span class="text-xs text-gray-500 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded mt-2 inline-block">19:35:57</span>
+                                  </div>
+                              </div>
+                          </div>
+
+                          <!-- Timeline Item 3 -->
+                          <div class="relative flex items-start space-x-3">
+                              <div class="absolute left-3 top-8 w-0.5 h-16 bg-gray-300 dark:bg-gray-600"></div>
+                              <div class="flex-shrink-0 relative z-10">
+                                  <span class="inline-flex items-center justify-center w-6 h-6 bg-blue-500 text-white rounded-full">
+                                      <i class="fas fa-search text-xs"></i>
+                                  </span>
+                              </div>
+                              <div class="min-w-0 flex-1">
+                                  <div class="bg-white dark:bg-gray-900 rounded-lg p-3 border border-blue-200 dark:border-blue-600">
+                                      <p class="text-sm font-semibold text-blue-600 dark:text-blue-400">INVESTIGATING</p>
+                                      <p class="text-xs text-gray-600 dark:text-gray-400 mt-1">Security team dispatched</p>
+                                      <span class="text-xs text-gray-500 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded mt-2 inline-block">19:40:15</span>
+                                  </div>
+                              </div>
+                          </div>
+
+                          <!-- Timeline Item 4 -->
+                          <div class="relative flex items-start space-x-3">
+                              <div class="absolute left-3 top-8 w-0.5 h-16 bg-gray-300 dark:bg-gray-600"></div>
+                              <div class="flex-shrink-0 relative z-10">
+                                  <span class="inline-flex items-center justify-center w-6 h-6 bg-orange-500 text-white rounded-full">
+                                      <i class="fas fa-camera text-xs"></i>
+                                  </span>
+                              </div>
+                              <div class="min-w-0 flex-1">
+                                  <div class="bg-white dark:bg-gray-900 rounded-lg p-3 border border-orange-200 dark:border-orange-600">
+                                      <p class="text-sm font-semibold text-orange-600 dark:text-orange-400">EVIDENCE COLLECTED</p>
+                                      <p class="text-xs text-gray-600 dark:text-gray-400 mt-1">Photos and video captured</p>
+                                      <span class="text-xs text-gray-500 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded mt-2 inline-block">20:05:22</span>
+                                  </div>
+                              </div>
+                          </div>
+
+                          <!-- Timeline Item 5 -->
+                          <div class="relative flex items-start space-x-3">
+                              <div class="flex-shrink-0 relative z-10">
+                                  <span class="inline-flex items-center justify-center w-6 h-6 bg-green-500 text-white rounded-full">
+                                      <i class="fas fa-check text-xs"></i>
+                                  </span>
+                              </div>
+                              <div class="min-w-0 flex-1">
+                                  <div class="bg-white dark:bg-gray-900 rounded-lg p-3 border border-green-200 dark:border-green-600">
+                                      <p class="text-sm font-semibold text-green-600 dark:text-green-400">RESOLVED</p>
+                                      <p class="text-xs text-gray-600 dark:text-gray-400 mt-1">No damage found - incident closed</p>
+                                      <span class="text-xs text-gray-500 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded mt-2 inline-block">20:15:30</span>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
                   </div>
               </div>
           </div>
-      `;
+      </div>
+  </div>
+</div>
 
-      marker.bindPopup(popupContent);
-      textMarker.bindPopup(popupContent);
+
+<script>
+  function openModal(modalId) {
+      document.getElementById(modalId).classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal(modalId) {
+      document.getElementById(modalId).classList.add('hidden');
+      document.body.style.overflow = 'auto';
+  }
+
+  // Close modal when clicking outside
+  document.addEventListener('click', function(event) {
+      if (event.target.classList.contains('fixed') && event.target.classList.contains('inset-0')) {
+          const modals = ['modal1', 'modal2'];
+          modals.forEach(modalId => {
+              if (!document.getElementById(modalId).classList.contains('hidden')) {
+                  closeModal(modalId);
+              }
+          });
+      }
   });
 
-  // Function to focus on ATM when clicked from table
-  function focusATM(atmId) {
-      const atm = atmBsiData.find(a => a.id === atmId);
-      const marker = markers[atmId];
-
-      if (atm && marker) {
-          map.setView([atm.lat, atm.lng], 12);
-          marker.openPopup();
+  // Close modal with Escape key
+  document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+          const modals = ['modal1', 'modal2'];
+          modals.forEach(modalId => {
+              if (!document.getElementById(modalId).classList.contains('hidden')) {
+                  closeModal(modalId);
+              }
+          });
       }
-  }
-
-  // Draggable panel functionality
-  let isDragging = false;
-  let currentX;
-  let currentY;
-  let initialX;
-  let initialY;
-  let xOffset = 0;
-  let yOffset = 0;
-
-  const alertPanel = document.getElementById('alertPanel');
-  const panelHeader = document.getElementById('panelHeader');
-  const minimizeBtn = document.getElementById('minimizeBtn');
-  const closeBtn = document.getElementById('closeBtn');
-  const toggleBtn = document.getElementById('toggleBtn');
-  const panelContent = document.getElementById('panelContent');
-
-  function dragStart(e) {
-      if (e.type === "touchstart") {
-          initialX = e.touches[0].clientX - xOffset;
-          initialY = e.touches[0].clientY - yOffset;
-      } else {
-          initialX = e.clientX - xOffset;
-          initialY = e.clientY - yOffset;
-      }
-
-      if (e.target === panelHeader || panelHeader.contains(e.target)) {
-          isDragging = true;
-      }
-  }
-
-  function dragEnd(e) {
-      initialX = currentX;
-      initialY = currentY;
-      isDragging = false;
-  }
-
-  function drag(e) {
-      if (isDragging) {
-          e.preventDefault();
-
-          if (e.type === "touchmove") {
-              currentX = e.touches[0].clientX - initialX;
-              currentY = e.touches[0].clientY - initialY;
-          } else {
-              currentX = e.clientX - initialX;
-              currentY = e.clientY - initialY;
-          }
-
-          xOffset = currentX;
-          yOffset = currentY;
-
-          setTranslate(currentX, currentY, alertPanel);
-      }
-  }
-
-  function setTranslate(xPos, yPos, el) {
-      el.style.transform = `translate3d(${xPos}px, ${yPos}px, 0)`;
-  }
-
-  // Event listeners for dragging
-  panelHeader.addEventListener("mousedown", dragStart, false);
-  document.addEventListener("mouseup", dragEnd, false);
-  document.addEventListener("mousemove", drag, false);
-
-  // Touch events
-  panelHeader.addEventListener("touchstart", dragStart, false);
-  document.addEventListener("touchend", dragEnd, false);
-  document.addEventListener("touchmove", drag, false);
-
-  // Panel controls
-  minimizeBtn.addEventListener('click', () => {
-      panelContent.style.display = panelContent.style.display === 'none' ? 'block' : 'none';
-      minimizeBtn.innerHTML = panelContent.style.display === 'none' ? '<span class="text-xs font-bold text-white">+</span>' : '<span class="text-xs font-bold text-white">-</span>';
   });
-
-  closeBtn.addEventListener('click', () => {
-      alertPanel.style.display = 'none';
-      toggleBtn.style.display = 'block';
-  });
-
-  toggleBtn.addEventListener('click', () => {
-      alertPanel.style.display = 'block';
-      toggleBtn.style.display = 'none';
-  });
-
-  // Styling
-  const style = document.createElement('style');
-  style.textContent = `
-      .custom-location-icon {
-          background: transparent !important;
-          border: none !important;
-          pointer-events: auto;
-      }
-      .leaflet-popup-content-wrapper {
-          border-radius: 8px;
-          box-shadow: 0 8px 25px -5px rgba(0, 0, 0, 0.1);
-          border: 1px solid rgba(0, 0, 0, 0.05);
-      }
-      .leaflet-popup-content {
-          margin: 0 !important;
-          max-width: 350px !important;
-      }
-      .leaflet-clickable {
-          cursor: pointer;
-      }
-
-      .pulse-critical {
-          animation: pulse-red 2s infinite;
-      }
-
-      .pulse-warning {
-          animation: pulse-orange 2s infinite;
-      }
-
-      @keyframes pulse-red {
-          0% {
-              box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
-          }
-          70% {
-              box-shadow: 0 0 0 10px rgba(239, 68, 68, 0);
-          }
-          100% {
-              box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
-          }
-      }
-
-      @keyframes pulse-orange {
-          0% {
-              box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7);
-          }
-          70% {
-              box-shadow: 0 0 0 10px rgba(245, 158, 11, 0);
-          }
-          100% {
-              box-shadow: 0 0 0 0 rgba(245, 158, 11, 0);
-          }
-      }
-
-      #alertPanel {
-          user-select: none;
-          z-index: 1000;
-      }
-
-      #panelHeader {
-          user-select: none;
-      }
-
-      .z-999 {
-          z-index: 999;
-      }
-
-      .z-1000 {
-          z-index: 1000;
-      }
-  `;
-  document.head.appendChild(style);
 </script>
+
+<style>
+  .modal-content {
+      animation: modalSlideIn 0.3s ease-out;
+  }
+
+  @keyframes modalSlideIn {
+      from {
+          opacity: 0;
+          transform: scale(0.9) translateY(-20px);
+      }
+      to {
+          opacity: 1;
+          transform: scale(1) translateY(0);
+      }
+  }
+</style>
+
+  <script>
+      function openModal(modalId) {
+          document.getElementById(modalId).classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal(modalId) {
+          document.getElementById(modalId).classList.add('hidden');
+          document.body.style.overflow = 'auto';
+      }
+
+      // Close modal when clicking outside of it
+      window.onclick = function(event) {
+          const modals = ['modal1', 'modal2', 'modal3'];
+          modals.forEach(modalId => {
+              const modal = document.getElementById(modalId);
+              if (event.target === modal) {
+                  closeModal(modalId);
+              }
+          });
+      }
+
+      // Close modal with ESC key
+      document.addEventListener('keydown', function(event) {
+          if (event.key === 'Escape') {
+              const modals = ['modal1', 'modal2', 'modal3'];
+              modals.forEach(modalId => {
+                  const modal = document.getElementById(modalId);
+                  if (!modal.classList.contains('hidden')) {
+                      closeModal(modalId);
+                  }
+              });
+          }
+      });
+
+
+  </script>
 
           <!-- Footer -->
           <div class="mt-8 text-center">

@@ -31,7 +31,7 @@
     <script src="/script.js"></script>
     <script src="/"></script>
 
-  
+
   </head>
   <body class="bg-gray-50 dark:bg-gray-900 theme-transition">
     <!-- Sidebar -->
@@ -84,7 +84,7 @@ class="fixed inset-y-0 left-0 shadow-lg -translate-x-full transition-transform d
           <span class="transition-all duration-300 group-hover:text-orange-600 dark:group-hover:text-orange-300 transform group-hover:translate-x-1">Monitoring</span>
         </a>
       </li>
-    
+
       <li>
         <a href="report-analytics.html" class="group flex items-center px-3 py-2 text-xs text-dark-800 hover:bg-orange-50 dark:text-orange-300 dark:hover:bg-orange-900/30 rounded-md transition-all duration-200">
           <i class="fas fa-chart-line w-5 text-center mr-2 text-dark-500 group-hover:text-orange-600 dark:text-orange-400 dark:group-hover:text-orange-300 transition-all"></i>
@@ -144,7 +144,7 @@ class="fixed inset-y-0 left-0 shadow-lg -translate-x-full transition-transform d
     <div class="text-xs font-bold uppercase tracking-wider text-dark-600 dark:text-indigo-400 mb-2">HISTORY & ARCHIVE</div>
     <ul>
       <li>
-        <a href="#" class="group flex items-center px-3 py-2 text-xs text-dark-800 hover:bg-indigo-50 dark:text-indigo-300 dark:hover:bg-indigo-900/30 rounded-md transition-all duration-200">
+        <a href="/archive-alert.html" class="group flex items-center px-3 py-2 text-xs text-dark-800 hover:bg-indigo-50 dark:text-indigo-300 dark:hover:bg-indigo-900/30 rounded-md transition-all duration-200">
           <i class="fas fa-bell w-5 text-center mr-2 text-dark-500 group-hover:text-indigo-600 dark:text-indigo-400 dark:group-hover:text-indigo-300 transition-all"></i>
           <span class="transition-all duration-300 group-hover:text-indigo-600 dark:group-hover:text-indigo-300 transform group-hover:translate-x-1">Archive Alert</span>
         </a>
@@ -333,7 +333,7 @@ class="fixed inset-y-0 left-0 shadow-lg -translate-x-full transition-transform d
             class="h-10 ml-2 w-25"
           />
         </div>
-        
+
         <!-- Right section - pushed to the right edge -->
         <div class="flex items-center">
           <!-- Dark mode toggle -->
@@ -343,7 +343,7 @@ class="fixed inset-y-0 left-0 shadow-lg -translate-x-full transition-transform d
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M1 1h16v16H1zm19 6h3v16H7v-3"/></svg>
           </button>
-  
+
           <button
             id="darkModeToggle"
             class="p-2 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none mr-3 transition-all duration-200"
@@ -351,7 +351,7 @@ class="fixed inset-y-0 left-0 shadow-lg -translate-x-full transition-transform d
             <i class="fas fa-moon dark:hidden"></i>
             <i class="fas fa-sun hidden dark:block"></i>
           </button>
-  
+
           <div class="ml-3 flex items-center">
             <div
               class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-full h-8 w-8 flex items-center justify-center shadow-md"
@@ -609,13 +609,13 @@ class="fixed inset-y-0 left-0 shadow-lg -translate-x-full transition-transform d
                 <canvas id="locations-chart"></canvas>
               </div>
             </div>
-           
 
-                
+
+
             <div class="alert-log">
               <div class="alert-header">
                 <h3>
-                  <i class="fas fa-exclamation-triangle animate-pulse"></i> 
+                  <i class="fas fa-exclamation-triangle animate-pulse"></i>
                   Real-time Alert Log
                   <span class="alert-count animate-bounce">5</span>
                 </h3>
@@ -686,8 +686,8 @@ class="fixed inset-y-0 left-0 shadow-lg -translate-x-full transition-transform d
                 </div>
               </div>
             </div>
-            
-          
+
+
           <div class="chart-card lg:col-span-2">
               <div class="chart-header">
                 <h3>Top 6 Location People Counting Trend</h3>
@@ -696,8 +696,8 @@ class="fixed inset-y-0 left-0 shadow-lg -translate-x-full transition-transform d
                 <canvas id="people-counting-chart"></canvas>
               </div>
             </div>
-           
-            
+
+
             <div class="pie-chart-card">
               <h3>All Fascia Status</h3>
               <div class="pie-chart-container">
@@ -750,12 +750,12 @@ class="fixed inset-y-0 left-0 shadow-lg -translate-x-full transition-transform d
 
            <div class="top-detections-table">
       <div class="header-detection">
-        
+
   <h2>All ATM Detection</h2>
   <div class="search-bar">
-    <input 
-      type="text" 
-      id="searchInput" 
+    <input
+      type="text"
+      id="searchInput"
       placeholder="Search by ATM name or detection values..."
       onkeyup="if(event.key === 'Enter') searchTable()"
     >
@@ -775,11 +775,11 @@ class="fixed inset-y-0 left-0 shadow-lg -translate-x-full transition-transform d
     </div>
   </div>
 </div>
-  
-   
+
+
 
       <div class="detection-table-container">
-        
+
         <table class="detection-table" id="atmTable">
      <thead>
   <tr>
@@ -800,7 +800,7 @@ class="fixed inset-y-0 left-0 shadow-lg -translate-x-full transition-transform d
           </tbody>
         </table>
       </div>
-      
+
       <div class="pagination" id="pagination">
         <!-- Pagination will be generated via JavaScript -->
       </div>
@@ -978,15 +978,15 @@ class="fixed inset-y-0 left-0 shadow-lg -translate-x-full transition-transform d
 // Counter animation
 function animateCounters() {
   const counters = document.querySelectorAll('.counter-animate[data-target]');
-  
+
   counters.forEach(counter => {
     const target = parseInt(counter.getAttribute('data-target'));
     const duration = 2000; // 2 seconds
     const step = target / (duration / 16); // 60fps
     let current = 0;
-    
+
     counter.style.opacity = '1';
-    
+
     const timer = setInterval(() => {
       current += step;
       if (current >= target) {
@@ -1003,25 +1003,25 @@ function animateCounters() {
 document.addEventListener('DOMContentLoaded', function() {
   // Delay counter animation
   setTimeout(animateCounters, 500);
-  
+
   // Add staggered animation to alert items
   const alertItems = document.querySelectorAll('.alert-item');
   alertItems.forEach((item, index) => {
     item.style.animationDelay = `${index * 0.1}s`;
   });
-  
+
   // Add hover effects to cards
   const cards = document.querySelectorAll('.card-animate');
   cards.forEach(card => {
     card.addEventListener('mouseenter', function() {
       this.style.transform = 'translateY(-8px) scale(1.02)';
     });
-    
+
     card.addEventListener('mouseleave', function() {
       this.style.transform = 'translateY(0) scale(1)';
     });
   });
-  
+
   // Real-time updates simulation
   setInterval(() => {
     const alertCount = document.querySelector('.alert-count');
@@ -1040,7 +1040,7 @@ function addLoadingStates() {
   cards.forEach((card, index) => {
     card.style.opacity = '0';
     card.style.transform = 'translateY(50px)';
-    
+
     setTimeout(() => {
       card.style.opacity = '1';
       card.style.transform = 'translateY(0)';
@@ -1053,7 +1053,7 @@ window.addEventListener('load', addLoadingStates);
 </script>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-      
+
     </div>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
@@ -1390,13 +1390,13 @@ window.addEventListener('load', addLoadingStates);
                 document.querySelectorAll('.chart-tabs .chart-tab').forEach(t => {
                     t.classList.remove('active');
                 });
-                
+
                 // Add active class to clicked tab
                 this.classList.add('active');
-                
+
                 // Update chart data based on selected tab
                 const tabText = this.textContent.trim();
-                
+
                 if (tabText === 'Helm Detection') {
                     activityChart.data.datasets[0].label = 'Helm Detections';
                     activityChart.data.datasets[0].data = [42, 58, 65, 72, 80, 95, 75];
@@ -1418,7 +1418,7 @@ window.addEventListener('load', addLoadingStates);
                     activityChart.data.datasets[0].borderColor = '#ef233c';
                     activityChart.data.datasets[0].backgroundColor = 'rgba(239, 35, 60, 0.1)';
                 }
-                
+
                 activityChart.update();
             });
         });
@@ -1431,10 +1431,10 @@ window.addEventListener('load', addLoadingStates);
                     this.parentElement.querySelectorAll('.chart-tab').forEach(t => {
                         t.classList.remove('active');
                     });
-                    
+
                     // Add active class to clicked tab
                     this.classList.add('active');
-                    
+
                     // You would update the chart data here based on the selected tab
                     // For now, we'll just demonstrate the UI change
                 });
@@ -1448,10 +1448,10 @@ window.addEventListener('load', addLoadingStates);
                 document.querySelectorAll('.alert-filter button').forEach(b => {
                     b.classList.remove('active');
                 });
-                
+
                 // Add active class to clicked button
                 this.classList.add('active');
-                
+
                 // You would filter the alerts here based on the selected filter
             });
         });
@@ -1491,28 +1491,28 @@ window.addEventListener('load', addLoadingStates);
         document.getElementById('region-select').addEventListener('change', function() {
             updateDashboard();
         });
-        
+
         document.getElementById('location-select').addEventListener('change', function() {
             updateDashboard();
         });
-        
+
         document.getElementById('date-select').addEventListener('change', function() {
             updateDashboard();
         });
-        
+
         function updateDashboard() {
             const region = document.getElementById('region-select').value;
             const location = document.getElementById('location-select').value;
             const date = document.getElementById('date-select').value;
-            
+
             console.log(`Filters updated: ${region}, ${location}, ${date}`);
             // You would update all charts and data based on the new filters
-            
+
             // For demonstration, let's simulate a loading state
             document.querySelectorAll('.chart-container').forEach(container => {
                 container.style.opacity = '0.5';
             });
-            
+
             setTimeout(() => {
                 document.querySelectorAll('.chart-container').forEach(container => {
                     container.style.opacity = '1';
@@ -1523,22 +1523,22 @@ window.addEventListener('load', addLoadingStates);
         document.addEventListener('DOMContentLoaded', function() {
     // Pagination functionality could be implemented here
     const paginationButtons = document.querySelectorAll('.pagination-btn');
-    
+
     paginationButtons.forEach(button => {
         button.addEventListener('click', function() {
             // Remove active class from all buttons
             paginationButtons.forEach(btn => btn.classList.remove('active'));
-            
+
             // Add active class to clicked button
             this.classList.add('active');
-            
+
             // In a real implementation, this would trigger loading of different data
             // For this demo, we'll just update the info text
             const pageNumber = this.textContent;
             const startItem = (pageNumber - 1) * 10 + 1;
             const endItem = Math.min(pageNumber * 10, 500);
-            
-            document.querySelector('.pagination-info').textContent = 
+
+            document.querySelector('.pagination-info').textContent =
                 `Showing ${startItem}-${endItem} of 500 ATMs`;
         });
     });
@@ -1686,7 +1686,7 @@ window.addEventListener('load', addLoadingStates);
     for (let i = 0; i < 38; i++) {
       const randomIndex = Math.floor(Math.random() * atmData.length);
       const baseName = atmData[randomIndex].atm;
-      
+
       atmData.push({
         atm: `${baseName} ${i+1}`,
         helm: Math.floor(Math.random() * 20) + 1,
@@ -1715,10 +1715,10 @@ window.addEventListener('load', addLoadingStates);
     function renderTable() {
   const tableBody = document.getElementById('tableBody');
   tableBody.innerHTML = '';
-  
+
   const start = (currentPage - 1) * rowsPerPage;
   const end = Math.min(start + rowsPerPage, filteredData.length);
-  
+
   if (filteredData.length === 0) {
     tableBody.innerHTML = `
       <tr>
@@ -1727,11 +1727,11 @@ window.addEventListener('load', addLoadingStates);
     `;
     return;
   }
-  
+
   for (let i = start; i < end; i++) {
     const item = filteredData[i];
     const row = document.createElement('tr');
-    
+
     row.innerHTML = `
       <td><input type="checkbox" class="row-checkbox" data-atm="${item.atm}"></td>
       <td>${item.atm}</td>
@@ -1743,7 +1743,7 @@ window.addEventListener('load', addLoadingStates);
       <td>${item.multiplePerson > 0 ? `<span class="alert">${item.multiplePerson}</span>` : '0'}</td>
       <td>Open: ${item.fasciaAtas}<br />Closed: ${item.fasciaBawah}</td>
     `;
-    
+
     tableBody.appendChild(row);
   }
 }
@@ -1752,9 +1752,9 @@ window.addEventListener('load', addLoadingStates);
     function renderPagination() {
       const pagination = document.getElementById('pagination');
       pagination.innerHTML = '';
-      
+
       const totalPages = Math.ceil(filteredData.length / rowsPerPage);
-      
+
       // Create pagination buttons
       if (totalPages > 1) {
         // First page button
@@ -1763,7 +1763,7 @@ window.addEventListener('load', addLoadingStates);
         firstBtn.textContent = '1';
         firstBtn.onclick = () => goToPage(1);
         pagination.appendChild(firstBtn);
-        
+
         // Show ellipsis for many pages
         if (currentPage > 3) {
           const ellipsis = document.createElement('span');
@@ -1771,18 +1771,18 @@ window.addEventListener('load', addLoadingStates);
           ellipsis.textContent = '...';
           pagination.appendChild(ellipsis);
         }
-        
+
         // Show surrounding pages
         for (let i = Math.max(2, currentPage - 1); i <= Math.min(totalPages - 1, currentPage + 1); i++) {
           if (i === 1 || i === totalPages) continue; // Skip first and last as they're added separately
-          
+
           const btn = document.createElement('button');
           btn.className = `pagination-btn${currentPage === i ? ' active' : ''}`;
           btn.textContent = i;
           btn.onclick = () => goToPage(i);
           pagination.appendChild(btn);
         }
-        
+
         // Show ellipsis for many pages
         if (currentPage < totalPages - 2) {
           const ellipsis = document.createElement('span');
@@ -1790,7 +1790,7 @@ window.addEventListener('load', addLoadingStates);
           ellipsis.textContent = '...';
           pagination.appendChild(ellipsis);
         }
-        
+
         // Last page button (if more than one page)
         if (totalPages > 1) {
           const lastBtn = document.createElement('button');
@@ -1800,7 +1800,7 @@ window.addEventListener('load', addLoadingStates);
           pagination.appendChild(lastBtn);
         }
       }
-      
+
       // Page info
       const pageInfo = document.createElement('div');
       pageInfo.className = 'pagination-info';
@@ -1820,7 +1820,7 @@ window.addEventListener('load', addLoadingStates);
     // Function to search the table
     function searchTable() {
       const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-      
+
       if (searchTerm === '') {
         filteredData = [...atmData];
       } else {
@@ -1838,7 +1838,7 @@ window.addEventListener('load', addLoadingStates);
           );
         });
       }
-      
+
       // Reset to first page after search
       currentPage = 1;
       renderTable();
@@ -1854,32 +1854,32 @@ window.addEventListener('load', addLoadingStates);
         sortColumn = columnIndex;
         sortDirection = 1;
       }
-      
+
       filteredData.sort((a, b) => {
         const keys = ['atm', 'helm', 'struk', 'trashbin', 'dwellTime', 'peopleCounting', 'multiplePerson', 'fasciaAtas'];
         const key = keys[columnIndex];
-        
+
         // Special case for dwell time (remove 's' and compare as numbers)
         if (key === 'dwellTime') {
           const aValue = parseInt(a[key].replace('s', ''));
           const bValue = parseInt(b[key].replace('s', ''));
           return sortDirection * (aValue - bValue);
         }
-        
+
         // Special case for fascia (using fasciaAtas for sorting)
         if (columnIndex === 7) {
           return sortDirection * (a.fasciaAtas - b.fasciaAtas);
         }
-        
+
         // For string values
         if (typeof a[key] === 'string') {
           return sortDirection * a[key].localeCompare(b[key]);
         }
-        
+
         // For numeric values
         return sortDirection * (a[key] - b[key]);
       });
-      
+
       renderTable();
     }
 
@@ -1899,14 +1899,14 @@ window.addEventListener('load', addLoadingStates);
           'Fascia Bawah': item.fasciaBawah
         }))
       );
-      
+
       // Create a workbook
       const wb = XLSX.utils.book_new();
       XLSX.utils.book_append_sheet(wb, ws, 'ATM Detection');
-      
+
       // Generate Excel file
       const excelBuffer = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
-      
+
       // Save file
       const today = new Date();
       const dateStr = `${today.getFullYear()}-${(today.getMonth()+1).toString().padStart(2, '0')}-${today.getDate().toString().padStart(2, '0')}`;
