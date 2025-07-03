@@ -1320,7 +1320,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
         <!-- Alert Detail Modal -->
-<div
+
+        <div
 id="alertDetailModal"
 class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden"
 >
@@ -1472,99 +1473,253 @@ class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-5
       </div>
     </div>
 
-
-    <br/>
-
-
-
-
-
-
-<!-- History Tab Content -->
-<div id="historyContent" class="tab-content p-6 hidden">
-  <div class="history-timeline-container">
-    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-6 text-center">Alert History Timeline</h3>
-
-    <!-- Zigzag Timeline Wrapper -->
-    <div class="timeline-container relative">
-      <!-- Central Timeline Line -->
-      <div class="timeline-line absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-500 via-purple-500 to-pink-500 transform -translate-x-1/2 z-10"></div>
-
-      <!-- Timeline Items -->
-      <div class="timeline-items">
-
-        <!-- Alert 1: Upper Fascia Open (Right Side) -->
-        <div class="timeline-item relative mb-16 flex justify-end opacity-0 transform translate-y-8 transition-all duration-700 ease-out">
-          <div class="timeline-content w-5/12 bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-xl border border-rose-100 dark:border-rose-900/30 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 mr-8">
-            <div class="flex items-start justify-between mb-3">
-              <div>
-                <h4 class="font-bold text-gray-900 dark:text-white text-lg">Upper Fascia Open</h4>
-                <p class="text-rose-600 dark:text-rose-400 text-sm font-medium">25 Juni 2025</p>
-                <p class="text-gray-500 dark:text-gray-400 text-xs">17:39:31</p>
-              </div>
-              <span class="bg-gradient-to-r from-rose-500 to-pink-600 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">Alert</span>
-            </div>
-            <div class="flex items-center justify-between">
-              <div class="flex items-center text-rose-600 dark:text-rose-400 text-xs">
-                <i class="fas fa-user-shield mr-1"></i>
-                <span class="font-medium">Closed by: Monitoring</span>
-              </div>
-            </div>
-          </div>
-          <!-- Dot -->
-
+    <!-- Stream Tab Content -->
+    <div id="streamContent" class="tab-content p-4 hidden">
+      <!-- Top Bar with Watch Button & AI Toggle Switch -->
+      <div class="flex justify-between items-center mb-4">
+        <!-- Watch Button -->
+        <div>
+          <button class="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold text-sm px-5 py-2 rounded-full shadow-md hover:shadow-lg transition duration-200 ease-in-out">
+            <i class="fas fa-play mr-2"></i> Watch
+          </button>
         </div>
 
-        <!-- Alert 2: Bottom Fascia Open (Left Side) -->
-        <div class="timeline-item relative mb-16 flex justify-start opacity-0 transform translate-y-8 transition-all duration-700 ease-out">
-          <div class="timeline-content w-5/12 bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-xl border border-orange-100 dark:border-orange-900/30 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 ml-8">
-            <div class="flex items-start justify-between mb-3">
-              <div>
-                <h4 class="font-bold text-gray-900 dark:text-white text-lg">Bottom Fascia Open</h4>
-                <p class="text-orange-600 dark:text-orange-400 text-sm font-medium">27 Juni 2025</p>
-                <p class="text-gray-500 dark:text-gray-400 text-xs">09:30:00</p>
-              </div>
-              <span class="bg-gradient-to-r from-orange-500 to-red-600 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">Alert</span>
-            </div>
-            <div class="flex items-center justify-between">
-              <div class="flex items-center text-orange-600 dark:text-orange-400 text-xs">
-                <i class="fas fa-user-shield mr-1"></i>
-                <span class="font-medium">Closed by: Monitoring</span>
-              </div>
-            </div>
-          </div>
-          <!-- Dot -->
-
+        <!-- AI Toggle -->
+        <div class="flex items-center space-x-3">
+          <span class="text-sm font-medium text-gray-700 dark:text-gray-300">AI</span>
+          <label class="relative inline-flex items-center cursor-pointer">
+            <input type="checkbox" id="aiToggle" class="sr-only peer">
+            <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+          </label>
         </div>
+      </div>
 
-        <!-- Health Check (Right Side) -->
-        <div class="timeline-item relative mb-16 flex justify-end opacity-0 transform translate-y-8 transition-all duration-700 ease-out">
-          <div class="timeline-content w-5/12 bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-xl border border-cyan-100 dark:border-cyan-900/30 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 mr-8">
-            <div class="flex items-start justify-between mb-3">
-              <div>
-                <h4 class="font-bold text-gray-900 dark:text-white text-lg">Health</h4>
-                <p class="text-cyan-600 dark:text-cyan-400 text-sm font-medium">07 Juli 2025</p>
-                <p class="text-gray-500 dark:text-gray-400 text-xs">17:39:31</p>
-              </div>
-              <span class="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">Health</span>
-            </div>
-            <div class="flex items-center justify-between">
-              <div class="flex items-center text-cyan-600 dark:text-cyan-400 text-xs">
-                <i class="fas fa-user-shield mr-1"></i>
-                <span class="font-medium">Closed by: Monitoring</span>
-              </div>
-            </div>
-          </div>
-          <!-- Dot -->
-
+      <!-- Normal Stream Content -->
+      <div id="normalContent" class="transition-all duration-300">
+        <div class="bg-black rounded-lg relative overflow-hidden">
+          <img src="/no_ai.png"
+               alt="Security Stream"
+               class="w-[800px] h-[365px] object-cover">
         </div>
+      </div>
 
+      <!-- AI Enhanced Content -->
+      <div id="aiContent" class="hidden transition-all duration-300">
+          <div class="bg-black rounded-lg relative overflow-hidden">
+              <img src="ai.jpeg"
+                   alt="AI Enhanced Stream"
+                   class="w-[800px] h-[365px] object-cover">
+          </div>
       </div>
     </div>
+
+    <!-- History Tab Content -->
+    <div id="historyContent" class="tab-content p-6 hidden">
+      <div class="history-timeline-container">
+        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-6 text-center">Alert History Timeline</h3>
+
+        <!-- Zigzag Timeline Wrapper -->
+        <div class="timeline-container relative">
+          <!-- Central Timeline Line -->
+          <div class="timeline-line absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-500 via-purple-500 to-pink-500 transform -translate-x-1/2 z-10"></div>
+
+          <!-- Timeline Items -->
+          <div class="timeline-items">
+
+            <!-- Alert 1: Upper Fascia Open (Right Side) -->
+            <div class="timeline-item relative mb-16 flex justify-end opacity-0 transform translate-y-8 transition-all duration-700 ease-out">
+              <div class="timeline-content w-5/12 bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-xl border border-rose-100 dark:border-rose-900/30 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 mr-8">
+                <div class="flex items-start justify-between mb-3">
+                  <div>
+                    <h4 class="font-bold text-gray-900 dark:text-white text-lg">Upper Fascia Open</h4>
+                    <p class="text-rose-600 dark:text-rose-400 text-sm font-medium">25 Juni 2025</p>
+                    <p class="text-gray-500 dark:text-gray-400 text-xs">17:39:31</p>
+                  </div>
+                  <span class="bg-gradient-to-r from-rose-500 to-pink-600 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">Alert</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center text-rose-600 dark:text-rose-400 text-xs">
+                    <i class="fas fa-user-shield mr-1"></i>
+                    <span class="font-medium">Closed by: Monitoring</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Alert 2: Bottom Fascia Open (Left Side) -->
+            <div class="timeline-item relative mb-16 flex justify-start opacity-0 transform translate-y-8 transition-all duration-700 ease-out">
+              <div class="timeline-content w-5/12 bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-xl border border-orange-100 dark:border-orange-900/30 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 ml-8">
+                <div class="flex items-start justify-between mb-3">
+                  <div>
+                    <h4 class="font-bold text-gray-900 dark:text-white text-lg">Bottom Fascia Open</h4>
+                    <p class="text-orange-600 dark:text-orange-400 text-sm font-medium">27 Juni 2025</p>
+                    <p class="text-gray-500 dark:text-gray-400 text-xs">09:30:00</p>
+                  </div>
+                  <span class="bg-gradient-to-r from-orange-500 to-red-600 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">Alert</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center text-orange-600 dark:text-orange-400 text-xs">
+                    <i class="fas fa-user-shield mr-1"></i>
+                    <span class="font-medium">Closed by: Monitoring</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Health Check (Right Side) -->
+            <div class="timeline-item relative mb-16 flex justify-end opacity-0 transform translate-y-8 transition-all duration-700 ease-out">
+              <div class="timeline-content w-5/12 bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-xl border border-cyan-100 dark:border-cyan-900/30 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 mr-8">
+                <div class="flex items-start justify-between mb-3">
+                  <div>
+                    <h4 class="font-bold text-gray-900 dark:text-white text-lg">Health</h4>
+                    <p class="text-cyan-600 dark:text-cyan-400 text-sm font-medium">07 Juli 2025</p>
+                    <p class="text-gray-500 dark:text-gray-400 text-xs">17:39:31</p>
+                  </div>
+                  <span class="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">Health</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center text-cyan-600 dark:text-cyan-400 text-xs">
+                    <i class="fas fa-user-shield mr-1"></i>
+                    <span class="font-medium">Closed by: Monitoring</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Device Tab Content -->
+    <div id="deviceContent" class="tab-content p-6 hidden">
+      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg max-w-md mx-auto">
+        <!-- Header -->
+        <div class="bg-gray-100 dark:bg-gray-700 px-6 py-4 rounded-t-lg">
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">DEVICE INFORMATION</h3>
+        </div>
+
+        <!-- Content -->
+        <div class="p-6 space-y-4">
+          <!-- Device ID -->
+          <div class="flex justify-between items-center">
+            <span class="text-gray-500 dark:text-gray-400 text-sm">DEVICE ID</span>
+            <span class="text-gray-900 dark:text-white font-medium">PQY0002</span>
+          </div>
+
+          <!-- MD -->
+          <div class="flex justify-between items-center">
+            <span class="text-gray-500 dark:text-gray-400 text-sm">MD</span>
+            <span class="text-gray-900 dark:text-white font-medium">ST. TAMBUN</span>
+          </div>
+
+          <!-- GD -->
+          <div class="flex justify-between items-center">
+            <span class="text-gray-500 dark:text-gray-400 text-sm">GD</span>
+            <span class="text-gray-900 dark:text-white font-medium">BSI</span>
+          </div>
+
+          <!-- Owner -->
+          <div class="flex justify-between items-center">
+            <span class="text-gray-500 dark:text-gray-400 text-sm">OWNER</span>
+            <span class="text-gray-900 dark:text-white font-medium">BANK SYARIAH INDONESIA</span>
+          </div>
+
+          <!-- Holder -->
+          <div class="flex justify-between items-center">
+            <span class="text-gray-500 dark:text-gray-400 text-sm">HOLDER</span>
+            <span class="text-gray-900 dark:text-white font-medium">TEST HOLDER (JAKARTA)</span>
+          </div>
+
+          <!-- Operating Hours -->
+          <div class="flex justify-between items-center">
+            <span class="text-gray-500 dark:text-gray-400 text-sm">OPERATING HOURS</span>
+            <span class="text-gray-900 dark:text-white font-medium">0000 - 2345</span>
+          </div>
+
+          <!-- Status Active -->
+          <div class="flex justify-between items-center">
+            <div class="flex flex-col">
+              <span class="text-gray-500 dark:text-gray-400 text-sm">STATUS</span>
+              <span class="text-gray-500 dark:text-gray-400 text-sm">ACTIVE</span>
+            </div>
+            <div class="flex flex-col items-end">
+              <span class="bg-green-500 text-white px-3 py-1 rounded text-sm font-medium">ACTIVE</span>
+              <span class="text-gray-500 dark:text-gray-400 text-xs mt-1">22. 2024 17:29</span>
+            </div>
+          </div>
+
+          <!-- Status Alert -->
+          <div class="flex justify-between items-center">
+            <div class="flex flex-col">
+              <span class="text-gray-500 dark:text-gray-400 text-sm">STATUS</span>
+              <span class="text-gray-500 dark:text-gray-400 text-sm">ALERT</span>
+            </div>
+            <div class="flex flex-col items-end">
+              <span class="bg-red-500 text-white px-3 py-1 rounded text-sm font-medium">DISABLED</span>
+              <span class="text-gray-500 dark:text-gray-400 text-xs mt-1">2024 06 13 15:36:06</span>
+              <span class="text-gray-500 dark:text-gray-400 text-xs">#FREEZE_BY_DEVICE</span>
+            </div>
+          </div>
+
+          <!-- Status Online -->
+          <div class="flex justify-between items-center">
+            <div class="flex flex-col">
+              <span class="text-gray-500 dark:text-gray-400 text-sm">STATUS</span>
+              <span class="text-gray-500 dark:text-gray-400 text-sm">ONLINE</span>
+            </div>
+            <div class="flex flex-col items-end">
+              <span class="bg-green-500 text-white px-3 py-1 rounded text-sm font-medium">ONLINE</span>
+              <span class="text-gray-500 dark:text-gray-400 text-xs mt-1">LAST UPDATED AT</span>
+              <span class="text-gray-500 dark:text-gray-400 text-xs">2025 06 24 16:12:30</span>
+            </div>
+          </div>
+
+          <!-- Status Health -->
+          <div class="flex justify-between items-center">
+            <div class="flex flex-col">
+              <span class="text-gray-500 dark:text-gray-400 text-sm">STATUS</span>
+              <span class="text-gray-500 dark:text-gray-400 text-sm">HEALTH</span>
+            </div>
+            <div class="flex flex-col items-end">
+              <span class="bg-green-500 text-white px-3 py-1 rounded text-sm font-medium">GOOD</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
+</div>
+</div>
+
+<!-- Button to open modal for testing -->
+<div class="p-8">
+  <button id="openModal" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg">
+    Open Modal
+  </button>
 </div>
 
 <style>
+.theme-transition {
+  transition: all 0.3s ease;
+}
+
+.tab-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.tab-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.tab-button.active {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
 /* Zigzag Timeline Styles */
 .history-timeline-container {
   position: relative;
@@ -1652,386 +1807,298 @@ class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-5
 </style>
 
 <script>
+  // ===== MODAL TAB MANAGEMENT =====
+class ModalTabManager {
+  constructor() {
+    this.tabButtons = document.querySelectorAll('.tab-button');
+    this.tabContents = document.querySelectorAll('.tab-content');
+    this.init();
+  }
 
-</script>
-<script>
-// Enhanced Zigzag Timeline Animation Script
-function initializeZigzagTimeline() {
-  const timelineItems = document.querySelectorAll('#historyContent .timeline-item');
+  init() {
+    this.bindEvents();
+    this.setInitialTab();
+  }
 
-  if (!timelineItems.length) return;
-
-  let animationTriggered = false;
-
-  // Function to animate timeline items
-  const animateTimelineItems = () => {
-    if (animationTriggered) return;
-    animationTriggered = true;
-
-    let delay = 0;
-    timelineItems.forEach((item, index) => {
-      setTimeout(() => {
-        item.classList.add('active');
-      }, delay);
-
-      delay += 300; // 300ms delay between each item
+  bindEvents() {
+    this.tabButtons.forEach(button => {
+      button.addEventListener('click', (e) => this.handleTabClick(e));
     });
-  };
 
-  // Intersection Observer for scroll-based animation
-  if ('IntersectionObserver' in window) {
-    const observerOptions = {
-      root: null,
-      rootMargin: '0px 0px -20% 0px',
-      threshold: 0.1
-    };
+    // Close modal events
+    const closeBtn = document.getElementById('closeAlertModal');
+    const modal = document.getElementById('alertDetailModal');
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && entry.target.id === 'historyContent') {
-          animateTimelineItems();
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => this.closeModal());
+    }
+
+    if (modal) {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          this.closeModal();
         }
       });
-    }, observerOptions);
-
-    const historyContent = document.getElementById('historyContent');
-    if (historyContent) {
-      observer.observe(historyContent);
     }
   }
 
-  // Fallback: animate when history tab is clicked
-  const historyTab = document.getElementById('historyTab');
-  if (historyTab) {
-    historyTab.addEventListener('click', () => {
+  handleTabClick(e) {
+    const clickedButton = e.target;
+    const targetId = clickedButton.id.replace('Tab', 'Content');
+
+    // Remove active state from all tabs
+    this.tabButtons.forEach(btn => btn.classList.remove('active'));
+    this.tabContents.forEach(content => content.classList.add('hidden'));
+
+    // Activate clicked tab
+    clickedButton.classList.add('active');
+    const targetContent = document.getElementById(targetId);
+
+    if (targetContent) {
+      targetContent.classList.remove('hidden');
+
+      // Trigger specific tab initialization if needed
+      this.handleTabSpecificActions(targetId);
+    }
+  }
+
+  handleTabSpecificActions(tabId) {
+    switch (tabId) {
+      case 'historyContent':
+        // Initialize timeline animation when history tab is opened
+        setTimeout(() => {
+          if (window.timelineManager) {
+            window.timelineManager.animateTimeline();
+          }
+        }, 100);
+        break;
+      case 'streamContent':
+        // Initialize stream content if needed
+        if (window.streamManager) {
+          window.streamManager.initializeStream();
+        }
+        break;
+    }
+  }
+
+  setInitialTab() {
+    // Set alert tab as default active tab
+    const alertTab = document.getElementById('alertTab');
+    const alertContent = document.getElementById('alertContent');
+
+    if (alertTab && alertContent) {
+      this.tabButtons.forEach(btn => btn.classList.remove('active'));
+      this.tabContents.forEach(content => content.classList.add('hidden'));
+
+      alertTab.classList.add('active');
+      alertContent.classList.remove('hidden');
+    }
+  }
+
+  closeModal() {
+    const modal = document.getElementById('alertDetailModal');
+    if (modal) {
+      modal.classList.add('hidden');
+
+      // Reset to default tab when modal is closed
+      this.setInitialTab();
+
+      // Reset timeline animation
+      if (window.timelineManager) {
+        window.timelineManager.resetAnimation();
+      }
+    }
+  }
+}
+
+// ===== TIMELINE ANIMATION MANAGER =====
+class TimelineAnimationManager {
+  constructor() {
+    this.timelineItems = document.querySelectorAll('#historyContent .timeline-item');
+    this.animationTriggered = false;
+    this.init();
+  }
+
+  init() {
+    if (!this.timelineItems.length) return;
+    this.setupIntersectionObserver();
+  }
+
+  setupIntersectionObserver() {
+    if ('IntersectionObserver' in window) {
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px 0px -20% 0px',
+        threshold: 0.1
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && entry.target.id === 'historyContent') {
+            this.animateTimeline();
+          }
+        });
+      }, observerOptions);
+
+      const historyContent = document.getElementById('historyContent');
+      if (historyContent) {
+        observer.observe(historyContent);
+      }
+    }
+  }
+
+  animateTimeline() {
+    if (this.animationTriggered) return;
+    this.animationTriggered = true;
+
+    let delay = 0;
+    this.timelineItems.forEach((item, index) => {
       setTimeout(() => {
-        animateTimelineItems();
-      }, 100);
+        item.classList.add('active');
+      }, delay);
+      delay += 300; // 300ms delay between each item
     });
   }
 
-  // Reset animation when modal is closed and reopened
-  const closeModalBtn = document.getElementById('closeAlertModal');
-  if (closeModalBtn) {
-    closeModalBtn.addEventListener('click', () => {
-      animationTriggered = false;
-      timelineItems.forEach(item => {
-        item.classList.remove('active');
-      });
+  resetAnimation() {
+    this.animationTriggered = false;
+    this.timelineItems.forEach(item => {
+      item.classList.remove('active');
     });
   }
 }
 
-// Initialize when DOM is loaded
-document.addEventListener('DOMContentLoaded', initializeZigzagTimeline);
+// ===== STREAM MANAGER =====
+class StreamManager {
+  constructor() {
+    this.aiToggle = document.getElementById('aiToggle');
+    this.normalContent = document.getElementById('normalContent');
+    this.aiContent = document.getElementById('aiContent');
+    this.init();
+  }
 
-// Re-initialize when modal content changes (for dynamic content)
-document.addEventListener('modalContentUpdated', initializeZigzagTimeline);
+  init() {
+    if (!this.aiToggle || !this.normalContent || !this.aiContent) return;
+    this.bindEvents();
+    this.setInitialState();
+  }
 
-// Auto-start animation if content is visible
+  bindEvents() {
+    this.aiToggle.addEventListener('change', () => this.handleToggleChange());
+  }
+
+  handleToggleChange() {
+    if (this.aiToggle.checked) {
+      this.switchToAIMode();
+    } else {
+      this.switchToNormalMode();
+    }
+  }
+
+  switchToAIMode() {
+    this.normalContent.classList.add('hidden');
+    this.aiContent.classList.remove('hidden');
+
+    // Smooth transition
+    setTimeout(() => {
+      this.aiContent.style.opacity = '1';
+    }, 10);
+  }
+
+  switchToNormalMode() {
+    this.aiContent.classList.add('hidden');
+    this.normalContent.classList.remove('hidden');
+
+    // Smooth transition
+    setTimeout(() => {
+      this.normalContent.style.opacity = '1';
+    }, 10);
+  }
+
+  setInitialState() {
+    // Ensure normal mode is active by default
+    this.aiToggle.checked = false;
+    this.normalContent.classList.remove('hidden');
+    this.aiContent.classList.add('hidden');
+    this.normalContent.style.opacity = '1';
+  }
+
+  initializeStream() {
+    // Reset to initial state when stream tab is opened
+    this.setInitialState();
+  }
+}
+
+// ===== MODAL UTILITIES =====
+class ModalUtilities {
+  static updateAlertDetails(alertData) {
+    const elements = {
+      severity: document.getElementById('alertDetailSeverity'),
+      type: document.getElementById('alertDetailType'),
+      time: document.getElementById('alertDetailTime'),
+      location: document.getElementById('alertDetailLocation'),
+      deviceId: document.getElementById('alertDetailDeviceId'),
+      description: document.getElementById('alertDetailDescription')
+    };
+
+    Object.keys(elements).forEach(key => {
+      if (elements[key] && alertData[key]) {
+        elements[key].textContent = alertData[key];
+      }
+    });
+  }
+
+  static showModal() {
+    const modal = document.getElementById('alertDetailModal');
+    if (modal) {
+      modal.classList.remove('hidden');
+
+      // Dispatch custom event for modal content update
+      document.dispatchEvent(new CustomEvent('modalContentUpdated'));
+    }
+  }
+
+  static hideModal() {
+    const modal = document.getElementById('alertDetailModal');
+    if (modal) {
+      modal.classList.add('hidden');
+    }
+  }
+}
+
+// ===== INITIALIZATION =====
+document.addEventListener('DOMContentLoaded', function() {
+  // Initialize all managers
+  const tabManager = new ModalTabManager();
+  const timelineManager = new TimelineAnimationManager();
+  const streamManager = new StreamManager();
+
+  // Make managers globally available
+  window.tabManager = tabManager;
+  window.timelineManager = timelineManager;
+  window.streamManager = streamManager;
+  window.ModalUtilities = ModalUtilities;
+
+  // Handle dynamic content updates
+  document.addEventListener('modalContentUpdated', function() {
+    // Re-initialize timeline if needed
+    if (window.timelineManager) {
+      window.timelineManager.resetAnimation();
+    }
+  });
+});
+
+// ===== FALLBACK FOR AUTO-START ANIMATION =====
 setTimeout(() => {
   const historyContent = document.getElementById('historyContent');
   if (historyContent && !historyContent.classList.contains('hidden')) {
-    initializeZigzagTimeline();
+    if (window.timelineManager) {
+      window.timelineManager.animateTimeline();
+    }
   }
 }, 500);
-</script>
-
-
-    <!-- Stream Tab Content -->
-    <div id="streamContent" class="tab-content p-4">
-      <!-- AI Toggle Switch -->
-
-<!-- Top Bar with Watch Button & AI Toggle Switch -->
-<div class="flex justify-between items-center mb-4">
-  <!-- Watch Button -->
-  <div>
-    <button class="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold text-sm px-5 py-2 rounded-full shadow-md hover:shadow-lg transition duration-200 ease-in-out">
-      <i class="fas fa-play mr-2"></i> Watch
-    </button>
-  </div>
-
-  <!-- AI Toggle -->
-  <div class="flex items-center space-x-3">
-    <span class="text-sm font-medium text-gray-700 dark:text-gray-300">AI</span>
-    <label class="relative inline-flex items-center cursor-pointer">
-      <input type="checkbox" id="aiToggle" class="sr-only peer">
-      <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
-    </label>
-  </div>
-</div>
-
-      <!-- Normal Stream Content -->
-      <div id="normalContent" class="transition-all duration-300">
-        <div class="bg-black rounded-lg relative overflow-hidden">
-          <img src="/no_ai.png"
-               alt="Security Stream"
-               class="w-[800px] h-[340px] object-cover">
-        </div>
-
-      </div>
-
-      <!-- AI Enhanced Content -->
-      <div id="aiContent" class="hidden transition-all duration-300">
-          <div class="bg-black rounded-lg relative overflow-hidden">
-              <img src="ai.jpeg"
-                   alt="AI Enhanced Stream"
-                   class="w-[800px] h-[343px] object-cover">
-          </div>
-      </div>
-    </div>
-    <script>
-      // AI Toggle Functionality
-      const aiToggle = document.getElementById('aiToggle');
-      const normalContent = document.getElementById('normalContent');
-      const aiContent = document.getElementById('aiContent');
-
-      aiToggle.addEventListener('change', function() {
-          if (this.checked) {
-              // Switch to AI mode
-              normalContent.classList.add('hidden');
-              aiContent.classList.remove('hidden');
-              setTimeout(() => {
-                  aiContent.style.opacity = '1';
-              }, 10);
-          } else {
-              // Switch to normal mode
-              aiContent.classList.add('hidden');
-              normalContent.classList.remove('hidden');
-              setTimeout(() => {
-                  normalContent.style.opacity = '1';
-              }, 10);
-          }
-      });
-
-
   </script>
 
-   <!-- Device Tab Content -->
-<div id="deviceContent" class="tab-content p-6 hidden">
-  <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg max-w-md mx-auto">
-    <!-- Header -->
-    <div class="bg-gray-100 dark:bg-gray-700 px-6 py-4 rounded-t-lg">
-      <h3 class="text-lg font-semibold text-gray-900 dark:text-white">DEVICE INFORMATION</h3>
-    </div>
-
-    <!-- Content -->
-    <div class="p-6 space-y-4">
-      <!-- Device ID -->
-      <div class="flex justify-between items-center">
-        <span class="text-gray-500 dark:text-gray-400 text-sm">DEVICE ID</span>
-        <span class="text-gray-900 dark:text-white font-medium">PQY0002</span>
-      </div>
-
-      <!-- MD -->
-      <div class="flex justify-between items-center">
-        <span class="text-gray-500 dark:text-gray-400 text-sm">MD</span>
-        <span class="text-gray-900 dark:text-white font-medium">ST. TAMBUN</span>
-      </div>
-
-      <!-- GD -->
-      <div class="flex justify-between items-center">
-        <span class="text-gray-500 dark:text-gray-400 text-sm">GD</span>
-        <span class="text-gray-900 dark:text-white font-medium">BSI</span>
-      </div>
-
-      <!-- Owner -->
-      <div class="flex justify-between items-center">
-        <span class="text-gray-500 dark:text-gray-400 text-sm">OWNER</span>
-        <span class="text-gray-900 dark:text-white font-medium">BANK SYARIAH INDONESIA</span>
-      </div>
-
-      <!-- Holder -->
-      <div class="flex justify-between items-center">
-        <span class="text-gray-500 dark:text-gray-400 text-sm">HOLDER</span>
-        <span class="text-gray-900 dark:text-white font-medium">TEST HOLDER (JAKARTA)</span>
-      </div>
-
-      <!-- Operating Hours -->
-      <div class="flex justify-between items-center">
-        <span class="text-gray-500 dark:text-gray-400 text-sm">OPERATING HOURS</span>
-        <span class="text-gray-900 dark:text-white font-medium">0000 - 2345</span>
-      </div>
-
-      <!-- Status Active -->
-      <div class="flex justify-between items-center">
-        <div class="flex flex-col">
-          <span class="text-gray-500 dark:text-gray-400 text-sm">STATUS</span>
-          <span class="text-gray-500 dark:text-gray-400 text-sm">ACTIVE</span>
-        </div>
-        <div class="flex flex-col items-end">
-          <span class="bg-green-500 text-white px-3 py-1 rounded text-sm font-medium">ACTIVE</span>
-          <span class="text-gray-500 dark:text-gray-400 text-xs mt-1">22. 2024 17:29</span>
-        </div>
-      </div>
-
-      <!-- Status Alert -->
-      <div class="flex justify-between items-center">
-        <div class="flex flex-col">
-          <span class="text-gray-500 dark:text-gray-400 text-sm">STATUS</span>
-          <span class="text-gray-500 dark:text-gray-400 text-sm">ALERT</span>
-        </div>
-        <div class="flex flex-col items-end">
-          <span class="bg-red-500 text-white px-3 py-1 rounded text-sm font-medium">DISABLED</span>
-          <span class="text-gray-500 dark:text-gray-400 text-xs mt-1">2024 06 13 15:36:06</span>
-          <span class="text-gray-500 dark:text-gray-400 text-xs">#FREEZE_BY_DEVICE</span>
-        </div>
-      </div>
-
-      <!-- Status Online -->
-      <div class="flex justify-between items-center">
-        <div class="flex flex-col">
-          <span class="text-gray-500 dark:text-gray-400 text-sm">STATUS</span>
-          <span class="text-gray-500 dark:text-gray-400 text-sm">ONLINE</span>
-        </div>
-        <div class="flex flex-col items-end">
-          <span class="bg-green-500 text-white px-3 py-1 rounded text-sm font-medium">ONLINE</span>
-          <span class="text-gray-500 dark:text-gray-400 text-xs mt-1">LAST UPDATED AT</span>
-          <span class="text-gray-500 dark:text-gray-400 text-xs">2025 06 24 16:12:30</span>
-        </div>
-      </div>
-
-      <!-- Status Health -->
-      <div class="flex justify-between items-center">
-        <div class="flex flex-col">
-          <span class="text-gray-500 dark:text-gray-400 text-sm">STATUS</span>
-          <span class="text-gray-500 dark:text-gray-400 text-sm">HEALTH</span>
-        </div>
-        <div class="flex flex-col items-end">
-          <span class="bg-green-500 text-white px-3 py-1 rounded text-sm font-medium">GOOD</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-  </div>
-</div>
-</div>
-
-<style>
-.theme-transition {
-transition: all 0.3s ease;
-}
-
-.tab-button {
-position: relative;
-overflow: hidden;
-}
-
-.tab-button:hover {
-transform: translateY(-1px);
-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.tab-button.active {
-transform: translateY(-1px);
-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-</style>
-
-<script>
-// Tab functionality
-document.addEventListener('DOMContentLoaded', function() {
-const tabButtons = document.querySelectorAll('.tab-button');
-const tabContents = document.querySelectorAll('.tab-content');
-
-// Set initial active tab
-document.getElementById('alertTab').classList.add('active');
-
-tabButtons.forEach(button => {
-  button.addEventListener('click', function() {
-    const targetId = this.id.replace('Tab', 'Content');
-
-    // Remove active class from all tabs
-    tabButtons.forEach(btn => btn.classList.remove('active'));
-
-    // Hide all tab contents
-    tabContents.forEach(content => content.classList.add('hidden'));
-
-    // Add active class to clicked tab
-    this.classList.add('active');
-
-    // Show target content
-    document.getElementById(targetId).classList.remove('hidden');
-  });
-});
-
-// Close modal functionality
-document.getElementById('closeAlertModal').addEventListener('click', function() {
-  document.getElementById('alertDetailModal').classList.add('hidden');
-});
-
-// Close modal when clicking outside
-document.getElementById('alertDetailModal').addEventListener('click', function(e) {
-  if (e.target === this) {
-    this.classList.add('hidden');
-  }
-});
-});
-</script>
-
-
-<!-- <style>
-.theme-transition {
-transition: all 0.3s ease;
-}
-
-.tab-button {
-position: relative;
-overflow: hidden;
-}
-
-.tab-button:hover {
-transform: translateY(-1px);
-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.tab-button.active {
-transform: translateY(-1px);
-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-</style>
-
-<script>
-// Tab functionality
-document.addEventListener('DOMContentLoaded', function() {
-const tabButtons = document.querySelectorAll('.tab-button');
-const tabContents = document.querySelectorAll('.tab-content');
-
-// Set initial active tab
-document.getElementById('alertTab').classList.add('active');
-
-tabButtons.forEach(button => {
-  button.addEventListener('click', function() {
-    const targetId = this.id.replace('Tab', 'Content');
-
-    // Remove active class from all tabs
-    tabButtons.forEach(btn => btn.classList.remove('active'));
-
-    // Hide all tab contents
-    tabContents.forEach(content => content.classList.add('hidden'));
-
-    // Add active class to clicked tab
-    this.classList.add('active');
-
-    // Show target content
-    document.getElementById(targetId).classList.remove('hidden');
-  });
-});
-
-// Close modal functionality
-document.getElementById('closeAlertModal').addEventListener('click', function() {
-  document.getElementById('alertDetailModal').classList.add('hidden');
-});
-
-// Close modal when clicking outside
-document.getElementById('alertDetailModal').addEventListener('click', function(e) {
-  if (e.target === this) {
-    this.classList.add('hidden');
-  }
-});
-});
-</script> -->
 
         <!-- Footer -->
         <div class="mt-8 text-center">
